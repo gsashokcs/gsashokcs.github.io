@@ -1,1 +1,32 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Your Title</title>\n</head>\n<body>\n    <script>\n        // Fixing the emoji properly in toggleEye function\n        function toggleEye() {\n            const eyeElement = document.getElementById('eye');\n            if (eyeElement.innerHTML === '👁️') { // Safely handle emoji\n                eyeElement.innerHTML = '👁️‍🗨️'; // Changing the eye emoji\n            } else {\n                eyeElement.innerHTML = '👁️';\n            }\n        }\n    <\/script>\n    <p>This is some content with special characters like \" and \'.</p>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upstox Portfolio Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        .hidden { display: none; }
+        /* Additional CSS styles */
+    </style>
+</head>
+<body>
+    <h1>Upstox Portfolio Tracker</h1>
+    <div id="portfolio">
+        <h2>My Portfolio</h2>
+        <ul id="portfolio-list">
+            <li>Stock 1 <span class="toggle-eye" onclick="toggleEye(this)">&#x1F441;</span></li>
+            <!-- More stocks can be added here -->
+        </ul>
+    </div>
+    <script>
+        function toggleEye(element) {
+            const emoji = element.innerHTML === '&#x1F441;' ? '&#x1F576;' : '&#x1F441;';
+            element.innerHTML = emoji;
+        }
+
+        // Additional JavaScript for tracking functionality
+    </script>
+</body>
+</html>
