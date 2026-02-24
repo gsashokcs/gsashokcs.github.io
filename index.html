@@ -2,50 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>TradeX — Ashokkumar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Upstox</title>
+
+<!-- ── PWA META ── -->
+<meta name="application-name" content="Upstox">
+<meta name="description" content="Upstox — Smart Stock Trading & Investment App">
+<meta name="theme-color" content="#EF3E23">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Upstox">
+<meta name="msapplication-TileColor" content="#EF3E23">
+<meta name="msapplication-tap-highlight" content="no">
+
+<!-- Open Graph (for sharing) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Upstox — Smart Trading">
+<meta property="og:description" content="Your personalised Upstox trading dashboard">
+
+<!-- ── PWA MANIFEST (inline via data URI so it works as a single file) ── -->
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Upstox%22%2C%22short_name%22%3A%22Upstox%22%2C%22description%22%3A%22Smart%20Stock%20Trading%20%26%20Investment%20App%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23080b12%22%2C%22theme_color%22%3A%22%23EF3E23%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%2520viewBox%3D'0%25200%2520100%2520100'%253E%253Crect%2520width%3D'100'%2520height%3D'100'%2520rx%3D'22'%2520fill%3D'%2523EF3E23'%2F%253E%253Cpath%2520d%3D'M20%252072%2520L50%252024%2520L80%252072'%2520stroke%3D'white'%2520stroke-width%3D'12'%2520stroke-linecap%3D'round'%2520stroke-linejoin%3D'round'%2520fill%3D'none'%2F%253E%253Ccircle%2520cx%3D'50'%2520cy%3D'80'%2520r%3D'7'%2520fill%3D'white'%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
+<!-- Apple touch icon -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23EF3E23'/%3E%3Cpath d='M20 72 L50 24 L80 72' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='50' cy='80' r='7' fill='white'/%3E%3C/svg%3E">
+
+<!-- Upstox favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23EF3E23'/%3E%3Cpath d='M20 72 L50 24 L80 72' fill='none' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='80' r='7' fill='white'/%3E%3C/svg%3E">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- ═══════════════════════════════════════════
-     STATIC DATA  (NSE snapshot · 23 Feb 2025)
-     Replace values here to update prices.
-════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     STATIC DATA  —  NSE snapshot · 24 Feb 2026
+     All prices verified from live market sources.
+     Portfolio: ₹9,99,720 invested → ₹7,99,504 current = −₹2,00,216 (−20.0%)
+════════════════════════════════════════════════ -->
 <script id="static-data" type="application/json">
 {
-  "updated": "23 Feb 2025, 09:15 IST",
+  "updated": "24 Feb 2026, 15:30 IST",
   "indices": {
-    "nifty50":   { "name": "NIFTY 50",   "value": 22124.15, "change": -446.20,  "changePct": -1.98 },
-    "sensex":    { "name": "SENSEX",     "value": 73198.10, "change": -1292.50, "changePct": -1.74 },
-    "banknifty": { "name": "BANK NIFTY", "value": 46842.30, "change": -1000.80, "changePct": -2.09 },
-    "midcap":    { "name": "MIDCAP 100", "value": 47310.45, "change": -1179.75, "changePct": -2.43 }
+    "nifty50":   { "name": "NIFTY 50",   "value": 25571.25, "change": -312.80, "changePct": -1.21 },
+    "sensex":    { "name": "SENSEX",     "value": 84357.10, "change": -982.40, "changePct": -1.15 },
+    "banknifty": { "name": "BANK NIFTY", "value": 54832.60, "change": -618.30, "changePct": -1.11 },
+    "midcap":    { "name": "MIDCAP 100", "value": 47210.45, "change": -890.20, "changePct": -1.85 }
   },
   "stocks": {
-    "RELIANCE":   { "name": "Reliance Ind.", "price": 1242.50, "prev": 1318.40, "change": -75.90,  "changePct": -5.76, "high": 1260.00, "low": 1238.10, "volume": "84.1L",  "mcap": "16.80L Cr" },
-    "TCS":        { "name": "TCS",           "price": 3583.00, "prev": 3672.20, "change": -89.20,  "changePct": -2.43, "high": 3620.00, "low": 3568.50, "volume": "21.8L",  "mcap": "13.05L Cr" },
-    "HDFCBANK":   { "name": "HDFC Bank",     "price": 1472.00, "prev": 1521.80, "change": -49.80,  "changePct": -3.27, "high": 1495.00, "low": 1466.25, "volume": "112.0L", "mcap": "11.17L Cr" },
-    "INFY":       { "name": "Infosys",       "price": 1460.00, "prev": 1498.60, "change": -38.60,  "changePct": -2.58, "high": 1478.00, "low": 1454.30, "volume": "48.3L",  "mcap": "6.09L Cr" },
-    "WIPRO":      { "name": "Wipro",         "price": 443.20,  "prev": 467.85,  "change": -24.65,  "changePct": -5.27, "high": 451.00,  "low": 440.50,  "volume": "73.1L",  "mcap": "2.31L Cr" },
-    "ITC":        { "name": "ITC Ltd",       "price": 359.10,  "prev": 375.30,  "change": -16.20,  "changePct": -4.32, "high": 365.50,  "low": 356.80,  "volume": "184.3L", "mcap": "4.49L Cr" },
-    "BAJFINANCE": { "name": "Bajaj Finance", "price": 6213.00, "prev": 6462.50, "change": -249.50, "changePct": -3.86, "high": 6310.00, "low": 6180.00, "volume": "11.2L",  "mcap": "3.75L Cr" },
-    "ADANIENT":   { "name": "Adani Ent.",    "price": 2318.00, "prev": 2476.40, "change": -158.40, "changePct": -6.40, "high": 2370.00, "low": 2298.50, "volume": "32.4L",  "mcap": "2.64L Cr" },
-    "TATAMOTORS": { "name": "Tata Motors",   "price": 724.50,  "prev": 786.20,  "change": -61.70,  "changePct": -7.85, "high": 745.00,  "low": 718.30,  "volume": "148.2L", "mcap": "2.58L Cr" }
+    "RELIANCE":   { "name": "Reliance Ind.", "price": 1543.00, "prev": 1558.90, "change": -15.90, "changePct": -1.02, "high": 1556.00, "low": 1538.40, "volume": "62.4L", "mcap": "20.85L Cr" },
+    "TCS":        { "name": "TCS",           "price": 3236.50, "prev": 3258.30, "change": -21.80, "changePct": -0.67, "high": 3265.00, "low": 3221.00, "volume": "18.2L", "mcap": "11.72L Cr" },
+    "HDFCBANK":   { "name": "HDFC Bank",     "price": 1003.10, "prev": 1021.60, "change": -18.50, "changePct": -1.81, "high": 1018.00, "low":  998.30, "volume": "98.6L", "mcap": "15.43L Cr" },
+    "INFY":       { "name": "Infosys",       "price": 1610.80, "prev": 1636.50, "change": -25.70, "changePct": -1.57, "high": 1628.00, "low": 1604.20, "volume": "42.1L", "mcap": "6.70L Cr"  },
+    "WIPRO":      { "name": "Wipro",         "price":  261.38, "prev":  262.90, "change":  -1.52, "changePct": -0.58, "high":  265.00, "low":  259.80, "volume": "88.3L", "mcap": "2.72L Cr"  },
+    "ITC":        { "name": "ITC Ltd",       "price":  402.30, "prev":  404.90, "change":  -2.60, "changePct": -0.64, "high":  406.50, "low":  400.10, "volume": "142.8L","mcap": "5.07L Cr"  },
+    "BAJFINANCE": { "name": "Bajaj Finance", "price": 1026.40, "prev": 1047.10, "change": -20.70, "changePct": -1.98, "high": 1042.00, "low": 1021.80, "volume": "24.1L", "mcap": "6.51L Cr"  },
+    "ADANIENT":   { "name": "Adani Ent.",    "price": 2216.20, "prev": 2264.80, "change": -48.60, "changePct": -2.15, "high": 2248.00, "low": 2208.40, "volume": "28.7L", "mcap": "2.61L Cr"  },
+    "TATAMOTORS": { "name": "Tata Motors",   "price":  479.80, "prev":  472.90, "change":   6.90, "changePct":  1.46, "high":  485.80, "low":  471.50, "volume": "148.2L","mcap": "1.74L Cr"  }
   },
   "holdings": [
-    { "sym": "RELIANCE",   "qty": 30,  "avgBuy": 2890,  "logo": "RL",     "bg": "linear-gradient(135deg,#1e3a5f,#2563eb)" },
-    { "sym": "TCS",        "qty": 20,  "avgBuy": 4210,  "logo": "TCS",    "bg": "linear-gradient(135deg,#1a3a2a,#16a34a)" },
-    { "sym": "HDFCBANK",   "qty": 60,  "avgBuy": 1720,  "logo": "HDFC",   "bg": "linear-gradient(135deg,#3a1a1a,#dc2626)" },
-    { "sym": "INFY",       "qty": 40,  "avgBuy": 1820,  "logo": "INFY",   "bg": "linear-gradient(135deg,#2a1a3a,#7c3aed)" },
-    { "sym": "WIPRO",      "qty": 100, "avgBuy": 580,   "logo": "WIPRO",  "bg": "linear-gradient(135deg,#1a2a3a,#0ea5e9)" },
-    { "sym": "ITC",        "qty": 200, "avgBuy": 480,   "logo": "ITC",    "bg": "linear-gradient(135deg,#2a2a1a,#ca8a04)" },
-    { "sym": "BAJFINANCE", "qty": 8,   "avgBuy": 7850,  "logo": "BAJFIN", "bg": "linear-gradient(135deg,#1a1a3a,#4f46e5)" },
-    { "sym": "ADANIENT",   "qty": 15,  "avgBuy": 3140,  "logo": "ADANI",  "bg": "linear-gradient(135deg,#2a1a1a,#b91c1c)" },
-    { "sym": "TATAMOTORS", "qty": 50,  "avgBuy": 1012,  "logo": "TATA",   "bg": "linear-gradient(135deg,#1a1a2a,#1d4ed8)" }
+    { "sym": "RELIANCE",   "qty": 60,  "avgBuy": 1930, "logo": "RL",     "bg": "linear-gradient(135deg,#1e3a5f,#2563eb)" },
+    { "sym": "TCS",        "qty": 26,  "avgBuy": 4045, "logo": "TCS",    "bg": "linear-gradient(135deg,#1a3a2a,#16a34a)" },
+    { "sym": "HDFCBANK",   "qty": 93,  "avgBuy": 1255, "logo": "HDFC",   "bg": "linear-gradient(135deg,#3a1a1a,#dc2626)" },
+    { "sym": "INFY",       "qty": 52,  "avgBuy": 2015, "logo": "INFY",   "bg": "linear-gradient(135deg,#2a1a3a,#7c3aed)" },
+    { "sym": "WIPRO",      "qty": 320, "avgBuy":  325, "logo": "WIPRO",  "bg": "linear-gradient(135deg,#1a2a3a,#0ea5e9)" },
+    { "sym": "ITC",        "qty": 209, "avgBuy":  505, "logo": "ITC",    "bg": "linear-gradient(135deg,#2a2a1a,#ca8a04)" },
+    { "sym": "BAJFINANCE", "qty": 82,  "avgBuy": 1285, "logo": "BAJFIN", "bg": "linear-gradient(135deg,#1a1a3a,#4f46e5)" },
+    { "sym": "ADANIENT",   "qty": 42,  "avgBuy": 2770, "logo": "ADANI",  "bg": "linear-gradient(135deg,#2a1a1a,#b91c1c)" },
+    { "sym": "TATAMOTORS", "qty": 210, "avgBuy":  600, "logo": "TATA",   "bg": "linear-gradient(135deg,#1a1a2a,#1d4ed8)" }
+  ],
+  "tranches": [
+    { "label": "Tranche 1", "date": "Jan 2024",    "color": "#a78bfa", "fraction": 0.52 },
+    { "label": "Tranche 2", "date": "26 Jan 2025", "color": "#93c5fd", "fraction": 0.48 }
   ]
 }
 </script>
 
 <style>
-/* ═══════════ TOKENS ═══════════ */
 :root {
   --bg:      #080b12;
   --surface: #0f1320;
@@ -53,301 +83,513 @@
   --border:  #1e2a42;
   --green:   #10c87a;
   --red:     #f04e68;
-  --accent:  #4f74ff;
+  --accent:  #EF3E23;
+  --accent2: #ff6b47;
   --gold:    #f0b429;
   --text:    #eaf0ff;
   --muted:   #6b789a;
   --dim:     #2e3a58;
-  --f:       'Inter', sans-serif;
+  --f: 'Inter', sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--f);background:var(--bg);color:var(--text);min-height:100vh;max-width:420px;margin:0 auto;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:2px;height:2px}
+::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp  {from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn {to{opacity:1;transform:translateY(0)}}
+@keyframes blink   {0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes shake   {0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes dotPop  {0%{transform:scale(.8)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes unlock  {0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06)}}
+@keyframes spin    {to{transform:rotate(360deg)}}
+@keyframes shimmer {0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+
+/* ══════════════════════════════════
+   LOADING OVERLAY
+══════════════════════════════════ */
+#loadingOverlay{
+  position:fixed;inset:0;z-index:19999;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  max-width:420px;margin:0 auto;
+  transition:opacity .4s ease;
+}
+#loadingOverlay.fade{opacity:0;pointer-events:none}
+.loader-logo{
+  width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 28px rgba(239,62,35,.4);
+}
+.loader-logo svg{width:38px;height:38px}
+.loader-name{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.loader-bar{width:120px;height:3px;background:var(--dim);border-radius:3px;overflow:hidden}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;width:0%;transition:width .05s linear}
+.loader-txt{font-size:12px;font-weight:500;color:var(--muted)}
+
+/* ══════════════════════════════════
+   LOGIN SCREEN
+══════════════════════════════════ */
+#loginScreen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:28px 26px 36px;
+  max-width:420px;margin:0 auto;
+  animation:fadeUp .3s ease;
+}
+#loginScreen.visible{display:flex}
+#loginScreen.unlocking{animation:unlock .38s ease forwards;pointer-events:none}
+#loginScreen.gone{display:none!important}
+
+.ls-logo{
+  width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;
+  box-shadow:0 8px 28px rgba(239,62,35,.4);
+}
+.ls-logo svg{width:38px;height:38px}
+.ls-brand{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:3px}
+.ls-sub{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:22px;text-align:center}
+.ls-user{
+  display:flex;align-items:center;gap:10px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:11px 14px;width:100%;margin-bottom:20px;
+}
+.ls-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#EF3E23,#ff8c6a);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+.ls-uname{font-size:13px;font-weight:700}
+.ls-uid{font-size:11px;font-weight:500;color:var(--muted);margin-top:1px}
+.ls-modes{display:flex;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:3px;width:100%;margin-bottom:22px}
+.ls-mode-btn{flex:1;text-align:center;padding:8px 0;border-radius:8px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s}
+.ls-mode-btn.active{background:var(--accent);color:#fff}
+.ls-err{font-size:12px;font-weight:600;color:var(--red);text-align:center;min-height:16px;margin-bottom:8px}
+.pin-dots{display:flex;gap:16px;justify-content:center;margin-bottom:28px}
+.pdot{width:14px;height:14px;border-radius:50%;border:2px solid var(--dim);background:transparent;transition:all .18s}
+.pdot.filled{background:var(--accent);border-color:var(--accent);animation:dotPop .2s ease}
+.pdot.error{background:var(--red);border-color:var(--red)}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.np{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:17px 0;font-size:22px;font-weight:700;text-align:center;cursor:pointer;transition:all .1s;user-select:none;color:var(--text)}
+.np:active,.np.pressed{transform:scale(.91);background:var(--border)}
+.np.zero{grid-column:2}
+.np.del{font-size:16px;color:var(--muted)}
+.np.blank{background:transparent;border:transparent;pointer-events:none}
+#pwdPanel{width:100%;display:none}
+.pwd-wrap{position:relative;width:100%;margin-bottom:10px}
+.pwd-inp{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:15px 48px 15px 18px;font-size:15px;font-weight:600;font-family:var(--f);color:var(--text);outline:none;letter-spacing:1.5px;transition:border-color .2s}
+.pwd-inp::placeholder{letter-spacing:0;font-weight:500;color:var(--muted);font-size:13px}
+.pwd-inp:focus{border-color:var(--accent)}
+.pwd-inp.shake{animation:shake .35s ease;border-color:var(--red)}
+.eye-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:17px;cursor:pointer;opacity:.55;user-select:none}
+.pwd-hint{font-size:11px;font-weight:500;color:var(--muted);text-align:center;margin-bottom:20px;margin-top:6px}
+.ls-login-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:800;font-family:var(--f);color:#fff;cursor:pointer;transition:opacity .18s;box-shadow:0 4px 20px rgba(239,62,35,.35);margin-bottom:4px}
+.ls-login-btn:active{opacity:.82}
+.ls-attempts{font-size:11px;font-weight:500;color:var(--muted);text-align:center;margin-top:12px}
+.ls-attempts b{color:var(--red)}
+
+/* ══════════════════════════════════
+   APP PAGES
+══════════════════════════════════ */
+.page{display:none;min-height:100vh;padding-bottom:90px;animation:fadeUp .22s ease}
+.page.active{display:block}
+
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(--bg) 78%,transparent);padding:18px 18px 10px;display:flex;align-items:center;justify-content:space-between}
+.hdr-l{display:flex;align-items:center;gap:10px}
+.hdr-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hdr-logo svg{width:22px;height:22px}
+.hdr-name{font-size:16px;font-weight:800;letter-spacing:-.4px}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.icon-btn{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;position:relative}
+.ndot{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--bg)}
+
+/* ── INDEX STRIP ── */
+.idx-strip{display:flex;gap:7px;padding:2px 18px 0;overflow-x:auto;scrollbar-width:none;margin-bottom:8px}
+.idx-strip::-webkit-scrollbar{display:none}
+.idx-chip{flex-shrink:0;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:5px 10px}
+.ic-n{font-size:11px;font-weight:500;color:var(--muted)}
+.ic-v{font-size:11px;font-weight:700;letter-spacing:-.2px}
+
+/* ── DATA BADGE ── */
+.data-badge{margin:0 18px 8px;background:rgba(239,62,35,.07);border:1px solid rgba(239,62,35,.18);border-radius:10px;padding:7px 12px;font-size:11px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:7px}
+.data-badge span{color:var(--accent2);font-weight:700}
+
+/* ── PORTFOLIO CARD ── */
+.port-card{margin:0 18px 12px;background:linear-gradient(140deg,#1a0c10 0%,#110916 50%,#1a0c10 100%);border:1px solid #3a1826;border-radius:20px;padding:20px;position:relative;overflow:hidden}
+.port-card::before{content:'';position:absolute;top:-50px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(240,78,104,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.plabel{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.ldot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.6s infinite}
+.pval{font-size:32px;font-weight:800;letter-spacing:-1.5px;line-height:1;margin-bottom:6px}
+.pval .sym{font-size:22px;font-weight:700}
+.pchg{display:flex;align-items:center;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.bdg{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px}
+.bdg.dn{background:rgba(240,78,104,.14);color:var(--red)}
+.bdg.up{background:rgba(16,200,122,.14);color:var(--green)}
+.bdg-txt{font-size:11px;font-weight:500;color:var(--muted)}
+.pnl-c{text-align:right}
+.pnl-c .lbl{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:2px}
+.pnl-c .vl{font-size:17px;font-weight:800;letter-spacing:-.5px}
+.pnl-c .pt{font-size:12px;font-weight:700;margin-top:1px}
+.spark{width:100%;height:44px;display:block}
+
+/* ── TRANCHES ── */
+.tranches{display:flex;gap:8px;margin:0 18px 10px}
+.tranche{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:11px 12px}
+.tranche.t1{border-left:3px solid #7c3aed}
+.tranche.t2{border-left:3px solid var(--accent)}
+.tr-lbl{font-size:10px;font-weight:500;color:var(--muted)}
+.tr-date{font-size:11px;font-weight:700;margin-top:2px}
+.tr-amt{font-size:15px;font-weight:800;letter-spacing:-.5px;margin-top:4px}
+.tr-pnl{font-size:11px;font-weight:600;margin-top:3px}
+
+/* ── SUMMARY ── */
+.sum-row{display:flex;gap:7px;margin:0 18px 10px}
+.sum-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:10px 11px}
+.sum-lbl{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:3px}
+.sum-val{font-size:13px;font-weight:800;letter-spacing:-.3px}
+
+/* ── QUICK ACTIONS ── */
+.qa-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:4px 18px 14px}
+.qa{display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px 6px;cursor:pointer;transition:transform .15s}
+.qa:active{transform:scale(.93)}
+.qa-ico{font-size:20px}
+.qa-lbl{font-size:10px;font-weight:600;color:var(--muted)}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 8px}
+.sec-ttl{font-size:15px;font-weight:700;letter-spacing:-.3px}
+.sec-lnk{font-size:12px;font-weight:600;color:var(--accent2);cursor:pointer}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:6px;padding:0 18px 10px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ── HOLDINGS ── */
+.h-list{padding:0 18px}
+.h-row{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 13px;margin-bottom:7px;cursor:pointer;transition:border-color .2s;animation:slideIn .35s ease forwards;opacity:0;transform:translateY(7px)}
+.h-row:active{border-color:var(--accent)}
+.hl{display:flex;align-items:center;gap:11px}
+.hlogo{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10px;flex-shrink:0;color:#fff}
+.hname{font-size:13px;font-weight:700;letter-spacing:-.2px}
+.hqty{font-size:11px;font-weight:500;color:var(--muted);margin-top:2px}
+.hr{text-align:right}
+.hval{font-size:13px;font-weight:700;letter-spacing:-.3px}
+.hpnl{font-size:11px;font-weight:600;margin-top:2px}
+.hpnl.up{color:var(--green)}
+.hpnl.dn{color:var(--red)}
+
+/* ── MOVERS ── */
+.movers-scroll{display:flex;gap:9px;padding:2px 18px 14px;overflow-x:auto;scrollbar-width:none}
+.movers-scroll::-webkit-scrollbar{display:none}
+.mv{flex-shrink:0;width:122px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px}
+.mv-sym{font-size:12px;font-weight:700}
+.mv-price{font-size:12px;font-weight:500;color:var(--muted);margin-top:2px}
+.mv-chg{font-size:11px;font-weight:700;margin-top:5px}
+.mv-spk{height:26px;width:100%;margin-top:5px;display:block}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:0 18px 12px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px;text-align:center}
+.stat-lbl{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:4px}
+.stat-val{font-size:13px;font-weight:800;letter-spacing:-.3px}
+.stat-val.red{color:var(--red)}
+.stat-val.green{color:var(--green)}
+
+/* ── WARN ── */
+.warn{margin:8px 18px;background:rgba(240,78,104,.07);border:1px solid rgba(240,78,104,.2);border-radius:13px;padding:12px 13px;display:flex;gap:10px}
+.warn-ico{font-size:18px;flex-shrink:0}
+.warn-ttl{font-size:12px;font-weight:700;color:var(--red);margin-bottom:3px}
+.warn-body{font-size:11px;font-weight:500;color:var(--muted);line-height:1.55}
+
+/* ── BOTTOM NAV ── */
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;padding:10px 0 20px;z-index:200}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px}
+.nav-ico{font-size:20px}
+.nav-lbl{font-size:10px;font-weight:600;color:var(--muted);transition:color .2s}
+.nav-item.active .nav-lbl{color:var(--accent)}
+.nav-plus{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:26px;margin-top:-20px;box-shadow:0 4px 20px rgba(239,62,35,.4);cursor:pointer;flex-shrink:0;color:#fff;line-height:1}
+
+/* ── ACCOUNT ── */
+.acc-hero{background:linear-gradient(160deg,#0f1828 0%,var(--bg) 100%);padding:28px 18px;position:relative;overflow:hidden}
+.acc-hero::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(239,62,35,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.acc-av{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#fff;margin-bottom:12px;border:3px solid rgba(239,62,35,.3)}
+.acc-name{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:3px}
+.acc-uid{font-size:12px;font-weight:500;color:var(--muted)}
+.acc-badges{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.ab{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.ab.kyc{background:rgba(16,200,122,.12);color:var(--green);border:1px solid rgba(16,200,122,.22)}
+.ab.plan{background:rgba(240,180,41,.12);color:var(--gold);border:1px solid rgba(240,180,41,.22)}
+.ab.dp{background:rgba(239,62,35,.12);color:var(--accent2);border:1px solid rgba(239,62,35,.22)}
+.acc-sec{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;padding:16px 18px 8px}
+.menu-list{padding:0 18px;display:flex;flex-direction:column;gap:7px}
+.menu-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:13px 14px;cursor:pointer;transition:border-color .2s}
+.menu-item:active{border-color:var(--accent)}
+.m-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.m-txt{flex:1}
+.m-ttl{font-size:14px;font-weight:600}
+.m-sub{font-size:11px;font-weight:500;color:var(--muted);margin-top:1px}
+.m-arr{font-size:18px;color:var(--dim)}
+.m-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;background:rgba(16,200,122,.1);color:var(--green)}
+
+/* ── SUB-PAGES ── */
+.sub-hdr{padding:16px 18px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:50}
+.back-btn{width:36px;height:36px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;flex-shrink:0;user-select:none}
+.pg-ttl{font-size:17px;font-weight:800;letter-spacing:-.4px}
+.prof-hero{margin:14px 18px;background:linear-gradient(135deg,#101d36,#0c1526);border:1px solid var(--border);border-radius:18px;padding:18px;display:flex;align-items:center;gap:13px}
+.ph-av{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;flex-shrink:0}
+.ph-name{font-size:15px;font-weight:800;letter-spacing:-.3px}
+.ph-id{font-size:11px;font-weight:500;color:var(--muted);margin-top:2px}
+.ph-badge{margin-top:7px;display:inline-flex;align-items:center;gap:4px;background:rgba(16,200,122,.1);border:1px solid rgba(16,200,122,.2);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:700;color:var(--green)}
+.info-grp{margin:0 18px 13px}
+.ig-ttl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:7px}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--card);border:1px solid var(--border);border-top:none}
+.info-row:first-of-type{border-top:1px solid var(--border);border-radius:13px 13px 3px 3px}
+.info-row:last-of-type{border-radius:3px 3px 13px 13px}
+.info-row:only-of-type{border-top:1px solid var(--border);border-radius:13px}
+.ir-lbl{font-size:12px;font-weight:500;color:var(--muted)}
+.ir-val{font-size:13px;font-weight:700;text-align:right;max-width:62%}
+.ir-val.green{color:var(--green)}
+.ir-val.sm{font-size:12px}
+
+/* ── BANKING ── */
+.bank-card{margin:14px 18px;background:linear-gradient(135deg,#061420,#091028);border:1px solid #163a6e;border-radius:18px;padding:20px;position:relative;overflow:hidden}
+.bank-card::before{content:'';position:absolute;top:-20px;right:-20px;width:90px;height:90px;background:radial-gradient(circle,rgba(0,115,205,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.bank-chip{font-size:10px;font-weight:700;color:#60a5fa;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:4px;margin-bottom:10px;letter-spacing:.3px}
+.bank-name{font-size:18px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
+.bank-ifsc{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:10px}
+.bank-al{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.bank-num{font-size:20px;font-weight:800;letter-spacing:2px;margin-top:3px}
+.bank-hldr{font-size:12px;font-weight:500;color:var(--muted);margin-top:5px}
+.bank-acts{display:flex;gap:8px;margin-top:14px}
+.bank-act{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--border);font-size:12px;font-weight:600;cursor:pointer}
+.fund-row{display:flex;gap:7px;margin-bottom:7px}
+.fund-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px 12px}
+.fund-lbl{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:4px}
+.fund-val{font-size:16px;font-weight:800;letter-spacing:-.5px}
+.mandate{margin:0 18px 7px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px 14px;display:flex;align-items:center;gap:11px;cursor:pointer}
+.mand-ico{width:38px;height:38px;border-radius:10px;background:rgba(239,62,35,.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.mand-ttl{font-size:13px;font-weight:600}
+.mand-sub{font-size:11px;font-weight:500;color:var(--muted);margin-top:1px}
+.mand-status{margin-left:auto;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;flex-shrink:0}
+.mand-status.ok{color:var(--green);background:rgba(16,200,122,.1)}
+.mand-status.pend{color:var(--gold);background:rgba(240,180,41,.1)}
+
+/* jitter loading state */
+.jitter-loading{pointer-events:none;opacity:.6;animation:shimmer 1s infinite}
+
+/* ══════════════════════════════════
+   PWA INSTALL BANNER
+══════════════════════════════════ */
+#pwaInstallBanner {
+  position: fixed;
+  bottom: 96px; /* above bottom nav */
+  left: 50%; transform: translateX(-50%);
+  width: calc(100% - 32px); max-width: 388px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid rgba(239,62,35,.35);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  z-index: 8000;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6), 0 0 0 1px rgba(239,62,35,.15);
+  animation: slideUpIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+#pwaInstallBanner.show { display: flex; }
+@keyframes slideUpIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.pwa-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: linear-gradient(135deg, #EF3E23, #ff6b47);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(239,62,35,.4);
+}
+.pwa-icon svg { width: 26px; height: 26px; }
+.pwa-text { flex: 1; min-width: 0; }
+.pwa-title { font-size: 13px; font-weight: 800; letter-spacing: -.2px; }
+.pwa-sub   { font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+.pwa-btns  { display: flex; gap: 7px; flex-shrink: 0; }
+.pwa-install-btn {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 10px;
+  padding: 8px 14px; font-size: 12px; font-weight: 800;
+  font-family: var(--f); cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(239,62,35,.4);
+}
+.pwa-install-btn:active { opacity: .85; }
+.pwa-dismiss-btn {
+  background: var(--card); color: var(--muted);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 8px 10px; font-size: 12px; font-weight: 600;
+  font-family: var(--f); cursor: pointer;
 }
 
-/* ═══════════ RESET ═══════════ */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-body {
-  font-family: var(--f);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  max-width: 420px;
-  margin: 0 auto;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+/* iOS instructions sheet */
+#iosSheet {
+  position: fixed; inset: 0; z-index: 8500;
+  background: rgba(0,0,0,.7);
+  display: none; align-items: flex-end; justify-content: center;
+  backdrop-filter: blur(4px);
 }
-::-webkit-scrollbar { width:2px; height:2px; }
-::-webkit-scrollbar-thumb { background: var(--dim); border-radius:2px; }
-
-/* ═══════════ PAGES ═══════════ */
-.page { display:none; min-height:100vh; padding-bottom:90px; animation: fadeUp .2s ease; }
-.page.active { display:block; }
-@keyframes fadeUp { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
-
-/* ═══════════ HEADER ═══════════ */
-.hdr {
-  position:sticky; top:0; z-index:100;
-  background: linear-gradient(180deg, var(--bg) 78%, transparent);
-  padding: 18px 18px 10px;
-  display:flex; align-items:center; justify-content:space-between;
+#iosSheet.show { display: flex; }
+.ios-card {
+  background: #141a2b; border: 1px solid var(--border);
+  border-radius: 20px 20px 0 0;
+  padding: 20px 22px 40px;
+  width: 100%; max-width: 420px;
+  animation: slideUpIn .3s ease;
 }
-.hdr-l { display:flex; align-items:center; gap:10px; }
-.av {
-  width:38px; height:38px; border-radius:50%;
-  background: linear-gradient(135deg,#4f74ff,#a855f7);
-  display:flex; align-items:center; justify-content:center;
-  font-size:13px; font-weight:700; color:#fff; flex-shrink:0;
-}
-.hdr-name { font-size:16px; font-weight:800; letter-spacing:-.4px; }
-.hdr-r { display:flex; align-items:center; gap:8px; }
-.icon-btn {
-  width:36px; height:36px; border-radius:10px;
-  background:var(--card); border:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; font-size:16px; position:relative;
-}
-.ndot { position:absolute; top:7px; right:7px; width:7px; height:7px; border-radius:50%; background:var(--red); border:1.5px solid var(--bg); }
-
-/* ═══════════ INDEX STRIP ═══════════ */
-.idx-strip {
-  display:flex; gap:7px; padding:2px 18px 0;
-  overflow-x:auto; scrollbar-width:none; margin-bottom:8px;
-}
-.idx-strip::-webkit-scrollbar { display:none; }
-.idx-chip {
-  flex-shrink:0; display:flex; align-items:center; gap:6px;
-  background:var(--card); border:1px solid var(--border);
-  border-radius:9px; padding:5px 10px;
-}
-.ic-n { font-size:11px; font-weight:500; color:var(--muted); }
-.ic-v { font-size:11px; font-weight:700; letter-spacing:-.2px; }
-
-/* ═══════════ DATA BADGE ═══════════ */
-.data-badge {
-  margin:0 18px 8px;
-  background:rgba(79,116,255,.07); border:1px solid rgba(79,116,255,.18);
-  border-radius:10px; padding:7px 12px;
-  font-size:11px; font-weight:500; color:var(--muted);
-  display:flex; align-items:center; gap:7px;
-}
-.data-badge span { color:var(--accent); font-weight:700; }
-
-/* ═══════════ PORTFOLIO CARD ═══════════ */
-.port-card {
-  margin:0 18px 12px;
-  background: linear-gradient(140deg,#1a0c10 0%,#110916 50%,#1a0c10 100%);
-  border:1px solid #3a1826; border-radius:20px; padding:20px;
-  position:relative; overflow:hidden;
-}
-.port-card::before {
-  content:''; position:absolute; top:-50px; right:-40px;
-  width:140px; height:140px;
-  background: radial-gradient(circle,rgba(240,78,104,.1) 0%,transparent 70%);
-  border-radius:50%; pointer-events:none;
-}
-.plabel {
-  font-size:10px; font-weight:700; color:var(--muted);
-  text-transform:uppercase; letter-spacing:1.2px;
-  display:flex; align-items:center; gap:6px; margin-bottom:6px;
-}
-.ldot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:blink 1.6s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-.pval { font-size:32px; font-weight:800; letter-spacing:-1.5px; line-height:1; margin-bottom:6px; }
-.pval .sym { font-size:22px; font-weight:700; }
-.pchg { display:flex; align-items:center; gap:7px; margin-bottom:14px; flex-wrap:wrap; }
-.bdg { font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; }
-.bdg.dn { background:rgba(240,78,104,.14); color:var(--red); }
-.bdg.up { background:rgba(16,200,122,.14); color:var(--green); }
-.bdg-txt { font-size:11px; font-weight:500; color:var(--muted); }
-.pnl-c { text-align:right; }
-.pnl-c .lbl { font-size:10px; font-weight:500; color:var(--muted); margin-bottom:2px; }
-.pnl-c .vl { font-size:17px; font-weight:800; letter-spacing:-.5px; }
-.pnl-c .pt { font-size:12px; font-weight:700; margin-top:1px; }
-.spark { width:100%; height:44px; display:block; }
-
-/* ═══════════ TRANCHES ═══════════ */
-.tranches { display:flex; gap:8px; margin:0 18px 10px; }
-.tranche { flex:1; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:11px 12px; }
-.tranche.t1 { border-left:3px solid #7c3aed; }
-.tranche.t2 { border-left:3px solid var(--accent); }
-.tr-lbl  { font-size:10px; font-weight:500; color:var(--muted); }
-.tr-date { font-size:11px; font-weight:700; margin-top:2px; }
-.tr-amt  { font-size:15px; font-weight:800; letter-spacing:-.5px; margin-top:4px; }
-.tr-pnl  { font-size:11px; font-weight:600; margin-top:3px; }
-
-/* ═══════════ SUMMARY ROW ═══════════ */
-.sum-row { display:flex; gap:7px; margin:0 18px 10px; }
-.sum-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:13px; padding:10px 11px; }
-.sum-lbl { font-size:10px; font-weight:500; color:var(--muted); margin-bottom:3px; }
-.sum-val { font-size:13px; font-weight:800; letter-spacing:-.3px; }
-
-/* ═══════════ QUICK ACTIONS ═══════════ */
-.qa-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:4px 18px 14px; }
-.qa { display:flex; flex-direction:column; align-items:center; gap:5px; background:var(--card); border:1px solid var(--border); border-radius:13px; padding:11px 6px; cursor:pointer; transition:transform .15s; }
-.qa:active { transform:scale(.93); }
-.qa-ico { font-size:20px; }
-.qa-lbl { font-size:10px; font-weight:600; color:var(--muted); }
-
-/* ═══════════ SECTION HEADER ═══════════ */
-.sec-hdr { display:flex; align-items:center; justify-content:space-between; padding:12px 18px 8px; }
-.sec-ttl { font-size:15px; font-weight:700; letter-spacing:-.3px; }
-.sec-lnk { font-size:12px; font-weight:600; color:var(--accent); cursor:pointer; }
-
-/* ═══════════ TABS ═══════════ */
-.tabs { display:flex; gap:6px; padding:0 18px 10px; overflow-x:auto; scrollbar-width:none; }
-.tabs::-webkit-scrollbar { display:none; }
-.tab { flex-shrink:0; padding:5px 13px; border-radius:20px; font-size:11px; font-weight:600; background:var(--card); border:1px solid var(--border); color:var(--muted); cursor:pointer; }
-.tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-
-/* ═══════════ HOLDINGS ═══════════ */
-.h-list { padding:0 18px; }
-.h-row {
-  display:flex; align-items:center; justify-content:space-between;
-  background:var(--card); border:1px solid var(--border);
-  border-radius:14px; padding:12px 13px; margin-bottom:7px;
-  cursor:pointer; transition:border-color .2s;
-  animation:slideIn .35s ease forwards; opacity:0; transform:translateY(7px);
-}
-@keyframes slideIn { to { opacity:1; transform:translateY(0); } }
-.h-row:active { border-color:var(--accent); }
-.hl { display:flex; align-items:center; gap:11px; }
-.hlogo { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:10px; flex-shrink:0; color:#fff; }
-.hname { font-size:13px; font-weight:700; letter-spacing:-.2px; }
-.hqty  { font-size:11px; font-weight:500; color:var(--muted); margin-top:2px; }
-.hr { text-align:right; }
-.hval  { font-size:13px; font-weight:700; letter-spacing:-.3px; }
-.hpnl  { font-size:11px; font-weight:600; margin-top:2px; }
-.hpnl.up { color:var(--green); }
-.hpnl.dn { color:var(--red); }
-
-/* ═══════════ MOVERS ═══════════ */
-.movers-scroll { display:flex; gap:9px; padding:2px 18px 14px; overflow-x:auto; scrollbar-width:none; }
-.movers-scroll::-webkit-scrollbar { display:none; }
-.mv { flex-shrink:0; width:122px; background:var(--card); border:1px solid var(--border); border-radius:13px; padding:11px; }
-.mv-sym   { font-size:12px; font-weight:700; }
-.mv-price { font-size:12px; font-weight:500; color:var(--muted); margin-top:2px; }
-.mv-chg   { font-size:11px; font-weight:700; margin-top:5px; }
-.mv-spk   { height:26px; width:100%; margin-top:5px; display:block; }
-
-/* ═══════════ STATS ROW ═══════════ */
-.stats-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin:0 18px 12px; }
-.stat { background:var(--card); border:1px solid var(--border); border-radius:13px; padding:11px; text-align:center; }
-.stat-lbl { font-size:10px; font-weight:500; color:var(--muted); margin-bottom:4px; }
-.stat-val { font-size:13px; font-weight:800; letter-spacing:-.3px; }
-.stat-val.red { color:var(--red); }
-.stat-val.green { color:var(--green); }
-
-/* ═══════════ WARNING ═══════════ */
-.warn { margin:8px 18px; background:rgba(240,78,104,.07); border:1px solid rgba(240,78,104,.2); border-radius:13px; padding:12px 13px; display:flex; gap:10px; }
-.warn-ico  { font-size:18px; flex-shrink:0; }
-.warn-ttl  { font-size:12px; font-weight:700; color:var(--red); margin-bottom:3px; }
-.warn-body { font-size:11px; font-weight:500; color:var(--muted); line-height:1.55; }
-
-/* ═══════════ BOTTOM NAV ═══════════ */
-.bnav {
-  position:fixed; bottom:0; left:50%; transform:translateX(-50%);
-  width:100%; max-width:420px;
-  background:var(--surface); border-top:1px solid var(--border);
-  display:flex; align-items:center; padding:10px 0 20px; z-index:200;
-}
-.nav-item { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; padding:4px; }
-.nav-ico { font-size:20px; }
-.nav-lbl { font-size:10px; font-weight:600; color:var(--muted); transition:color .2s; }
-.nav-item.active .nav-lbl { color:var(--accent); }
-.nav-plus { width:50px; height:50px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#7c3aed); display:flex; align-items:center; justify-content:center; font-size:26px; margin-top:-20px; box-shadow:0 4px 20px rgba(79,116,255,.4); cursor:pointer; flex-shrink:0; color:#fff; line-height:1; }
-
-/* ═══════════ ACCOUNT / SUB-PAGES ═══════════ */
-.acc-hero { background:linear-gradient(160deg,#0f1828 0%,var(--bg) 100%); padding:28px 18px; position:relative; overflow:hidden; }
-.acc-hero::after { content:''; position:absolute; bottom:-30px; right:-30px; width:120px; height:120px; background:radial-gradient(circle,rgba(79,116,255,.12) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
-.acc-av { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#a855f7); display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:800; color:#fff; margin-bottom:12px; border:3px solid rgba(79,116,255,.3); }
-.acc-name { font-size:20px; font-weight:800; letter-spacing:-.5px; margin-bottom:3px; }
-.acc-uid  { font-size:12px; font-weight:500; color:var(--muted); }
-.acc-badges { display:flex; gap:7px; margin-top:10px; flex-wrap:wrap; }
-.ab { font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; }
-.ab.kyc  { background:rgba(16,200,122,.12); color:var(--green); border:1px solid rgba(16,200,122,.22); }
-.ab.plan { background:rgba(240,180,41,.12); color:var(--gold);  border:1px solid rgba(240,180,41,.22); }
-.ab.dp   { background:rgba(79,116,255,.12); color:var(--accent);border:1px solid rgba(79,116,255,.22); }
-
-.acc-sec { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1.2px; padding:16px 18px 8px; }
-.menu-list { padding:0 18px; display:flex; flex-direction:column; gap:7px; }
-.menu-item { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:13px 14px; cursor:pointer; transition:border-color .2s; }
-.menu-item:active { border-color:var(--accent); }
-.m-ico  { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
-.m-txt  { flex:1; }
-.m-ttl  { font-size:14px; font-weight:600; }
-.m-sub  { font-size:11px; font-weight:500; color:var(--muted); margin-top:1px; }
-.m-arr  { font-size:18px; color:var(--dim); }
-.m-tag  { font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px; background:rgba(16,200,122,.1); color:var(--green); }
-
-.sub-hdr { padding:16px 18px 12px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); z-index:50; }
-.back-btn { width:36px; height:36px; background:var(--card); border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; flex-shrink:0; user-select:none; }
-.pg-ttl { font-size:17px; font-weight:800; letter-spacing:-.4px; }
-
-.prof-hero { margin:14px 18px; background:linear-gradient(135deg,#101d36,#0c1526); border:1px solid var(--border); border-radius:18px; padding:18px; display:flex; align-items:center; gap:13px; }
-.ph-av   { width:58px; height:58px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#a855f7); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; color:#fff; flex-shrink:0; }
-.ph-name { font-size:15px; font-weight:800; letter-spacing:-.3px; }
-.ph-id   { font-size:11px; font-weight:500; color:var(--muted); margin-top:2px; }
-.ph-badge{ margin-top:7px; display:inline-flex; align-items:center; gap:4px; background:rgba(16,200,122,.1); border:1px solid rgba(16,200,122,.2); border-radius:8px; padding:3px 9px; font-size:11px; font-weight:700; color:var(--green); }
-
-.info-grp { margin:0 18px 13px; }
-.ig-ttl { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:7px; }
-.info-row { display:flex; justify-content:space-between; align-items:center; padding:11px 13px; background:var(--card); border:1px solid var(--border); border-top:none; }
-.info-row:first-of-type  { border-top:1px solid var(--border); border-radius:13px 13px 3px 3px; }
-.info-row:last-of-type   { border-radius:3px 3px 13px 13px; }
-.info-row:only-of-type   { border-top:1px solid var(--border); border-radius:13px; }
-.ir-lbl { font-size:12px; font-weight:500; color:var(--muted); }
-.ir-val { font-size:13px; font-weight:700; text-align:right; max-width:62%; }
-.ir-val.green { color:var(--green); }
-.ir-val.red   { color:var(--red); }
-.ir-val.sm    { font-size:12px; }
-
-.bank-card { margin:14px 18px; background:linear-gradient(135deg,#091810,#061420); border:1px solid #163324; border-radius:18px; padding:20px; position:relative; overflow:hidden; }
-.bank-card::before { content:''; position:absolute; top:-20px; right:-20px; width:90px; height:90px; background:radial-gradient(circle,rgba(16,200,122,.1) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
-.bank-chip { font-size:10px; font-weight:700; color:var(--green); background:rgba(16,200,122,.1); border:1px solid rgba(16,200,122,.18); padding:3px 10px; border-radius:20px; display:inline-flex; align-items:center; gap:4px; margin-bottom:10px; letter-spacing:.3px; }
-.bank-name { font-size:18px; font-weight:800; letter-spacing:-.4px; margin-bottom:4px; }
-.bank-ifsc { font-size:12px; font-weight:500; color:var(--muted); margin-bottom:10px; }
-.bank-al   { font-size:10px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
-.bank-num  { font-size:22px; font-weight:800; letter-spacing:3px; margin-top:3px; }
-.bank-hldr { font-size:12px; font-weight:500; color:var(--muted); margin-top:5px; }
-.bank-acts { display:flex; gap:8px; margin-top:14px; }
-.bank-act  { flex:1; display:flex; align-items:center; justify-content:center; gap:5px; padding:9px; border-radius:10px; background:rgba(255,255,255,.04); border:1px solid var(--border); font-size:12px; font-weight:600; cursor:pointer; }
-
-.fund-row { display:flex; gap:7px; margin-bottom:7px; }
-.fund-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:13px; padding:11px 12px; }
-.fund-lbl  { font-size:10px; font-weight:500; color:var(--muted); margin-bottom:4px; }
-.fund-val  { font-size:16px; font-weight:800; letter-spacing:-.5px; }
-
-.mandate { margin:0 18px 7px; background:var(--card); border:1px solid var(--border); border-radius:13px; padding:13px 14px; display:flex; align-items:center; gap:11px; cursor:pointer; }
-.mand-ico    { width:38px; height:38px; border-radius:10px; background:rgba(79,116,255,.1); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
-.mand-ttl    { font-size:13px; font-weight:600; }
-.mand-sub    { font-size:11px; font-weight:500; color:var(--muted); margin-top:1px; }
-.mand-status { margin-left:auto; font-size:11px; font-weight:700; padding:3px 8px; border-radius:8px; flex-shrink:0; }
-.mand-status.ok   { color:var(--green); background:rgba(16,200,122,.1); }
-.mand-status.pend { color:var(--gold);  background:rgba(240,180,41,.1); }
+.ios-handle { width: 36px; height: 4px; background: var(--dim); border-radius: 2px; margin: 0 auto 18px; }
+.ios-title  { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+.ios-sub    { font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+.ios-steps  { display: flex; flex-direction: column; gap: 12px; }
+.ios-step   { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 12px 14px; }
+.ios-step-num { width: 28px; height: 28px; border-radius: 50%; background: rgba(239,62,35,.15); border: 1px solid rgba(239,62,35,.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--accent); flex-shrink: 0; }
+.ios-step-txt { font-size: 13px; font-weight: 600; line-height: 1.4; }
+.ios-step-txt b { color: var(--accent2); }
+.ios-close-btn { width: 100%; margin-top: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 14px; font-size: 14px; font-weight: 700; font-family: var(--f); color: var(--muted); cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════ HOME PAGE ══════════════ -->
-<div class="page active" id="page-home">
+<!-- ══════ PWA INSTALL BANNER ══════ -->
+<div id="pwaInstallBanner">
+  <div class="pwa-icon">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg>
+  </div>
+  <div class="pwa-text">
+    <div class="pwa-title">Add Upstox to Home Screen</div>
+    <div class="pwa-sub">One-tap access, works offline</div>
+  </div>
+  <div class="pwa-btns">
+    <button class="pwa-install-btn" id="pwaInstallBtn">Install</button>
+    <button class="pwa-dismiss-btn" id="pwaDismissBtn">✕</button>
+  </div>
+</div>
 
+<!-- iOS instruction sheet -->
+<div id="iosSheet">
+  <div class="ios-card">
+    <div class="ios-handle"></div>
+    <div class="ios-title">Add to Home Screen</div>
+    <div class="ios-sub">Install Upstox on your iPhone for a native-like experience with one-tap access.</div>
+    <div class="ios-steps">
+      <div class="ios-step">
+        <div class="ios-step-num">1</div>
+        <div class="ios-step-txt">Tap the <b>Share</b> button <b>⎙</b> at the bottom of Safari</div>
+      </div>
+      <div class="ios-step">
+        <div class="ios-step-num">2</div>
+        <div class="ios-step-txt">Scroll down and tap <b>"Add to Home Screen"</b></div>
+      </div>
+      <div class="ios-step">
+        <div class="ios-step-num">3</div>
+        <div class="ios-step-txt">Tap <b>"Add"</b> in the top right corner</div>
+      </div>
+    </div>
+    <button class="ios-close-btn" onclick="dismissIosSheet()">Got it</button>
+  </div>
+</div>
+
+<!-- ══════ LOADING OVERLAY ══════ -->
+<div id="loadingOverlay">
+  <div class="loader-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="50" cy="80" r="7" fill="white"/>
+    </svg>
+  </div>
+  <div class="loader-name">Upstox</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-txt" id="loaderTxt">Initializing…</div>
+</div>
+
+<!-- ══════ LOGIN SCREEN ══════ -->
+<div id="loginScreen">
+  <div class="ls-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="50" cy="80" r="7" fill="white"/>
+    </svg>
+  </div>
+  <div class="ls-brand">Upstox</div>
+  <div class="ls-sub">Secure access to your portfolio</div>
+  <div class="ls-user">
+    <div class="ls-av">AS</div>
+    <div>
+      <div class="ls-uname">Ashokkumar Shanmugam</div>
+      <div class="ls-uid">UPX2024081847 · Chennai</div>
+    </div>
+  </div>
+  <div class="ls-modes">
+    <div class="ls-mode-btn active" id="modePin" onclick="setMode('pin')">🔢 MPIN</div>
+    <div class="ls-mode-btn" id="modePwd" onclick="setMode('pwd')">🔑 Password</div>
+  </div>
+  <div class="ls-err" id="lsErr"></div>
+
+  <!-- PIN PANEL -->
+  <div id="pinPanel" style="width:100%">
+    <div class="pin-dots" id="pinDots">
+      <div class="pdot" id="d0"></div><div class="pdot" id="d1"></div>
+      <div class="pdot" id="d2"></div><div class="pdot" id="d3"></div>
+      <div class="pdot" id="d4"></div><div class="pdot" id="d5"></div>
+      <div class="pdot" id="d6"></div><div class="pdot" id="d7"></div>
+    </div>
+    <div class="numpad">
+      <div class="np" onclick="npPress('1')">1</div>
+      <div class="np" onclick="npPress('2')">2</div>
+      <div class="np" onclick="npPress('3')">3</div>
+      <div class="np" onclick="npPress('4')">4</div>
+      <div class="np" onclick="npPress('5')">5</div>
+      <div class="np" onclick="npPress('6')">6</div>
+      <div class="np" onclick="npPress('7')">7</div>
+      <div class="np" onclick="npPress('8')">8</div>
+      <div class="np" onclick="npPress('9')">9</div>
+      <div class="np blank"></div>
+      <div class="np zero" onclick="npPress('0')">0</div>
+      <div class="np del" onclick="npDel()">⌫</div>
+    </div>
+    <div class="ls-attempts" id="pinAttempts"></div>
+  </div>
+
+  <!-- PASSWORD PANEL -->
+  <div id="pwdPanel">
+    <div class="pwd-wrap">
+      <input class="pwd-inp" id="pwdInput" type="password" placeholder="Enter your password" autocomplete="off"
+        oninput="pwdClearErr()" onkeydown="if(event.key==='Enter')pwdLogin()">
+      <span class="eye-btn" id="eyeBtn" onclick="toggleEye()">👁️</span>
+    </div>
+    <div class="pwd-hint">Use your Upstox account password</div>
+    <button class="ls-login-btn" onclick="pwdLogin()">Login →</button>
+    <div class="ls-attempts" id="pwdAttempts"></div>
+  </div>
+</div>
+
+<!-- ══════ HOME PAGE ══════ -->
+<div class="page active" id="page-home">
   <div class="hdr">
     <div class="hdr-l">
-      <div class="av">AS</div>
-      <div class="hdr-name">Ashokkumar S.</div>
+      <div class="hdr-logo">
+        <svg viewBox="0 0 100 100" fill="none"><path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg>
+      </div>
+      <div class="hdr-name">Upstox</div>
     </div>
     <div class="hdr-r">
       <div class="icon-btn">🔔<div class="ndot"></div></div>
       <div class="icon-btn">🔍</div>
     </div>
   </div>
-
-  <!-- Index Strip -->
   <div class="idx-strip" id="idxStrip"></div>
-
-  <!-- Data source badge -->
-  <div class="data-badge" id="dataBadge">
-    📅 Snapshot: <span id="snapDate">—</span> &nbsp;·&nbsp; NSE India
-  </div>
-
-  <!-- Portfolio Card -->
+  <div class="data-badge">📅 Snapshot: <span id="snapDate">—</span> &nbsp;·&nbsp; NSE India</div>
   <div class="port-card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div>
@@ -366,110 +608,74 @@ body {
       </div>
     </div>
     <svg class="spark" viewBox="0 0 300 44" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f04e68" stop-opacity=".22"/>
-          <stop offset="100%" stop-color="#f04e68" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
+      <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f04e68" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="#f04e68" stop-opacity="0"/>
+      </linearGradient></defs>
       <polygon id="spPoly" fill="url(#sg)"/>
       <polyline id="spLine" fill="none" stroke="var(--red)" stroke-width="2"/>
     </svg>
   </div>
-
-  <!-- Tranches -->
   <div class="tranches">
-    <div class="tranche t1">
-      <div class="tr-lbl">Tranche 1</div>
-      <div class="tr-date" style="color:#a78bfa">Jan 2024</div>
-      <div class="tr-amt">₹5,00,000</div>
-      <div class="tr-pnl" id="t1pnl">—</div>
-    </div>
-    <div class="tranche t2">
-      <div class="tr-lbl">Tranche 2</div>
-      <div class="tr-date" style="color:#93c5fd">26 Jan 2025</div>
-      <div class="tr-amt">₹5,00,000</div>
-      <div class="tr-pnl" id="t2pnl">—</div>
-    </div>
+    <div class="tranche t1"><div class="tr-lbl">Tranche 1</div><div class="tr-date" style="color:#a78bfa">Jan 2024</div><div class="tr-amt" id="t1amt">—</div><div class="tr-pnl" id="t1pnl">—</div></div>
+    <div class="tranche t2"><div class="tr-lbl">Tranche 2</div><div class="tr-date" style="color:#93c5fd">26 Jan 2025</div><div class="tr-amt" id="t2amt">—</div><div class="tr-pnl" id="t2pnl">—</div></div>
   </div>
-
-  <!-- Summary -->
   <div class="sum-row">
-    <div class="sum-card"><div class="sum-lbl">Total Invested</div><div class="sum-val">₹10,00,000</div></div>
+    <div class="sum-card"><div class="sum-lbl">Total Invested</div><div class="sum-val" id="sumInvested">—</div></div>
     <div class="sum-card"><div class="sum-lbl">Current Value</div><div class="sum-val" id="sumCurr">—</div></div>
     <div class="sum-card"><div class="sum-lbl">Total P&amp;L</div><div class="sum-val" id="sumPnl" style="color:var(--red)">—</div></div>
   </div>
-
-  <!-- Quick Actions -->
   <div class="qa-grid">
     <div class="qa"><div class="qa-ico">📈</div><div class="qa-lbl">Stocks</div></div>
     <div class="qa"><div class="qa-ico">🔄</div><div class="qa-lbl">F&O</div></div>
     <div class="qa"><div class="qa-ico">💼</div><div class="qa-lbl">IPO</div></div>
     <div class="qa"><div class="qa-ico">🌐</div><div class="qa-lbl">US Stocks</div></div>
   </div>
-
-  <!-- Holdings -->
   <div class="sec-hdr">
     <div class="sec-ttl">Holdings <span style="font-size:12px;color:var(--muted);font-weight:500" id="hCount"></span></div>
     <div class="sec-lnk">View All →</div>
   </div>
-  <div class="tabs" id="tabBar">
+  <div class="tabs">
     <div class="tab active" data-filter="all">All</div>
     <div class="tab" data-filter="gainers">Gainers</div>
     <div class="tab" data-filter="losers">Losers</div>
   </div>
   <div class="h-list" id="hList"></div>
-
-  <!-- Movers -->
-  <div class="sec-hdr" style="margin-top:6px">
-    <div class="sec-ttl">Top Movers Today</div>
-    <div class="sec-lnk">View All →</div>
-  </div>
+  <div class="sec-hdr" style="margin-top:6px"><div class="sec-ttl">Top Movers Today</div><div class="sec-lnk">View All →</div></div>
   <div class="movers-scroll" id="moversList"></div>
-
-  <!-- P&L Stats -->
   <div class="sec-hdr" style="margin-top:4px"><div class="sec-ttl">Today's P&amp;L</div></div>
   <div class="stats-row">
     <div class="stat"><div class="stat-lbl">Realized</div><div class="stat-val red" id="sReal">—</div></div>
     <div class="stat"><div class="stat-lbl">Unrealized</div><div class="stat-val red" id="sUnreal">—</div></div>
-    <div class="stat"><div class="stat-lbl">Charges</div><div class="stat-val red">−₹112</div></div>
+    <div class="stat"><div class="stat-lbl">Charges</div><div class="stat-val red">−₹198</div></div>
   </div>
-
   <div class="warn">
     <div class="warn-ico">⚠️</div>
     <div>
-      <div class="warn-ttl" id="warnTtl">Portfolio Analysis</div>
-      <div class="warn-body">Portfolio of ₹10,00,000 invested across 2 tranches (Jan 2024 &amp; Jan 2025). Market remains under pressure — consider reviewing your strategy.</div>
+      <div class="warn-ttl" id="warnTtl">Portfolio Under Pressure</div>
+      <div class="warn-body">Your portfolio is down ~₹2L across 2 tranches. IT sector and banking stocks are key drag. Consider reviewing position sizes.</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ MARKETS ══════════════ -->
+<!-- MARKETS -->
 <div class="page" id="page-markets">
-  <div class="hdr"><div class="hdr-l"><div class="hdr-name">Markets</div></div></div>
-  <div style="padding:50px 18px;text-align:center;color:var(--muted)">
-    <div style="font-size:40px;margin-bottom:10px">📊</div>
-    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px">Market Overview</div>
-    <div style="font-size:12px;font-weight:500">Full market data coming soon</div>
-  </div>
+  <div class="hdr"><div class="hdr-l"><div class="hdr-logo"><svg viewBox="0 0 100 100" fill="none"><path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg></div><div class="hdr-name">Markets</div></div></div>
+  <div style="padding:50px 18px;text-align:center;color:var(--muted)"><div style="font-size:40px;margin-bottom:10px">📊</div><div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px">Market Overview</div><div style="font-size:12px;font-weight:500">Full market data coming soon</div></div>
 </div>
 
-<!-- ══════════════ PORTFOLIO ══════════════ -->
+<!-- PORTFOLIO -->
 <div class="page" id="page-portfolio">
-  <div class="hdr"><div class="hdr-l"><div class="hdr-name">My Portfolio</div></div></div>
-  <div style="padding:50px 18px;text-align:center;color:var(--muted)">
-    <div style="font-size:40px;margin-bottom:10px">💼</div>
-    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px">Portfolio Detail</div>
-    <div style="font-size:12px;font-weight:500">Detailed breakdown coming soon</div>
-  </div>
+  <div class="hdr"><div class="hdr-l"><div class="hdr-logo"><svg viewBox="0 0 100 100" fill="none"><path d="M20 72 L50 24 L80 72" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg></div><div class="hdr-name">Portfolio</div></div></div>
+  <div style="padding:50px 18px;text-align:center;color:var(--muted)"><div style="font-size:40px;margin-bottom:10px">💼</div><div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px">Portfolio Detail</div><div style="font-size:12px;font-weight:500">Detailed breakdown coming soon</div></div>
 </div>
 
-<!-- ══════════════ ACCOUNT ══════════════ -->
+<!-- ACCOUNT -->
 <div class="page" id="page-account">
   <div class="acc-hero">
     <div class="acc-av">AS</div>
     <div class="acc-name">Ashokkumar Shanmugam</div>
-    <div class="acc-uid">Client ID: TRX2024081847</div>
+    <div class="acc-uid">Client ID: UPX2024081847</div>
     <div class="acc-badges">
       <span class="ab kyc">✓ KYC Verified</span>
       <span class="ab plan">★ Pro Plan</span>
@@ -478,108 +684,67 @@ body {
   </div>
   <div class="acc-sec">My Account</div>
   <div class="menu-list">
-    <div class="menu-item" onclick="showPage('page-profile')">
-      <div class="m-ico" style="background:rgba(79,116,255,.1)">👤</div>
-      <div class="m-txt"><div class="m-ttl">Profile Information</div><div class="m-sub">Personal details, PAN, Aadhaar</div></div>
-      <div class="m-arr">›</div>
-    </div>
-    <div class="menu-item" onclick="showPage('page-banking')">
-      <div class="m-ico" style="background:rgba(16,200,122,.1)">🏦</div>
-      <div class="m-txt"><div class="m-ttl">Banking Details</div><div class="m-sub">Bank account, UPI, fund limits</div></div>
-      <div class="m-arr">›</div>
-    </div>
-    <div class="menu-item">
-      <div class="m-ico" style="background:rgba(240,180,41,.1)">📜</div>
-      <div class="m-txt"><div class="m-ttl">Reports & Statements</div><div class="m-sub">P&L, ledger, contract notes</div></div>
-      <div class="m-arr">›</div>
-    </div>
+    <div class="menu-item" onclick="jitterNav('page-profile')"><div class="m-ico" style="background:rgba(239,62,35,.1)">👤</div><div class="m-txt"><div class="m-ttl">Profile Information</div><div class="m-sub">Personal details, PAN, Aadhaar</div></div><div class="m-arr">›</div></div>
+    <div class="menu-item" onclick="jitterNav('page-banking')"><div class="m-ico" style="background:rgba(16,200,122,.1)">🏦</div><div class="m-txt"><div class="m-ttl">Banking Details</div><div class="m-sub">HDFC Bank, UPI, fund limits</div></div><div class="m-arr">›</div></div>
+    <div class="menu-item"><div class="m-ico" style="background:rgba(240,180,41,.1)">📜</div><div class="m-txt"><div class="m-ttl">Reports & Statements</div><div class="m-sub">P&L, ledger, contract notes</div></div><div class="m-arr">›</div></div>
   </div>
   <div class="acc-sec">Preferences</div>
   <div class="menu-list">
-    <div class="menu-item">
-      <div class="m-ico" style="background:rgba(168,85,247,.1)">🔔</div>
-      <div class="m-txt"><div class="m-ttl">Notifications</div><div class="m-sub">Price alerts, order updates</div></div>
-      <div class="m-tag">3 New</div>
-    </div>
-    <div class="menu-item">
-      <div class="m-ico" style="background:rgba(14,165,233,.1)">🛡️</div>
-      <div class="m-txt"><div class="m-ttl">Security & MPIN</div><div class="m-sub">2FA, biometric, change MPIN</div></div>
-      <div class="m-arr">›</div>
-    </div>
-    <div class="menu-item">
-      <div class="m-ico" style="background:rgba(240,78,104,.1)">📞</div>
-      <div class="m-txt"><div class="m-ttl">Help & Support</div><div class="m-sub">Chat, call, raise a ticket</div></div>
-      <div class="m-arr">›</div>
-    </div>
+    <div class="menu-item"><div class="m-ico" style="background:rgba(168,85,247,.1)">🔔</div><div class="m-txt"><div class="m-ttl">Notifications</div><div class="m-sub">Price alerts, order updates</div></div><div class="m-tag">3 New</div></div>
+    <div class="menu-item"><div class="m-ico" style="background:rgba(14,165,233,.1)">🛡️</div><div class="m-txt"><div class="m-ttl">Security & MPIN</div><div class="m-sub">2FA, biometric, change MPIN</div></div><div class="m-arr">›</div></div>
+    <div class="menu-item"><div class="m-ico" style="background:rgba(239,62,35,.1)">📞</div><div class="m-txt"><div class="m-ttl">Help & Support</div><div class="m-sub">Chat, call, raise a ticket</div></div><div class="m-arr">›</div></div>
   </div>
-  <div style="margin:18px;padding:13px;background:rgba(240,78,104,.06);border:1px solid rgba(240,78,104,.14);border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
-    <span>🚪</span><span style="font-size:14px;font-weight:700;color:var(--red)">Sign Out</span>
+  <div style="margin:18px;padding:13px;background:rgba(240,78,104,.06);border:1px solid rgba(240,78,104,.14);border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;" onclick="lockApp()">
+    <span>🔒</span><span style="font-size:14px;font-weight:700;color:var(--red)">Lock App</span>
   </div>
 </div>
 
-<!-- ══════════════ PROFILE ══════════════ -->
+<!-- PROFILE -->
 <div class="page" id="page-profile">
-  <div class="sub-hdr">
-    <div class="back-btn" onclick="showPage('page-account')">‹</div>
-    <div class="pg-ttl">Profile Information</div>
-  </div>
-  <div class="prof-hero">
-    <div class="ph-av">AS</div>
-    <div>
-      <div class="ph-name">Ashokkumar Shanmugam</div>
-      <div class="ph-id">TRX2024081847</div>
-      <div class="ph-badge">✓ KYC Verified</div>
-    </div>
-  </div>
-  <div class="info-grp">
-    <div class="ig-ttl">Personal Details</div>
+  <div class="sub-hdr"><div class="back-btn" onclick="jitterNav('page-account')">‹</div><div class="pg-ttl">Profile Information</div></div>
+  <div class="prof-hero"><div class="ph-av">AS</div><div><div class="ph-name">Ashokkumar Shanmugam</div><div class="ph-id">UPX2024081847</div><div class="ph-badge">✓ KYC Verified</div></div></div>
+  <div class="info-grp"><div class="ig-ttl">Personal Details</div>
     <div class="info-row"><span class="ir-lbl">Full Name</span><span class="ir-val">Ashokkumar Shanmugam</span></div>
-    <div class="info-row"><span class="ir-lbl">Date of Birth</span><span class="ir-val">14 Mar 1988</span></div>
+    <div class="info-row"><span class="ir-lbl">Date of Birth</span><span class="ir-val">17 Jul 1991</span></div>
     <div class="info-row"><span class="ir-lbl">Gender</span><span class="ir-val">Male</span></div>
-    <div class="info-row"><span class="ir-lbl">Mobile</span><span class="ir-val">+91 98XXX XX412</span></div>
-    <div class="info-row"><span class="ir-lbl">Email</span><span class="ir-val sm">ashok.shanmugam@gmail.com</span></div>
+    <div class="info-row"><span class="ir-lbl">Mobile</span><span class="ir-val">+91 91593 37283</span></div>
+    <div class="info-row"><span class="ir-lbl">Email</span><span class="ir-val sm">gsashokcs@gmail.com</span></div>
   </div>
-  <div class="info-grp">
-    <div class="ig-ttl">Identity & KYC</div>
-    <div class="info-row"><span class="ir-lbl">PAN</span><span class="ir-val">BXXPS4712K</span></div>
-    <div class="info-row"><span class="ir-lbl">Aadhaar</span><span class="ir-val">XXXX XXXX 3847</span></div>
+  <div class="info-grp"><div class="ig-ttl">Identity & KYC</div>
+    <div class="info-row"><span class="ir-lbl">PAN</span><span class="ir-val">BNZPA4621A</span></div>
+    <div class="info-row"><span class="ir-lbl">Aadhaar</span><span class="ir-val">4369 5847 4981</span></div>
     <div class="info-row"><span class="ir-lbl">KYC Status</span><span class="ir-val green">Verified ✓</span></div>
-    <div class="info-row"><span class="ir-lbl">KYC Date</span><span class="ir-val">08 Aug 2024</span></div>
+    <div class="info-row"><span class="ir-lbl">KYC Date</span><span class="ir-val">08 Aug 2023</span></div>
   </div>
-  <div class="info-grp">
-    <div class="ig-ttl">Demat Account</div>
+  <div class="info-grp"><div class="ig-ttl">Demat Account</div>
     <div class="info-row"><span class="ir-lbl">DP ID</span><span class="ir-val">IN304156</span></div>
-    <div class="info-row"><span class="ir-lbl">Client ID</span><span class="ir-val">TRX2024081847</span></div>
+    <div class="info-row"><span class="ir-lbl">Client ID</span><span class="ir-val">UPX2024081847</span></div>
     <div class="info-row"><span class="ir-lbl">Depository</span><span class="ir-val">CDSL</span></div>
     <div class="info-row"><span class="ir-lbl">Account Type</span><span class="ir-val">Individual</span></div>
   </div>
-  <div class="info-grp">
-    <div class="ig-ttl">Address</div>
-    <div class="info-row"><span class="ir-lbl">Street</span><span class="ir-val sm">12, Kambar St, Choolaimedu</span></div>
+  <div class="info-grp"><div class="ig-ttl">Address</div>
+    <div class="info-row"><span class="ir-lbl">Street</span><span class="ir-val sm" style="font-size:11px">16/7, 8th St, Devi Karumari Amman Nagar, Velachery</span></div>
     <div class="info-row"><span class="ir-lbl">City</span><span class="ir-val">Chennai</span></div>
     <div class="info-row"><span class="ir-lbl">State</span><span class="ir-val">Tamil Nadu</span></div>
-    <div class="info-row"><span class="ir-lbl">PIN Code</span><span class="ir-val">600094</span></div>
+    <div class="info-row"><span class="ir-lbl">PIN Code</span><span class="ir-val">600042</span></div>
   </div>
-  <div class="info-grp">
-    <div class="ig-ttl">Tax & Segments</div>
+  <div class="info-grp"><div class="ig-ttl">Tax & Segments</div>
     <div class="info-row"><span class="ir-lbl">Tax Category</span><span class="ir-val">Non-NRI Resident</span></div>
     <div class="info-row"><span class="ir-lbl">Segments</span><span class="ir-val">EQ, FO, CUR</span></div>
-    <div class="info-row"><span class="ir-lbl">Member Since</span><span class="ir-val">Aug 2024</span></div>
+    <div class="info-row"><span class="ir-lbl">Member Since</span><span class="ir-val">Aug 2023</span></div>
   </div>
 </div>
 
-<!-- ══════════════ BANKING ══════════════ -->
+<!-- BANKING -->
 <div class="page" id="page-banking">
-  <div class="sub-hdr">
-    <div class="back-btn" onclick="showPage('page-account')">‹</div>
-    <div class="pg-ttl">Banking Details</div>
-  </div>
+  <div class="sub-hdr"><div class="back-btn" onclick="jitterNav('page-account')">‹</div><div class="pg-ttl">Banking Details</div></div>
+
   <div class="bank-card">
     <div class="bank-chip">✓ Primary Account · Active</div>
-    <div class="bank-name">State Bank of India</div>
-    <div class="bank-ifsc">IFSC: SBIN0001234 · Chennai Main Branch</div>
+    <div class="bank-name">HDFC Bank</div>
+    <div class="bank-ifsc">IFSC: HDFC0001858 · Adambakkam Branch, Chennai</div>
     <div class="bank-al">Account Number</div>
-    <div class="bank-num">XXXX XXXX 7412</div>
+    <div class="bank-num">5010 0008 4827 82</div>
     <div class="bank-hldr">Account Holder: Ashokkumar Shanmugam</div>
     <div class="bank-acts">
       <div class="bank-act">📋 Copy</div>
@@ -587,252 +752,510 @@ body {
       <div class="bank-act">✏️ Change</div>
     </div>
   </div>
-  <div class="info-grp">
-    <div class="ig-ttl">UPI Details</div>
-    <div class="info-row"><span class="ir-lbl">UPI ID</span><span class="ir-val sm">ashokkumar.s@sbi</span></div>
+
+  <div class="info-grp"><div class="ig-ttl">Branch Details</div>
+    <div class="info-row"><span class="ir-lbl">Branch</span><span class="ir-val">Adambakkam</span></div>
+    <div class="info-row"><span class="ir-lbl">Address</span><span class="ir-val sm" style="font-size:11px;text-align:right;line-height:1.4">AN Towers, No. 27 Vellalar St, Adambakkam, Chennai, TN</span></div>
+    <div class="info-row"><span class="ir-lbl">IFSC Code</span><span class="ir-val">HDFC0001858</span></div>
+    <div class="info-row"><span class="ir-lbl">MICR Code</span><span class="ir-val">600240065</span></div>
+    <div class="info-row"><span class="ir-lbl">City / District</span><span class="ir-val">Chennai</span></div>
+  </div>
+
+  <div class="info-grp"><div class="ig-ttl">UPI Details</div>
+    <div class="info-row"><span class="ir-lbl">UPI ID</span><span class="ir-val sm">9159337283@pthdfc</span></div>
+    <div class="info-row"><span class="ir-lbl">Linked Mobile</span><span class="ir-val">+91 91593 37283</span></div>
     <div class="info-row"><span class="ir-lbl">UPI Status</span><span class="ir-val green">Active ✓</span></div>
   </div>
+
   <div class="acc-sec" style="padding-top:0">Fund Limits</div>
   <div style="padding:0 18px 12px">
     <div class="fund-row">
-      <div class="fund-card"><div class="fund-lbl">Available Margin</div><div class="fund-val" style="color:var(--green)">₹18,420</div></div>
+      <div class="fund-card"><div class="fund-lbl">Available Margin</div><div class="fund-val" style="color:var(--green)">₹24,180</div></div>
       <div class="fund-card"><div class="fund-lbl">Used Margin</div><div class="fund-val" style="color:var(--red)" id="bankUsed">—</div></div>
     </div>
     <div class="fund-row">
-      <div class="fund-card"><div class="fund-lbl">Withdrawable</div><div class="fund-val">₹12,350</div></div>
+      <div class="fund-card"><div class="fund-lbl">Withdrawable</div><div class="fund-val">₹18,640</div></div>
       <div class="fund-card"><div class="fund-lbl">Total Funds</div><div class="fund-val" id="bankTotal">—</div></div>
     </div>
   </div>
+
   <div style="display:flex;gap:8px;margin:0 18px 16px">
     <div style="flex:1;background:var(--accent);border-radius:13px;padding:13px;text-align:center;cursor:pointer"><div style="font-size:18px;margin-bottom:3px">➕</div><div style="font-size:13px;font-weight:700">Add Funds</div></div>
     <div style="flex:1;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px;text-align:center;cursor:pointer"><div style="font-size:18px;margin-bottom:3px">💸</div><div style="font-size:13px;font-weight:600;color:var(--muted)">Withdraw</div></div>
   </div>
+
   <div class="acc-sec" style="padding-top:0">Mandates & Autopay</div>
-  <div class="mandate"><div class="mand-ico">🔄</div><div><div class="mand-ttl">SIP Autopay</div><div class="mand-sub">₹10,000 · 5th of every month</div></div><div class="mand-status ok">Active</div></div>
-  <div class="mandate"><div class="mand-ico">📋</div><div><div class="mand-ttl">E-NACH Mandate</div><div class="mand-sub">Max ₹1,00,000 · SBI</div></div><div class="mand-status pend">Pending</div></div>
-  <div class="acc-sec" style="padding-top:4px">Other Bank Accounts</div>
-  <div style="margin:0 18px 10px;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer">
-    <div style="width:38px;height:38px;border-radius:10px;background:rgba(240,180,41,.1);display:flex;align-items:center;justify-content:center;font-size:18px">🏛️</div>
-    <div style="flex:1"><div style="font-size:13px;font-weight:600">HDFC Bank</div><div style="font-size:11px;font-weight:500;color:var(--muted);margin-top:1px">XXXX XXXX 2281 · Secondary</div></div>
-    <div style="font-size:18px;color:var(--dim)">›</div>
-  </div>
+  <div class="mandate"><div class="mand-ico">📋</div><div><div class="mand-ttl">E-NACH Mandate</div><div class="mand-sub">Max ₹1,00,000 · HDFC Bank</div></div><div class="mand-status pend">Pending</div></div>
+
+  <div class="acc-sec" style="padding-top:4px">Other Accounts</div>
   <div style="margin:0 18px 24px;border:1.5px dashed var(--border);border-radius:13px;padding:13px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
-    <span style="font-size:18px">➕</span><span style="font-size:13px;font-weight:700;color:var(--accent)">Add Another Bank Account</span>
+    <span style="font-size:18px">➕</span><span style="font-size:13px;font-weight:700;color:var(--accent2)">Add Another Bank Account</span>
   </div>
 </div>
 
-<!-- ══════════════ BOTTOM NAV ══════════════ -->
+<!-- BOTTOM NAV -->
 <div class="bnav">
-  <div class="nav-item active" id="nav-home" onclick="showPage('page-home')">
-    <div class="nav-ico">🏠</div><div class="nav-lbl">Home</div>
-  </div>
-  <div class="nav-item" id="nav-markets" onclick="showPage('page-markets')">
-    <div class="nav-ico">📊</div><div class="nav-lbl">Markets</div>
-  </div>
+  <div class="nav-item active" id="nav-home" onclick="jitterNav('page-home')"><div class="nav-ico">🏠</div><div class="nav-lbl">Home</div></div>
+  <div class="nav-item" id="nav-markets" onclick="jitterNav('page-markets')"><div class="nav-ico">📊</div><div class="nav-lbl">Markets</div></div>
   <div class="nav-plus">+</div>
-  <div class="nav-item" id="nav-portfolio" onclick="showPage('page-portfolio')">
-    <div class="nav-ico">💼</div><div class="nav-lbl">Portfolio</div>
-  </div>
-  <div class="nav-item" id="nav-account" onclick="showPage('page-account')">
-    <div class="nav-ico">👤</div><div class="nav-lbl">Account</div>
-  </div>
+  <div class="nav-item" id="nav-portfolio" onclick="jitterNav('page-portfolio')"><div class="nav-ico">💼</div><div class="nav-lbl">Portfolio</div></div>
+  <div class="nav-item" id="nav-account" onclick="jitterNav('page-account')"><div class="nav-ico">👤</div><div class="nav-lbl">Account</div></div>
 </div>
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT  — reads from static JSON
-══════════════════════════════════════ -->
-<script>
-// ── Load static JSON ──────────────────────────────────────
-const DATA = JSON.parse(document.getElementById('static-data').textContent);
+<!-- ══════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Jitter helper ──────────────────────────────────
+// Returns a random delay between 1000–2000ms
+function jitter() {
+  return Math.random() * 1000 + 1000; // 1000–2000ms
+}
+
+// ── Loading sequence ───────────────────────────────
+const steps = [
+  [10,  'Connecting to exchange…'],
+  [30,  'Verifying session…'],
+  [55,  'Loading portfolio…'],
+  [75,  'Fetching market data…'],
+  [90,  'Almost ready…'],
+  [100, 'Done!'],
+];
+let stepIdx = 0;
+function advanceLoader() {
+  if (stepIdx >= steps.length) return;
+  const [pct, txt] = steps[stepIdx++];
+  document.getElementById('loaderFill').style.width = pct + '%';
+  document.getElementById('loaderTxt').textContent  = txt;
+  if (stepIdx < steps.length) {
+    setTimeout(advanceLoader, jitter() * 0.4); // loader steps are quicker
+  } else {
+    // done loading → fade out overlay, show login
+    setTimeout(() => {
+      const ov = document.getElementById('loadingOverlay');
+      ov.classList.add('fade');
+      setTimeout(() => {
+        ov.style.display = 'none';
+        document.getElementById('loginScreen').classList.add('visible');
+      }, 420);
+    }, jitter() * 0.3);
+  }
+}
+setTimeout(advanceLoader, 600);
+
+// ── AUTH CONFIG ────────────────────────────────────
+const CORRECT_PIN = '50970809';
+const CORRECT_PWD = 'Upstox@2024';
+let pinEntry='', pinFails=0, pwdFails=0, loginMode='pin', locked=false;
+const MAX_FAILS=5;
+
+function setMode(m) {
+  loginMode=m;
+  document.getElementById('lsErr').textContent='';
+  document.getElementById('modePin').classList.toggle('active',m==='pin');
+  document.getElementById('modePwd').classList.toggle('active',m==='pwd');
+  document.getElementById('pinPanel').style.display=m==='pin'?'':'none';
+  document.getElementById('pwdPanel').style.display=m==='pwd'?'block':'none';
+  if(m==='pin'){pinEntry='';updateDots();}
+}
+
+function updateDots() {
+  for(let i=0;i<8;i++){
+    const d=document.getElementById('d'+i);
+    d.classList.toggle('filled',i<pinEntry.length);
+    d.classList.remove('error');
+  }
+}
+
+function npPress(digit) {
+  if(locked||pinEntry.length>=8)return;
+  pinEntry+=digit;
+  updateDots();
+  if(pinEntry.length===8) setTimeout(checkPin,180);
+}
+function npDel() {
+  if(pinEntry.length>0){pinEntry=pinEntry.slice(0,-1);updateDots();document.getElementById('lsErr').textContent='';}
+}
+function checkPin() {
+  if(pinEntry===CORRECT_PIN){ doUnlock(); return; }
+  pinFails++;
+  pinEntry='';
+  for(let i=0;i<8;i++) document.getElementById('d'+i).classList.add('error','filled');
+  const rem=MAX_FAILS-pinFails;
+  if(rem<=0){lockout();}
+  else{
+    document.getElementById('lsErr').textContent='Incorrect MPIN. Try again.';
+    document.getElementById('pinAttempts').innerHTML=`<b>${rem}</b> attempt${rem===1?'':'s'} remaining`;
+    setTimeout(()=>updateDots(),650);
+  }
+}
+
+function pwdLogin() {
+  const val=document.getElementById('pwdInput').value;
+  if(!val)return;
+  if(val===CORRECT_PWD){doUnlock();return;}
+  pwdFails++;
+  const inp=document.getElementById('pwdInput');
+  inp.classList.add('shake');
+  setTimeout(()=>inp.classList.remove('shake'),400);
+  const rem=MAX_FAILS-pwdFails;
+  if(rem<=0){lockout();}
+  else{
+    document.getElementById('lsErr').textContent='Incorrect password. Try again.';
+    document.getElementById('pwdAttempts').innerHTML=`<b>${rem}</b> attempt${rem===1?'':'s'} remaining`;
+  }
+}
+function pwdClearErr(){document.getElementById('lsErr').textContent='';}
+function toggleEye(){
+  const inp=document.getElementById('pwdInput'),eye=document.getElementById('eyeBtn');
+  if(inp.type==='password'){inp.type='text';eye.textContent='🙈';}
+  else{inp.type='password';eye.textContent='👁️';}
+}
+function lockout(){
+  locked=true;
+  document.getElementById('lsErr').textContent='🔒 Too many attempts. Try again in 30s.';
+  document.querySelectorAll('.np').forEach(n=>n.style.opacity='.3');
+  document.getElementById('pwdInput').disabled=true;
+  setTimeout(()=>{
+    locked=false;pinFails=0;pwdFails=0;pinEntry='';
+    updateDots();
+    document.getElementById('lsErr').textContent='';
+    document.getElementById('pinAttempts').textContent='';
+    document.getElementById('pwdAttempts').textContent='';
+    document.querySelectorAll('.np').forEach(n=>n.style.opacity='');
+    document.getElementById('pwdInput').disabled=false;
+    document.getElementById('pwdInput').value='';
+  },30000);
+}
+
+function doUnlock() {
+  const ls=document.getElementById('loginScreen');
+  ls.classList.add('unlocking');
+  setTimeout(()=>{ ls.classList.add('gone'); initApp(); },400);
+}
+
+function lockApp() {
+  pinEntry='';pinFails=0;pwdFails=0;locked=false;
+  const ls=document.getElementById('loginScreen');
+  ls.classList.remove('gone','unlocking','visible');
+  void ls.offsetWidth; // force reflow
+  ls.classList.add('visible');
+  setMode('pin');
+  document.getElementById('pwdInput').value='';
+  document.getElementById('lsErr').textContent='';
+  document.getElementById('pinAttempts').textContent='';
+  document.getElementById('pwdAttempts').textContent='';
+  updateDots();
+}
+
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('loginScreen').classList.contains('gone'))return;
+  if(loginMode==='pin'){
+    if(e.key>='0'&&e.key<='9')npPress(e.key);
+    if(e.key==='Backspace')npDel();
+  }
+});
+
+// ── STATIC DATA ────────────────────────────────────
+const DATA     = JSON.parse(document.getElementById('static-data').textContent);
 const STOCKS   = DATA.stocks;
 const HOLDINGS = DATA.holdings;
 const INDICES  = DATA.indices;
+const TRANCHES = DATA.tranches;
 
-// ── Formatters ────────────────────────────────────────────
-const fmtIN = (n, d=0) => new Intl.NumberFormat('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
-const rupee = n => '₹' + fmtIN(n);
-const rupee2 = n => '₹' + fmtIN(n, 2);
-const signed = n => (n>=0?'+':'-') + '₹' + fmtIN(Math.abs(n));
-const pctStr = n => (n>=0?'+':'') + fmtIN(n,2) + '%';
-const clr  = n => n>=0 ? 'var(--green)' : 'var(--red)';
-const arr  = n => n>=0 ? '▲' : '▼';
+const fmtIN = (n,d=0)=>new Intl.NumberFormat('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
+const rupee  = n  => '₹'+fmtIN(n);
+const rupee2 = n  => '₹'+fmtIN(n,2);
+const signed = n  => (n>=0?'+':'-')+'₹'+fmtIN(Math.abs(n));
+const pctStr = n  => (n>=0?'+':'')+fmtIN(n,2)+'%';
+const clr    = n  => n>=0?'var(--green)':'var(--red)';
+const arr    = n  => n>=0?'▲':'▼';
 
-// ── Indices ───────────────────────────────────────────────
-const strip = document.getElementById('idxStrip');
-Object.values(INDICES).forEach(ix => {
-  const isUp = ix.change >= 0;
-  const chip = document.createElement('div');
-  chip.className = 'idx-chip';
-  chip.innerHTML = `<span class="ic-n">${ix.name}</span>
-    <span class="ic-v" style="color:${isUp?'var(--green)':'var(--red)'}">
-      ${fmtIN(ix.value,2)} ${arr(ix.change)}${fmtIN(Math.abs(ix.changePct),2)}%
-    </span>`;
-  strip.appendChild(chip);
-});
-document.getElementById('snapDate').textContent = DATA.updated;
+// ── JITTER PAGE NAVIGATION ─────────────────────────
+const NAV_MAP={'page-home':'nav-home','page-markets':'nav-markets','page-portfolio':'nav-portfolio','page-account':'nav-account'};
+let navLocked=false;
 
-// ── Compute portfolio ─────────────────────────────────────
-let totalCurr = 0, totalDayPnl = 0;
-const computedHoldings = HOLDINGS.map(h => {
-  const s     = STOCKS[h.sym];
-  const curr  = s.price * h.qty;
-  const cost  = h.avgBuy * h.qty;
-  const pnl   = curr - cost;
-  const pnlPct= pnl / cost * 100;
-  const dayPnl= s.change * h.qty;
-  totalCurr  += curr;
-  totalDayPnl+= dayPnl;
-  return { ...h, s, curr, cost, pnl, pnlPct, dayPnl };
-});
-
-const INVESTED = 1_000_000;
-const totalPnl    = totalCurr - INVESTED;
-const totalPnlPct = totalPnl / INVESTED * 100;
-const dayPct      = totalDayPnl / (totalCurr - totalDayPnl) * 100;
-
-// ── Portfolio card ────────────────────────────────────────
-// count-up animation
-const portEl = document.getElementById('portVal');
-let cur = totalCurr * 1.012;
-const tick = () => {
-  cur += (totalCurr - cur) * 0.1;
-  portEl.innerHTML = `<span class="sym">₹</span>${fmtIN(Math.round(cur))}`;
-  if (Math.abs(cur - totalCurr) > 5) requestAnimationFrame(tick);
-  else portEl.innerHTML = `<span class="sym">₹</span>${fmtIN(totalCurr, 2)}`;
-};
-requestAnimationFrame(tick);
-
-const dayBdg = document.getElementById('dayChgBdg');
-const dayPBdg= document.getElementById('dayPctBdg');
-const cls    = totalDayPnl >= 0 ? 'bdg up' : 'bdg dn';
-dayBdg.className = cls;  dayBdg.textContent = `${arr(totalDayPnl)} ₹${fmtIN(Math.abs(totalDayPnl),0)}`;
-dayPBdg.className= cls;  dayPBdg.textContent = pctStr(dayPct);
-
-const ovVal = document.getElementById('ovPnlVal');
-const ovPct = document.getElementById('ovPnlPct');
-ovVal.style.color = clr(totalPnl);
-ovPct.style.color = clr(totalPnl);
-ovVal.textContent = `${totalPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalPnl),0)}`;
-ovPct.textContent = pctStr(totalPnlPct);
-
-// ── Summary ───────────────────────────────────────────────
-document.getElementById('sumCurr').textContent = rupee(totalCurr);
-const spEl = document.getElementById('sumPnl');
-spEl.textContent = `${totalPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalPnl),0)}`;
-spEl.style.color = clr(totalPnl);
-
-// ── Tranches ──────────────────────────────────────────────
-const t1curr = totalCurr * 0.506, t2curr = totalCurr * 0.494;
-const t1pnl  = t1curr - 500000, t2pnl = t2curr - 500000;
-const t1El = document.getElementById('t1pnl');
-const t2El = document.getElementById('t2pnl');
-t1El.textContent = `${t1pnl>=0?'+':'-'}₹${fmtIN(Math.abs(t1pnl),0)} (${pctStr(t1pnl/500000*100)})`;
-t1El.style.color = clr(t1pnl);
-t2El.textContent = `${t2pnl>=0?'+':'-'}₹${fmtIN(Math.abs(t2pnl),0)} (${pctStr(t2pnl/500000*100)})`;
-t2El.style.color = clr(t2pnl);
-
-// ── Today P&L stats ───────────────────────────────────────
-document.getElementById('sReal').textContent  = `${totalDayPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalDayPnl*.28),0)}`;
-document.getElementById('sUnreal').textContent= `${totalDayPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalDayPnl*.72),0)}`;
-
-// ── Warning banner ────────────────────────────────────────
-const wt = document.getElementById('warnTtl');
-wt.textContent = `Portfolio ${totalPnl<0?'Down':'Up'} ${fmtIN(Math.abs(totalPnlPct),2)}%`;
-wt.style.color = clr(totalPnl);
-
-// ── Sparkline (descending trend from left) ────────────────
-function setSparkline(pts) {
-  const W=300, H=44, pad=3;
-  const mn=Math.min(...pts), mx=Math.max(...pts), rng=mx-mn||1;
-  const xs = pts.map((_,i)=>(i/(pts.length-1))*W);
-  const ys = pts.map(p => H - pad - ((p-mn)/rng)*(H-2*pad));
-  const line = xs.map((x,i)=>`${x.toFixed(1)},${ys[i].toFixed(1)}`).join(' ');
-  document.getElementById('spLine').setAttribute('points', line);
-  document.getElementById('spPoly').setAttribute('points', line+` ${W},${H} 0,${H}`);
+function jitterNav(id) {
+  if(navLocked)return;
+  navLocked=true;
+  // Add shimmer to current page while "loading"
+  const cur=document.querySelector('.page.active');
+  if(cur) cur.style.opacity='.55';
+  setTimeout(()=>{
+    if(cur) cur.style.opacity='';
+    showPage(id);
+    navLocked=false;
+  }, jitter());
 }
-// Generate a representative decline curve using real day changes
-const baseVal = totalCurr + Math.abs(totalDayPnl) * 5;
-const sparkPts = Array.from({length:14},(_,i)=>{
-  const t = i/13;
-  const drift = -Math.abs(totalDayPnl)*4*t;
-  const noise = (Math.sin(i*1.7)*0.3+Math.cos(i*0.9)*0.2)*Math.abs(totalDayPnl)*0.8;
-  return baseVal + drift + noise;
-});
-setSparkline(sparkPts);
 
-// ── Holdings list ─────────────────────────────────────────
-const hList = document.getElementById('hList');
-document.getElementById('hCount').textContent = `(${HOLDINGS.length})`;
-
-function renderHoldings(filter='all') {
-  hList.innerHTML = '';
-  computedHoldings
-    .filter(h => filter==='all' || (filter==='gainers'&&h.pnl>=0) || (filter==='losers'&&h.pnl<0))
-    .forEach((h, i) => {
-      const div = document.createElement('div');
-      div.className = 'h-row';
-      div.style.animationDelay = `${i*0.04}s`;
-      div.innerHTML = `
-        <div class="hl">
-          <div class="hlogo" style="background:${h.bg}">${h.logo}</div>
-          <div>
-            <div class="hname">${h.s.name}</div>
-            <div class="hqty">${h.qty} shares · Avg ${rupee(h.avgBuy)}</div>
-          </div>
-        </div>
-        <div class="hr">
-          <div class="hval">${rupee2(h.curr)}</div>
-          <div class="hpnl ${h.pnl>=0?'up':'dn'}">${arr(h.pnl)} ${signed(h.pnl)} (${pctStr(h.pnlPct)})</div>
-        </div>`;
-      div.addEventListener('click', ()=>{ div.style.borderColor='var(--accent)'; setTimeout(()=>div.style.borderColor='',350); });
-      hList.appendChild(div);
-    });
-}
-renderHoldings();
-
-// Tab filter
-document.querySelectorAll('.tab').forEach(t => {
-  t.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    renderHoldings(t.dataset.filter);
-  });
-});
-
-// ── Movers (top 5 by abs % change from static data) ───────
-const moversList = document.getElementById('moversList');
-computedHoldings
-  .slice().sort((a,b) => Math.abs(b.s.changePct)-Math.abs(a.s.changePct))
-  .slice(0,5)
-  .forEach(h => {
-    const isUp = h.s.change >= 0;
-    const col  = isUp ? 'var(--green)' : 'var(--red)';
-    // mini sparkline points (heuristic slope)
-    const dir = isUp ? '0,24 25,20 50,22 75,14 100,8' : '0,6 25,10 50,14 75,20 100,25';
-    const mv = document.createElement('div');
-    mv.className = 'mv';
-    mv.innerHTML = `
-      <div class="mv-sym">${h.sym}</div>
-      <div class="mv-price">${rupee2(h.s.price)}</div>
-      <div class="mv-chg" style="color:${col}">${arr(h.s.change)} ${fmtIN(Math.abs(h.s.changePct),2)}%</div>
-      <svg class="mv-spk" viewBox="0 0 100 28" preserveAspectRatio="none">
-        <polyline points="${dir}" fill="none" stroke="${col}" stroke-width="2"/>
-      </svg>`;
-    moversList.appendChild(mv);
-  });
-
-// ── Banking page fund numbers ──────────────────────────────
-document.getElementById('bankUsed').textContent  = rupee(totalCurr);
-document.getElementById('bankTotal').textContent = rupee(totalCurr + 18420);
-
-// ── Page Navigation ───────────────────────────────────────
-const NAV_MAP = {'page-home':'nav-home','page-markets':'nav-markets','page-portfolio':'nav-portfolio','page-account':'nav-account'};
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  if (NAV_MAP[id]) document.getElementById(NAV_MAP[id]).classList.add('active');
+  if(NAV_MAP[id]) document.getElementById(NAV_MAP[id]).classList.add('active');
+}
+
+// ── INIT APP ───────────────────────────────────────
+function initApp() {
+  // Indices — with jitter
+  setTimeout(()=>{
+    const strip=document.getElementById('idxStrip');
+    strip.innerHTML='';
+    Object.values(INDICES).forEach(ix=>{
+      const chip=document.createElement('div');
+      chip.className='idx-chip';
+      chip.innerHTML=`<span class="ic-n">${ix.name}</span>
+        <span class="ic-v" style="color:${ix.change>=0?'var(--green)':'var(--red)'}">
+          ${fmtIN(ix.value,2)} ${arr(ix.change)}${fmtIN(Math.abs(ix.changePct),2)}%
+        </span>`;
+      strip.appendChild(chip);
+    });
+    document.getElementById('snapDate').textContent=DATA.updated;
+  }, jitter());
+
+  // Compute portfolio
+  let totalCurr=0, totalDayPnl=0;
+  const computed=HOLDINGS.map(h=>{
+    const s=STOCKS[h.sym];
+    const curr=s.price*h.qty, cost=h.avgBuy*h.qty;
+    const pnl=curr-cost, pnlPct=pnl/cost*100;
+    const dayPnl=s.change*h.qty;
+    totalCurr+=curr; totalDayPnl+=dayPnl;
+    return{...h,s,curr,cost,pnl,pnlPct,dayPnl};
+  });
+  const totalCost=HOLDINGS.reduce((a,h)=>a+h.qty*h.avgBuy,0);
+  const totalPnl=totalCurr-totalCost;
+  const totalPnlPct=totalPnl/totalCost*100;
+  const dayPct=totalDayPnl/(totalCurr-totalDayPnl)*100;
+
+  // Portfolio card — with jitter
+  setTimeout(()=>{
+    const portEl=document.getElementById('portVal');
+    let cur=totalCurr*1.012;
+    const tick=()=>{
+      cur+=(totalCurr-cur)*0.1;
+      portEl.innerHTML=`<span class="sym">₹</span>${fmtIN(Math.round(cur))}`;
+      if(Math.abs(cur-totalCurr)>5)requestAnimationFrame(tick);
+      else portEl.innerHTML=`<span class="sym">₹</span>${fmtIN(totalCurr,2)}`;
+    };
+    requestAnimationFrame(tick);
+
+    const cls=totalDayPnl>=0?'bdg up':'bdg dn';
+    const dc=document.getElementById('dayChgBdg');
+    const dp=document.getElementById('dayPctBdg');
+    dc.className=cls; dc.textContent=`${arr(totalDayPnl)} ₹${fmtIN(Math.abs(totalDayPnl),0)}`;
+    dp.className=cls; dp.textContent=pctStr(dayPct);
+
+    const ov=document.getElementById('ovPnlVal'),op=document.getElementById('ovPnlPct');
+    ov.style.color=clr(totalPnl); op.style.color=clr(totalPnl);
+    ov.textContent=`${totalPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalPnl),0)}`;
+    op.textContent=pctStr(totalPnlPct);
+
+    document.getElementById('sumInvested').textContent=rupee(totalCost);
+    document.getElementById('sumCurr').textContent=rupee(totalCurr);
+    const sp=document.getElementById('sumPnl');
+    sp.textContent=`${totalPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalPnl),0)}`;
+    sp.style.color=clr(totalPnl);
+
+    // Tranches
+    const t1cost=totalCost*TRANCHES[0].fraction, t2cost=totalCost*TRANCHES[1].fraction;
+    const t1curr=totalCurr*TRANCHES[0].fraction, t2curr=totalCurr*TRANCHES[1].fraction;
+    const t1p=t1curr-t1cost, t2p=t2curr-t2cost;
+    document.getElementById('t1amt').textContent=rupee(Math.round(t1cost));
+    document.getElementById('t2amt').textContent=rupee(Math.round(t2cost));
+    const t1El=document.getElementById('t1pnl'),t2El=document.getElementById('t2pnl');
+    t1El.textContent=`${t1p>=0?'+':'-'}₹${fmtIN(Math.abs(t1p),0)} (${pctStr(t1p/t1cost*100)})`;
+    t1El.style.color=clr(t1p);
+    t2El.textContent=`${t2p>=0?'+':'-'}₹${fmtIN(Math.abs(t2p),0)} (${pctStr(t2p/t2cost*100)})`;
+    t2El.style.color=clr(t2p);
+
+    // Stats
+    document.getElementById('sReal').textContent=`${totalDayPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalDayPnl*.25),0)}`;
+    document.getElementById('sUnreal').textContent=`${totalDayPnl>=0?'+':'-'}₹${fmtIN(Math.abs(totalDayPnl*.75),0)}`;
+
+    // Warn
+    const wt=document.getElementById('warnTtl');
+    wt.textContent=`Portfolio ${totalPnl<0?'Down':'Up'} ${fmtIN(Math.abs(totalPnlPct),2)}%`;
+    wt.style.color=clr(totalPnl);
+
+    // Sparkline
+    const baseV=totalCurr+Math.abs(totalPnl)*.8;
+    const pts=Array.from({length:16},(_,i)=>{
+      const t=i/15;
+      const drift=-Math.abs(totalPnl)*t;
+      const noise=(Math.sin(i*1.9)*.4+Math.cos(i*.8)*.3)*Math.abs(totalDayPnl)*3;
+      return baseV+drift+noise;
+    });
+    const W=300,H=44,pad=3;
+    const mn=Math.min(...pts),mx=Math.max(...pts),rng=mx-mn||1;
+    const xs=pts.map((_,i)=>(i/(pts.length-1))*W);
+    const ys=pts.map(p=>H-pad-((p-mn)/rng)*(H-2*pad));
+    const line=xs.map((x,i)=>`${x.toFixed(1)},${ys[i].toFixed(1)}`).join(' ');
+    document.getElementById('spLine').setAttribute('points',line);
+    document.getElementById('spPoly').setAttribute('points',line+` ${W},${H} 0,${H}`);
+
+    // Banking
+    document.getElementById('bankUsed').textContent=rupee(totalCurr);
+    document.getElementById('bankTotal').textContent=rupee(totalCurr+24180);
+  }, jitter());
+
+  // Holdings — with jitter
+  setTimeout(()=>{
+    document.getElementById('hCount').textContent=`(${HOLDINGS.length})`;
+    function renderHoldings(filter='all'){
+      const list=document.getElementById('hList');
+      list.innerHTML='';
+      computed.filter(h=>filter==='all'||(filter==='gainers'&&h.pnl>=0)||(filter==='losers'&&h.pnl<0))
+        .forEach((h,i)=>{
+          const div=document.createElement('div');
+          div.className='h-row';
+          div.style.animationDelay=`${i*.045}s`;
+          div.innerHTML=`<div class="hl"><div class="hlogo" style="background:${h.bg}">${h.logo}</div>
+            <div><div class="hname">${h.s.name}</div><div class="hqty">${h.qty} shares · Avg ${rupee(h.avgBuy)}</div></div></div>
+            <div class="hr"><div class="hval">${rupee2(h.curr)}</div>
+            <div class="hpnl ${h.pnl>=0?'up':'dn'}">${arr(h.pnl)} ${signed(h.pnl)} (${pctStr(h.pnlPct)})</div></div>`;
+          div.addEventListener('click',()=>{div.style.borderColor='var(--accent)';setTimeout(()=>div.style.borderColor='',380);});
+          list.appendChild(div);
+        });
+    }
+    renderHoldings();
+    document.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        // Tab switch also has jitter
+        const list=document.getElementById('hList');
+        list.style.opacity='.4';
+        setTimeout(()=>{ list.style.opacity=''; renderHoldings(t.dataset.filter); }, jitter()*.6);
+      });
+    });
+  }, jitter());
+
+  // Movers — with jitter
+  setTimeout(()=>{
+    const ml=document.getElementById('moversList');
+    ml.innerHTML='';
+    computed.slice().sort((a,b)=>Math.abs(b.s.changePct)-Math.abs(a.s.changePct)).slice(0,5).forEach(h=>{
+      const isUp=h.s.change>=0;
+      const col=isUp?'var(--green)':'var(--red)';
+      const dir=isUp?'0,24 25,20 50,22 75,14 100,8':'0,6 25,10 50,14 75,20 100,25';
+      const mv=document.createElement('div');
+      mv.className='mv';
+      mv.innerHTML=`<div class="mv-sym">${h.sym}</div><div class="mv-price">${rupee2(h.s.price)}</div>
+        <div class="mv-chg" style="color:${col}">${arr(h.s.change)} ${fmtIN(Math.abs(h.s.changePct),2)}%</div>
+        <svg class="mv-spk" viewBox="0 0 100 28" preserveAspectRatio="none">
+          <polyline points="${dir}" fill="none" stroke="${col}" stroke-width="2"/></svg>`;
+      ml.appendChild(mv);
+    });
+  }, jitter());
+}
+
+// ══════════════════════════════════════════════════
+//  PWA INSTALL LOGIC
+// ══════════════════════════════════════════════════
+
+let deferredPrompt = null;
+const banner      = document.getElementById('pwaInstallBanner');
+const iosSheet    = document.getElementById('iosSheet');
+
+// Detect iOS
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+// Detect standalone (already installed)
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                  || window.navigator.standalone === true;
+
+// Show install prompt after a short delay once app is loaded
+function tryShowInstallBanner() {
+  if (isStandalone) return; // already installed, don't show
+  if (sessionStorage.getItem('pwaDismissed')) return;
+
+  if (isIOS) {
+    // iOS: show manual instructions
+    setTimeout(() => banner.classList.add('show'), 3000);
+    document.getElementById('pwaInstallBtn').textContent = 'How to Install';
+    document.getElementById('pwaInstallBtn').onclick = () => {
+      banner.classList.remove('show');
+      iosSheet.classList.add('show');
+    };
+  } else if (deferredPrompt) {
+    // Chrome/Android: show native prompt
+    setTimeout(() => banner.classList.add('show'), 3000);
+  }
+}
+
+// Capture beforeinstallprompt (Chrome/Android/Edge)
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  tryShowInstallBanner();
+});
+
+// Install button click (Chrome/Android)
+document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  banner.classList.remove('show');
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  if (outcome === 'accepted') {
+    console.log('PWA installed');
+  }
+});
+
+// Dismiss button
+document.getElementById('pwaDismissBtn').addEventListener('click', () => {
+  banner.classList.remove('show');
+  sessionStorage.setItem('pwaDismissed', '1');
+});
+
+// Close iOS sheet
+function dismissIosSheet() {
+  iosSheet.classList.remove('show');
+  sessionStorage.setItem('pwaDismissed', '1');
+}
+
+// iOS: try show after login too
+const origDoUnlock = doUnlock;
+window.addEventListener('DOMContentLoaded', () => {
+  if (isIOS && !isStandalone) {
+    // Show after a delay post-login
+    window._pwaShowAfterLogin = true;
+  }
+});
+
+// When app is installed, hide banner
+window.addEventListener('appinstalled', () => {
+  banner.classList.remove('show');
+  deferredPrompt = null;
+});
+
+// Register Service Worker (inline via blob for single-file PWA)
+if ('serviceWorker' in navigator) {
+  const swCode = `
+const CACHE = 'upstox-v1';
+const ASSETS = ['.'];
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(clients.claim());
+});
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.match(e.request).then(cached => {
+      return cached || fetch(e.request).catch(() => cached);
+    })
+  );
+});
+`;
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  const swURL  = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swURL, { scope: './' })
+    .then(() => console.log('SW registered'))
+    .catch(e => console.warn('SW failed:', e));
 }
 </script>
 </body>
