@@ -55,7 +55,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 #ls.vis{display:flex;animation:fadeUp .3s ease}
 #ls.out{animation:unlock .36s ease forwards;pointer-events:none}
 #ls.gone{display:none!important}
-.ls-card{background:var(--bg);border:1px solid var(--br);border-radius:26px;padding:24px 20px 20px;width:100%;max-width:348px;box-shadow:0 24px 64px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center}
+.ls-card{background:var(--bg);border:1px solid var(--br);border-radius:26px;padding:26px 22px 22px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center}
 .lslo{width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,var(--ac),var(--a2));display:flex;align-items:center;justify-content:center;margin-bottom:10px;box-shadow:0 6px 20px rgba(239,62,35,.38)}
 .lslo svg{width:30px;height:30px}
 .lsbr{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px}
@@ -68,18 +68,18 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .lsmb{flex:1;text-align:center;padding:7px 0;border-radius:7px;font-size:11px;font-weight:700;color:var(--mt);cursor:pointer;transition:var(--tr)}
 .lsmb.on{background:var(--ac);color:#fff}
 .lser{font-size:11px;font-weight:600;color:var(--rd);text-align:center;min-height:15px;margin-bottom:8px}
-.pinlbl{font-size:11px;font-weight:500;color:var(--mt);text-align:center;margin-bottom:12px}
-.pdots{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:20px}
-.pdg{display:flex;gap:10px}
-.pdsep{width:14px;height:2px;background:var(--dm);border-radius:1px}
-.pd{width:11px;height:11px;border-radius:50%;border:2px solid var(--dm);background:transparent;transition:all .15s}
+.pinlbl{font-size:12px;font-weight:500;color:var(--mt);text-align:center;margin-bottom:14px}
+.pdots{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:22px}
+.pdg{display:flex;gap:13px}
+.pdsep{width:16px;height:2px;background:var(--dm);border-radius:1px}
+.pd{width:14px;height:14px;border-radius:50%;border:2px solid var(--dm);background:transparent;transition:all .15s}
 .pd.on{background:var(--ac);border-color:var(--ac);animation:dotPop .2s ease}
 .pd.er{background:var(--rd);border-color:var(--rd)}
-.np-grid{display:grid;grid-template-columns:repeat(3,66px);gap:10px;justify-content:center;width:100%}
-.np{width:66px;height:66px;border-radius:50%;background:var(--cd);border:1px solid var(--br);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr);user-select:none;color:var(--tx);font-size:19px;font-weight:700;line-height:1}
+.np-grid{display:grid;grid-template-columns:repeat(3,76px);gap:12px;justify-content:center;width:100%}
+.np{width:76px;height:76px;border-radius:50%;background:var(--cd);border:1px solid var(--br);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr);user-select:none;color:var(--tx);font-size:22px;font-weight:700;line-height:1}
 .np:active{transform:scale(.91);background:var(--br)}
-.np-sub{font-size:7px;font-weight:600;color:var(--mt);letter-spacing:.7px;margin-top:2px}
-.np.z{grid-column:2}.np.dl{font-size:18px;color:var(--mt);background:transparent;border-color:transparent}.np.bl{background:transparent;border-color:transparent;pointer-events:none}
+.np-sub{font-size:8px;font-weight:600;color:var(--mt);letter-spacing:.7px;margin-top:2px}
+.np.z{grid-column:2}.np.dl{font-size:20px;color:var(--mt);background:transparent;border-color:transparent}.np.bl{background:transparent;border-color:transparent;pointer-events:none}
 #pwp{width:100%;display:none}
 .pww{position:relative;width:100%;margin-bottom:8px}
 .pwi{width:100%;background:var(--cd);border:1.5px solid var(--br);border-radius:12px;padding:13px 44px 13px 16px;font-size:14px;font-weight:600;font-family:var(--f);color:var(--tx);outline:none;letter-spacing:1.5px;transition:border-color .2s}
@@ -135,7 +135,29 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .pnr .lb2{font-size:10px;font-weight:500;color:var(--mt);margin-bottom:2px}
 .pnr .vl{font-size:17px;font-weight:800;letter-spacing:-.5px}
 .pnr .pt{font-size:12px;font-weight:700;margin-top:1px}
-.spk{width:100%;height:44px;display:block}
+.spk{width:100%;height:44px;display:block;cursor:crosshair;touch-action:none}
+#spkcnt{position:relative;user-select:none}
+#chtdt{font-size:10px;font-weight:600;color:var(--a2);margin-left:8px;display:none;animation:fadeUp .15s ease}
+#chttip{position:absolute;top:-38px;background:var(--sf);border:1px solid var(--br);border-radius:9px;padding:5px 10px;font-size:11px;font-weight:700;white-space:nowrap;pointer-events:none;z-index:20;display:none;transform:translateX(-50%)}
+#chttip span{display:block;font-size:10px;font-weight:500;color:var(--mt)}
+/* TOAST */
+#toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:#1e2330;border:1px solid var(--br);border-radius:12px;padding:11px 20px;font-size:13px;font-weight:600;color:var(--tx);z-index:9500;display:none;white-space:nowrap;box-shadow:0 4px 24px rgba(0,0,0,.4);animation:fadeUp .2s ease}
+/* NOTIFICATION PANEL */
+#ntpnl{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:var(--bg);border-bottom:1px solid var(--br);z-index:6000;display:none;box-shadow:0 8px 32px rgba(0,0,0,.4);animation:slideDown .25s ease}
+@keyframes slideDown{from{transform:translateX(-50%) translateY(-100%)}to{transform:translateX(-50%) translateY(0)}}
+.ntrow{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.05)}
+.ntrow:last-child{border-bottom:none}
+.ntico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.nttt{font-size:13px;font-weight:700;margin-bottom:2px}
+.ntsb{font-size:11px;font-weight:500;color:var(--mt)}
+/* SEARCH OVERLAY */
+#srchov{position:fixed;inset:0;background:var(--bg);z-index:6000;display:none;flex-direction:column;max-width:420px;left:50%;transform:translateX(-50%)}
+#srchov.show{display:flex;animation:fadeUp .2s ease}
+#srchinp{flex:1;background:var(--cd);border:1.5px solid var(--br);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:500;color:var(--tx);outline:none;font-family:var(--f)}
+#srchinp:focus{border-color:var(--ac)}
+#srchres{overflow-y:auto;flex:1;padding-bottom:80px}
+.srrow{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--br);cursor:pointer;transition:background .15s}
+.srrow:active{background:var(--cd)}
 
 /* SUM ROW */
 .smr{display:flex;gap:7px;margin:0 18px 10px}
@@ -437,23 +459,28 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 <div class="pg act" id="pg-home">
   <div class="hdr">
     <div class="hdr-l"><div class="hdr-logo"><svg viewBox="0 0 100 100" fill="none"><path d="M20 72L50 24L80 72" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg></div><div class="hdr-nm">Upstox</div></div>
-    <div class="hdr-r"><div class="ib">🔔<div class="nd"></div></div><div class="ib">🔍</div></div>
+    <div class="hdr-r"><div class="ib" id="bellBtn" onclick="openNtf()">🔔<div class="nd" id="bellDot"></div></div><div class="ib" onclick="openSrch()">🔍</div></div>
   </div>
   <div class="ixs" id="ixs"></div>
   <div class="dbg">📅 Snapshot: <span id="sdt">—</span> · NSE India</div>
   <div class="pcd">
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div>
-        <div class="plbl"><span class="ldt"></span>Portfolio Value</div>
+        <div class="plbl"><span class="ldt"></span>Portfolio Value<span id="chtdt"></span></div>
         <div class="pv" id="pv"><span class="sy">₹</span>—</div>
         <div class="pch"><span class="bdg dn" id="dcb">—</span><span class="bdg dn" id="dpb">—</span><span class="bt">Today</span></div>
       </div>
       <div class="pnr"><div class="lb2">Overall P&L</div><div class="vl" id="ovv">—</div><div class="pt" id="ovp">—</div></div>
     </div>
-    <svg class="spk" viewBox="0 0 300 44" preserveAspectRatio="none">
-      <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f04e68" stop-opacity=".22"/><stop offset="100%" stop-color="#f04e68" stop-opacity="0"/></linearGradient></defs>
-      <polygon id="spp" fill="url(#sg)"/><polyline id="spl" fill="none" stroke="var(--rd)" stroke-width="2"/>
-    </svg>
+    <div id="spkcnt">
+      <div id="chttip"><span id="chttipv"></span><span id="chttipd"></span></div>
+      <svg class="spk" viewBox="0 0 300 44" preserveAspectRatio="none">
+        <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f04e68" stop-opacity=".22"/><stop offset="100%" stop-color="#f04e68" stop-opacity="0"/></linearGradient></defs>
+        <polygon id="spp" fill="url(#sg)"/><polyline id="spl" fill="none" stroke="var(--rd)" stroke-width="2"/>
+        <line id="chtl" x1="0" y1="0" x2="0" y2="44" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-dasharray="2,3" style="display:none"/>
+        <circle id="chtd" cx="0" cy="0" r="3.5" fill="var(--rd)" stroke="#fff" stroke-width="1.5" style="display:none"/>
+      </svg>
+    </div>
   </div>
   <div class="smr">
     <div class="smc"><div class="sml">Total Invested</div><div class="smv" id="sinv">—</div></div>
@@ -475,7 +502,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
     <div class="st"><div class="stl">Unrealized</div><div class="stv rd" id="surl">—</div></div>
     <div class="st"><div class="stl">Charges</div><div class="stv rd">−₹198</div></div>
   </div>
-  <div class="wrn"><div class="wi">⚠️</div><div><div class="wt" id="wtt" style="color:var(--rd)">Portfolio Under Pressure</div><div class="wb">Mixed performance: INFY, WIPRO, ITC &amp; TATAMOTORS in profit. RELIANCE, TCS, HDFCBANK, BAJFINANCE &amp; ADANIENT in loss.</div></div></div>
+  <div class="wrn"><div class="wi">⚠️</div><div><div class="wt" id="wtt" style="color:var(--rd)">Portfolio Under Pressure</div><div class="wb" id="warnBody">RELIANCE, TCS &amp; ITC in profit. INFY, WIPRO, BAJFINANCE, ADANIENT &amp; TATAMOTORS down significantly.</div></div></div>
 </div>
 
 <!-- MARKETS -->
@@ -542,7 +569,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
   <!-- Stocks header -->
   <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 18px 6px">
     <div style="font-size:10px;font-weight:700;color:var(--mt);text-transform:uppercase;letter-spacing:1.2px">Stocks in Your Portfolio</div>
-    <div style="font-size:10px;font-weight:600;color:var(--mt)">9 stocks</div>
+    <div style="font-size:10px;font-weight:600;color:var(--mt)" id="mktCnt"></div>
   </div>
   <div id="msl"></div>
 </div>
@@ -569,9 +596,9 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
     <div class="glc gn"><div class="gll">↑ Gainers</div><div class="glv" id="ggv" style="color:var(--gn)">—</div><div class="glct" id="ggc">—</div></div>
     <div class="glc rd"><div class="gll">↓ Losers</div><div class="glv" id="glv2" style="color:var(--rd)">—</div><div class="glct" id="glc2">—</div></div>
   </div>
-  <div class="sch"><div class="sct">All Holdings</div><div class="scl">Sort ↕</div></div>
+  <div class="sch"><div class="sct">All Holdings</div><div class="scl" id="sortBtn" onclick="cycleSortPf()">Sort: P&amp;L ↓</div></div>
   <div class="tbs" id="ptabs">
-    <div class="tb on" data-p="all">All (9)</div>
+    <div class="tb on" data-p="all" id="ptabAll">All</div>
     <div class="tb" data-p="gainers">Gainers</div>
     <div class="tb" data-p="losers">Losers</div>
   </div>
@@ -1035,6 +1062,7 @@ function initApp() {
   renderHome();
   renderMarkets();
   renderPortfolio();
+  initChart();
   tryPWA();
 }
 
@@ -1089,6 +1117,10 @@ function renderHome() {
   var wt = document.getElementById('wtt');
   wt.textContent = 'Portfolio ' + (tPnl < 0 ? 'Down' : 'Up') + ' ' + fi(Math.abs(tPct), 2) + '%';
   wt.style.color = CL(tPnl);
+  var gainSyms = COMP.filter(function(h){ return h.pnl >= 0; }).map(function(h){ return h.sym; });
+  var lossSyms = COMP.filter(function(h){ return h.pnl < 0; }).map(function(h){ return h.sym; });
+  var wb = document.getElementById('warnBody');
+  if (wb) wb.textContent = (gainSyms.length ? gainSyms.join(', ') + ' in profit. ' : '') + (lossSyms.length ? lossSyms.join(', ') + ' in loss.' : '');
 
   // Sparkline — portfolio value history Jul 2024 → Feb 2026
   // Jul-Sep 2024: ₹5L invested, rises to ₹7L peak
@@ -1105,6 +1137,7 @@ function renderHome() {
   ];
   var W = 300, H = 44, pad = 3;
   var mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts), rng = mx - mn || 1;
+  spkPts = pts; spkMn = mn; spkRng = rng; // expose for chart interaction
   var coords = pts.map(function(p, i) {
     var x = (i / (pts.length - 1)) * W;
     var y = H - pad - (p - mn) / rng * (H - 2 * pad);
@@ -1230,6 +1263,8 @@ function renderMarkets() {
   });
 
   renderMktStocks('all');
+  var mktCnt = document.getElementById('mktCnt');
+  if (mktCnt) mktCnt.textContent = Object.keys(SD.stocks).length + ' stocks';
 }
 
 function renderMktStocks(sector) {
@@ -1347,6 +1382,10 @@ function renderPortfolio() {
   document.getElementById('glv2').style.color = 'var(--rd)';
   document.getElementById('glc2').textContent = losers.length + ' stocks';
 
+  // Update "All (N)" tab label
+  var ptabAll = document.getElementById('ptabAll');
+  if (ptabAll) ptabAll.textContent = 'All (' + SD.holdings.length + ')';
+
   // Holdings list
   renderPList('all');
   document.querySelectorAll('#ptabs .tb').forEach(function(t) {
@@ -1430,6 +1469,174 @@ function dimIos() {
   document.getElementById('ios').classList.remove('show');
 }
 
+// ── CHART INTERACTION ─────────────────────────────
+var spkPts = [], spkMn = 0, spkRng = 1;
+var chartDates = [
+  'Jul 2024','Jul 2024','Aug 2024','Aug 2024','Sep 2024','Sep 2024',
+  'Oct 2024','Oct 2024','Nov 2024','Nov 2024','Dec 2024','Dec 2024',
+  'Jan 2025','Jan 2025','Feb 2025','Feb 2025','Mar 2025','Mar 2025',
+  'Mar 2025','Apr 2025','May 2025','May 2025','Jun 2025','Jun 2025',
+  'Jul 2025','Jul 2025','Aug 2025','Sep 2025','Oct 2025','Nov 2025',
+  'Dec 2025','Jan 2026','Feb 2026'
+];
+
+function initChart() {
+  var cnt = document.getElementById('spkcnt');
+  if (!cnt) return;
+  var isDrag = false;
+
+  function hitChart(clientX) {
+    var rect = cnt.getBoundingClientRect();
+    var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    var idx = Math.round(ratio * (spkPts.length - 1));
+    var val = spkPts[idx];
+    var dt  = chartDates[Math.min(idx, chartDates.length - 1)];
+
+    // Update portfolio value label live
+    document.getElementById('pv').innerHTML = '<span class="sy">₹</span>' + fi(Math.round(val));
+    var dtEl = document.getElementById('chtdt');
+    dtEl.textContent = ' · ' + dt;
+    dtEl.style.display = 'inline';
+
+    // SVG crosshair
+    var W = 300, H = 44, pad = 3;
+    var svgX = ratio * W;
+    var svgY = H - pad - (val - spkMn) / spkRng * (H - 2 * pad);
+    var line = document.getElementById('chtl'), dot = document.getElementById('chtd');
+    line.setAttribute('x1', svgX.toFixed(1)); line.setAttribute('x2', svgX.toFixed(1)); line.style.display = '';
+    dot.setAttribute('cx', svgX.toFixed(1));  dot.setAttribute('cy', svgY.toFixed(1));  dot.style.display = '';
+
+    // Floating tooltip
+    var tip = document.getElementById('chttip');
+    document.getElementById('chttipv').textContent = '₹' + fi(Math.round(val));
+    document.getElementById('chttipd').textContent = dt;
+    var pxLeft = ratio * rect.width;
+    tip.style.left = pxLeft + 'px';
+    // Keep tooltip inside bounds
+    tip.style.transform = pxLeft < 60 ? 'translateX(0)' : pxLeft > rect.width - 70 ? 'translateX(-100%)' : 'translateX(-50%)';
+    tip.style.display = 'block';
+  }
+
+  function resetChart() {
+    document.getElementById('pv').innerHTML = '<span class="sy">₹</span>' + fi(tCurr, 2);
+    var dtEl = document.getElementById('chtdt');
+    dtEl.style.display = 'none';
+    document.getElementById('chtl').style.display = 'none';
+    document.getElementById('chtd').style.display = 'none';
+    document.getElementById('chttip').style.display = 'none';
+  }
+
+  cnt.addEventListener('touchstart',  function(e){ isDrag=true; e.preventDefault(); hitChart(e.touches[0].clientX); }, {passive:false});
+  cnt.addEventListener('touchmove',   function(e){ if(isDrag){ e.preventDefault(); hitChart(e.touches[0].clientX); } }, {passive:false});
+  cnt.addEventListener('touchend',    function(){ isDrag=false; resetChart(); });
+  cnt.addEventListener('touchcancel', function(){ isDrag=false; resetChart(); });
+  cnt.addEventListener('mousemove',   function(e){ hitChart(e.clientX); });
+  cnt.addEventListener('mouseleave',  function(){ resetChart(); });
+}
+
+// ── TOAST ─────────────────────────────────────────
+var _toastT;
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(_toastT);
+  _toastT = setTimeout(function(){ t.style.display='none'; }, 2400);
+}
+
+// ── NOTIFICATIONS ──────────────────────────────────
+function openNtf() {
+  document.getElementById('ntpnl').style.display = 'block';
+  document.getElementById('bellDot').style.display = 'none';
+}
+function closeNtf() { document.getElementById('ntpnl').style.display = 'none'; }
+
+// ── SEARCH ─────────────────────────────────────────
+function openSrch() {
+  var ov = document.getElementById('srchov');
+  ov.classList.add('show');
+  setTimeout(function(){ document.getElementById('srchinp').focus(); }, 120);
+  srchFilter('');
+}
+function closeSrch() {
+  document.getElementById('srchov').classList.remove('show');
+  document.getElementById('srchinp').value = '';
+}
+function srchFilter(q) {
+  if (q === undefined) q = document.getElementById('srchinp').value;
+  q = q.toLowerCase();
+  var res = document.getElementById('srchres');
+  var syms = Object.keys(SD.stocks).filter(function(s) {
+    return !q || s.toLowerCase().indexOf(q) !== -1 || SD.stocks[s].name.toLowerCase().indexOf(q) !== -1 || SD.stocks[s].sector.toLowerCase().indexOf(q) !== -1;
+  });
+  res.innerHTML = '';
+  if (!syms.length) {
+    res.innerHTML = '<div style="padding:40px;text-align:center;color:var(--mt);font-size:13px">No results for "' + q + '"</div>';
+    return;
+  }
+  syms.forEach(function(sym) {
+    var s = SD.stocks[sym];
+    var col = CL(s.change);
+    var row = document.createElement('div');
+    row.className = 'srrow';
+    var inHolding = SD.holdings.some(function(h){ return h.sym === sym; });
+    row.innerHTML =
+      '<div style="display:flex;align-items:center;gap:10px">' +
+        '<div style="width:36px;height:36px;border-radius:9px;background:var(--cd);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--tx)">' + sym.substring(0,3) + '</div>' +
+        '<div><div style="font-size:13px;font-weight:700">' + s.name + '</div>' +
+        '<div style="font-size:10px;font-weight:500;color:var(--mt);margin-top:1px">' + s.sector + (inHolding ? ' · <span style="color:var(--a2)">In Portfolio</span>' : '') + '</div></div>' +
+      '</div>' +
+      '<div style="text-align:right">' +
+        '<div style="font-size:14px;font-weight:800">₹' + fi(s.price,2) + '</div>' +
+        '<div style="font-size:11px;font-weight:700;color:' + col + '">' + AR(s.change) + ' ' + fi(Math.abs(s.pct),2) + '%</div>' +
+      '</div>';
+    row.addEventListener('click', function(){ closeSrch(); showToast(sym + '  ₹' + fi(s.price,2) + '  ' + AR(s.change) + fi(Math.abs(s.pct),2) + '%'); });
+    res.appendChild(row);
+  });
+}
+
+// ── PORTFOLIO SORT ─────────────────────────────────
+var _sortIdx = 0;
+var _sortDefs = [
+  {label:'P&L ↓', fn: function(a,b){ return b.pnl - a.pnl; }},
+  {label:'P&L ↑', fn: function(a,b){ return a.pnl - b.pnl; }},
+  {label:'Value ↓', fn: function(a,b){ return b.curr - a.curr; }},
+  {label:'Name', fn: function(a,b){ return a.sym.localeCompare(b.sym); }}
+];
+function cycleSortPf() {
+  _sortIdx = (_sortIdx + 1) % _sortDefs.length;
+  var def = _sortDefs[_sortIdx];
+  document.getElementById('sortBtn').textContent = 'Sort: ' + def.label;
+  COMP.sort(def.fn);
+  var pl = document.getElementById('phl');
+  pl.style.opacity = '0';
+  setTimeout(function(){ pl.style.opacity = ''; renderPList(document.querySelector('#ptabs .tb.on').getAttribute('data-p')); }, 160);
+}
+
 </script>
+
+<!-- NOTIFICATION PANEL -->
+<div id="ntpnl" style="display:none">
+  <div style="padding:52px 18px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--br)">
+    <div style="font-size:17px;font-weight:800">Notifications</div>
+    <div onclick="closeNtf()" style="font-size:14px;font-weight:600;color:var(--mt);cursor:pointer;background:var(--cd);border:1px solid var(--br);border-radius:8px;padding:4px 10px">Done</div>
+  </div>
+  <div class="ntrow"><div class="ntico" style="background:rgba(239,62,35,.1)">📊</div><div><div class="nttt">BAJFINANCE Price Alert</div><div class="ntsb">Dropped below ₹5,300 · 2 hrs ago</div></div></div>
+  <div class="ntrow"><div class="ntico" style="background:rgba(16,200,122,.1)">✅</div><div><div class="nttt">Order Executed</div><div class="ntsb">Bought TATAMOTORS 65 qty @ ₹381.20 · Yesterday</div></div></div>
+  <div class="ntrow"><div class="ntico" style="background:rgba(240,180,41,.1)">⏰</div><div><div class="nttt">Market Opens Soon</div><div class="ntsb">NSE opens at 9:15 AM · Today</div></div></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div id="srchov">
+  <div style="padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--br)">
+    <input id="srchinp" type="search" placeholder="Search stocks, sectors…" autocomplete="off" oninput="srchFilter()" style="flex:1;background:var(--cd);border:1.5px solid var(--br);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:500;color:var(--tx);outline:none;font-family:var(--f)">
+    <div onclick="closeSrch()" style="font-size:14px;font-weight:600;color:var(--mt);cursor:pointer;flex-shrink:0;padding:8px 12px;background:var(--cd);border:1px solid var(--br);border-radius:10px">Cancel</div>
+  </div>
+  <div id="srchres"></div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
 </body>
 </html>
