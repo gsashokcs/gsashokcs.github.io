@@ -159,6 +159,27 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .srrow{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--br);cursor:pointer;transition:background .15s}
 .srrow:active{background:var(--cd)}
 
+/* REPORTS PAGE */
+.rpt-summ{background:var(--cd);border:1px solid var(--br);border-radius:18px;padding:16px}
+.rpt-row{display:flex;justify-content:space-between;align-items:flex-start}
+.rpt-kv{display:flex;flex-direction:column;gap:3px}
+.rpt-k{font-size:10px;font-weight:700;color:var(--mt);text-transform:uppercase;letter-spacing:.8px}
+.rpt-v{font-size:18px;font-weight:800;letter-spacing:-.5px}
+.rpt-div{height:1px;background:var(--br);margin:13px 0}
+.txgrp{padding:0 18px 4px}
+.txmon{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:700;letter-spacing:.8px;color:var(--mt);padding:10px 0 8px;text-transform:uppercase}
+.txr{display:flex;align-items:center;gap:11px;padding:12px 13px;background:var(--cd);border:1px solid var(--br);border-top:none}
+.txr:first-of-type{border-top:1px solid var(--br);border-radius:13px 13px 3px 3px}
+.txr:last-of-type{border-radius:3px 3px 13px 13px}
+.txr:only-of-type{border-top:1px solid var(--br);border-radius:13px}
+.txrl{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.3px}
+.txnm{font-size:13px;font-weight:700;letter-spacing:-.2px;display:flex;align-items:center;gap:5px}
+.txbuy{display:inline-block;font-size:9px;font-weight:800;padding:1px 5px;border-radius:4px;background:rgba(16,200,122,.12);color:var(--gn);border:1px solid rgba(16,200,122,.2)}
+.txsb{font-size:11px;color:var(--mt);margin-top:2px}
+.txid{font-size:10px;color:var(--dm);margin-top:2px}
+.txamt{font-size:13px;font-weight:800;letter-spacing:-.3px;text-align:right}
+.txst{font-size:10px;font-weight:700;color:var(--gn);text-align:right;margin-top:2px}
+
 /* SUM ROW */
 .smr{display:flex;gap:7px;margin:0 18px 10px}
 .smc{flex:1;background:var(--cd);border:1px solid var(--br);border-radius:13px;padding:10px 11px}
@@ -612,7 +633,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
   <div class="ml">
     <div class="mi" onclick="nav('pg-profile')"><div class="mio" style="background:rgba(239,62,35,.1)">👤</div><div class="mtx"><div class="mtt">Profile Information</div><div class="msb">Personal details, PAN, Aadhaar</div></div><div class="mar">›</div></div>
     <div class="mi" onclick="nav('pg-banking')"><div class="mio" style="background:rgba(16,200,122,.1)">🏦</div><div class="mtx"><div class="mtt">Banking Details</div><div class="msb">HDFC Bank · 5010 0008 4827 82</div></div><div class="mar">›</div></div>
-    <div class="mi"><div class="mio" style="background:rgba(240,180,41,.1)">📜</div><div class="mtx"><div class="mtt">Reports &amp; Statements</div><div class="msb">P&amp;L, ledger, contract notes</div></div><div class="mar">›</div></div>
+    <div class="mi" onclick="nav('pg-reports')"><div class="mio" style="background:rgba(240,180,41,.1)">📜</div><div class="mtx"><div class="mtt">Reports &amp; Statements</div><div class="msb">P&amp;L, ledger, contract notes</div></div><div class="mar">›</div></div>
   </div>
   <div class="acs">Preferences</div>
   <div class="ml">
@@ -782,6 +803,274 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
   <div class="mnd"><div class="mni">📋</div><div><div class="mnt">E-NACH Mandate</div><div class="mns">Max ₹1,00,000 · HDFC Bank</div></div><div class="mst pd">Pending</div></div>
   <div class="acs" style="padding-top:4px">Other Accounts</div>
   <div style="margin:0 18px 24px;border:1.5px dashed var(--br);border-radius:13px;padding:13px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer"><span style="font-size:18px">➕</span><span style="font-size:13px;font-weight:700;color:var(--a2)">Add Another Bank Account</span></div>
+</div>
+
+<!-- REPORTS -->
+<div class="pg" id="pg-reports">
+  <div class="shd">
+    <div class="bck" onclick="nav('pg-account')">‹</div>
+    <div class="pgt">Reports &amp; Statements</div>
+    <div style="margin-left:auto;font-size:12px;font-weight:700;color:var(--a2);cursor:pointer;padding:6px 10px;background:var(--cd);border:1px solid var(--br);border-radius:9px" onclick="showToast('Export coming soon')">↓ Export</div>
+  </div>
+
+  <!-- Portfolio Summary -->
+  <div style="padding:14px 18px 0">
+    <div class="rpt-summ">
+      <div class="rpt-row">
+        <div class="rpt-kv">
+          <div class="rpt-k">Total Invested</div>
+          <div class="rpt-v" id="rptInv">—</div>
+        </div>
+        <div class="rpt-kv" style="text-align:right">
+          <div class="rpt-k">Current Value</div>
+          <div class="rpt-v" id="rptCurr">—</div>
+        </div>
+      </div>
+      <div class="rpt-div"></div>
+      <div class="rpt-row">
+        <div class="rpt-kv">
+          <div class="rpt-k">Unrealised P&amp;L</div>
+          <div class="rpt-v" id="rptPnl">—</div>
+        </div>
+        <div class="rpt-kv" style="text-align:right">
+          <div class="rpt-k">Returns</div>
+          <div class="rpt-v" id="rptRet">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Reports -->
+  <div class="acs">Download Reports</div>
+  <div class="ml" style="padding:0 18px">
+    <div class="mi" onclick="showToast('Downloading P&amp;L Report…')"><div class="mio" style="background:rgba(16,200,122,.1);font-size:17px">📊</div><div class="mtx"><div class="mtt">P&amp;L Report</div><div class="msb">FY 2024–25 · Realised gains &amp; losses</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">PDF ↓</div></div>
+    <div class="mi" onclick="showToast('Downloading Ledger…')"><div class="mio" style="background:rgba(99,102,241,.1);font-size:17px">📒</div><div class="mtx"><div class="mtt">Ledger Statement</div><div class="msb">All fund movements · 01 Apr 2024 – Today</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">PDF ↓</div></div>
+    <div class="mi" onclick="showToast('Downloading Contract Notes…')"><div class="mio" style="background:rgba(240,180,41,.1);font-size:17px">📋</div><div class="mtx"><div class="mtt">Contract Notes</div><div class="msb">Trade confirmations · 14 orders</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">ZIP ↓</div></div>
+    <div class="mi" onclick="showToast('Downloading Tax P&amp;L…')"><div class="mio" style="background:rgba(239,62,35,.1);font-size:17px">🏦</div><div class="mtx"><div class="mtt">Tax P&amp;L (ITR)</div><div class="msb">Capital gains summary for filing</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">XLSX ↓</div></div>
+  </div>
+
+  <!-- Investment Transactions -->
+  <div class="acs">Investment Transactions</div>
+
+  <!-- Feb 2025 batch -->
+  <div class="txgrp">
+    <div class="txmon"><span>FEBRUARY 2025</span><span style="color:var(--rd)">₹6,23,341 invested</span></div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a1a2a,#1d4ed8)">TATA</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>TATAMOTORS</div>
+        <div class="txsb">165 qty × ₹573.00 · 21 Feb 2025</div>
+        <div class="txid">Order #UPX2025022100384</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹94,545</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a1a1a,#b91c1c)">ADANI</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>ADANIENT</div>
+        <div class="txsb">54 qty × ₹3,137.00 · 14 Feb 2025</div>
+        <div class="txid">Order #UPX2025021400291</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹1,69,398</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a1a3a,#4f46e5)">BAJFIN</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>BAJFINANCE</div>
+        <div class="txsb">7 qty × ₹6,746.00 · 17 Feb 2025</div>
+        <div class="txid">Order #UPX2025021700318</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹47,222</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a1a2a,#1d4ed8)">TATA</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>TATAMOTORS</div>
+        <div class="txsb">200 qty × ₹628.00 · 07 Feb 2025</div>
+        <div class="txid">Order #UPX2025020700206</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹1,25,600</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a1a1a,#b91c1c)">ADANI</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>ADANIENT</div>
+        <div class="txsb">40 qty × ₹3,286.00 · 05 Feb 2025</div>
+        <div class="txid">Order #UPX2025020500174</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹1,31,440</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a1a3a,#4f46e5)">BAJFIN</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>BAJFINANCE</div>
+        <div class="txsb">8 qty × ₹6,892.00 · 03 Feb 2025</div>
+        <div class="txid">Order #UPX2025020300142</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹55,136</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jul–Sep 2024 batch -->
+  <div class="txgrp" style="margin-top:4px">
+    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹3,79,393 invested</span></div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a1a3a,#7c3aed)">INFY</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>INFY</div>
+        <div class="txsb">12 qty × ₹1,629.00 · 05 Sep 2024</div>
+        <div class="txid">Order #UPX2024090500487</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹19,548</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">RL</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>RELIANCE</div>
+        <div class="txsb">11 qty × ₹1,895.00 · 20 Aug 2024</div>
+        <div class="txid">Order #UPX2024082000412</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹20,845</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a2a1a,#ca8a04)">ITC</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>ITC</div>
+        <div class="txsb">66 qty × ₹337.00 · 12 Aug 2024</div>
+        <div class="txid">Order #UPX2024081200368</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹22,242</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
+        <div class="txsb">287 qty × ₹302.00 · 08 Aug 2024</div>
+        <div class="txid">Order #UPX2024080800341</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹86,674</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a1a3a,#7c3aed)">INFY</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>INFY</div>
+        <div class="txsb">18 qty × ₹1,662.00 · 05 Aug 2024</div>
+        <div class="txid">Order #UPX2024080500298</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹29,916</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a3a2a,#16a34a)">TCS</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>TCS</div>
+        <div class="txsb">6 qty × ₹3,528.00 · 28 Jul 2024</div>
+        <div class="txid">Order #UPX2024072800261</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹21,168</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">RL</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>RELIANCE</div>
+        <div class="txsb">15 qty × ₹1,948.00 · 22 Jul 2024</div>
+        <div class="txid">Order #UPX2024072200234</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹29,220</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#2a2a1a,#ca8a04)">ITC</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>ITC</div>
+        <div class="txsb">80 qty × ₹348.00 · 18 Jul 2024</div>
+        <div class="txid">Order #UPX2024071800198</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹27,840</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a3a2a,#16a34a)">TCS</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>TCS</div>
+        <div class="txsb">8 qty × ₹3,580.00 · 16 Jul 2024</div>
+        <div class="txid">Order #UPX2024071600162</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹28,640</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
+        <div class="txsb">300 qty × ₹311.00 · 15 Jul 2024</div>
+        <div class="txid">Order #UPX2024071500142</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹93,300</div>
+        <div class="txst">✓ Executed</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:32px"></div>
 </div>
 
 <!-- BOTTOM NAV -->
@@ -1036,6 +1325,7 @@ function showPg(id) {
   window.scrollTo(0, 0);
   document.querySelectorAll('.ni').forEach(function(n) { n.classList.remove('on'); });
   if (NM[id]) document.getElementById(NM[id]).classList.add('on');
+  if (id === 'pg-reports') renderReports();
 }
 
 // ── COMPUTE ───────────────────────────────────────
@@ -1532,6 +1822,23 @@ function initChart() {
   cnt.addEventListener('touchcancel', function(){ isDrag=false; resetChart(); });
   cnt.addEventListener('mousemove',   function(e){ hitChart(e.clientX); });
   cnt.addEventListener('mouseleave',  function(){ resetChart(); });
+}
+
+// ── REPORTS ───────────────────────────────────────
+function renderReports() {
+  if (!COMP || !COMP.length) return;
+  var tInv = 0, tCur = 0;
+  COMP.forEach(function(c) { tInv += c.cost; tCur += c.curr; });
+  var pnl = tCur - tInv;
+  var ret = (pnl / tInv) * 100;
+  document.getElementById('rptInv').textContent = '\u20b9' + fi(Math.round(tInv));
+  document.getElementById('rptCurr').textContent = '\u20b9' + fi(Math.round(tCur));
+  var pnlEl = document.getElementById('rptPnl');
+  pnlEl.style.color = CL(pnl);
+  pnlEl.textContent = (pnl >= 0 ? '+' : '\u2212') + '\u20b9' + fi(Math.abs(Math.round(pnl)));
+  var retEl = document.getElementById('rptRet');
+  retEl.style.color = CL(ret);
+  retEl.textContent = (ret >= 0 ? '+' : '') + fi(ret, 2) + '%';
 }
 
 // ── TOAST ─────────────────────────────────────────
