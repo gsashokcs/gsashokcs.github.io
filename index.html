@@ -460,12 +460,6 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
     <div class="smc"><div class="sml">Current Value</div><div class="smv" id="scur">—</div></div>
     <div class="smc"><div class="sml">Total P&L</div><div class="smv" id="spnl">—</div></div>
   </div>
-  <div class="qag">
-    <div class="qa"><div class="qi">📈</div><div class="ql">Stocks</div></div>
-    <div class="qa"><div class="qi">🔄</div><div class="ql">F&O</div></div>
-    <div class="qa"><div class="qi">💼</div><div class="ql">IPO</div></div>
-    <div class="qa"><div class="qi">🌐</div><div class="ql">US Stocks</div></div>
-  </div>
   <div class="sch"><div class="sct">Holdings <span style="font-size:12px;color:var(--mt);font-weight:500" id="hcnt"></span></div><div class="scl" onclick="nav('pg-portfolio')">View All →</div></div>
   <div class="tbs" id="htabs">
     <div class="tb on" data-f="all">All</div>
@@ -799,32 +793,31 @@ var _timeStr = _hh + ':' + _mm + ' IST';
 var SD = {
   updated: _dateStr + ", " + _timeStr,
   indices: {
-    nifty50:   {name:"NIFTY 50",   value:25571.25, change:-312.80, pct:-1.21},
-    sensex:    {name:"SENSEX",     value:84357.10, change:-982.40, pct:-1.15},
-    banknifty: {name:"BANK NIFTY", value:54832.60, change:-618.30, pct:-1.11},
-    midcap:    {name:"MIDCAP 100", value:47210.45, change:-890.20, pct:-1.85}
+    nifty50:   {name:"NIFTY 50",   value:22847.35, change:-248.60, pct:-1.08},
+    sensex:    {name:"SENSEX",     value:75482.80, change:-810.40, pct:-1.06},
+    banknifty: {name:"BANK NIFTY", value:48634.20, change:-524.80, pct:-1.07},
+    midcap:    {name:"MIDCAP 100", value:41286.40, change:-748.60, pct:-1.78}
   },
   stocks: {
-    RELIANCE:   {name:"Reliance Ind.", price:1543.00, prev:1558.90, change:-15.90, pct:-1.02, high:1556.00, low:1538.40, vol:"62.4L",  mcap:"20.85L Cr", sector:"Energy"},
-    TCS:        {name:"TCS",          price:3236.50, prev:3258.30, change:-21.80, pct:-0.67, high:3265.00, low:3221.00, vol:"18.2L",  mcap:"11.72L Cr", sector:"IT"},
-    HDFCBANK:   {name:"HDFC Bank",    price:1003.10, prev:1021.60, change:-18.50, pct:-1.81, high:1018.00, low: 998.30, vol:"98.6L",  mcap:"15.43L Cr", sector:"Banking"},
-    INFY:       {name:"Infosys",      price:1610.80, prev:1636.50, change:-25.70, pct:-1.57, high:1628.00, low:1604.20, vol:"42.1L",  mcap:"6.70L Cr",  sector:"IT"},
-    WIPRO:      {name:"Wipro",        price: 261.38, prev: 262.90, change:  -1.52, pct:-0.58, high: 265.00, low: 259.80, vol:"88.3L",  mcap:"2.72L Cr",  sector:"IT"},
-    ITC:        {name:"ITC Ltd",      price: 402.30, prev: 404.90, change:  -2.60, pct:-0.64, high: 406.50, low: 400.10, vol:"142.8L", mcap:"5.07L Cr",  sector:"FMCG"},
-    BAJFINANCE: {name:"Bajaj Finance",price:1026.40, prev:1047.10, change: -20.70, pct:-1.98, high:1042.00, low:1021.80, vol:"24.1L",  mcap:"6.51L Cr",  sector:"Finance"},
-    ADANIENT:   {name:"Adani Ent.",   price:2216.20, prev:2264.80, change: -48.60, pct:-2.15, high:2248.00, low:2208.40, vol:"28.7L",  mcap:"2.61L Cr",  sector:"Conglomerate"},
-    TATAMOTORS: {name:"Tata Motors",  price: 479.80, prev: 472.90, change:   6.90, pct: 1.46, high: 485.80, low: 471.50, vol:"148.2L", mcap:"1.74L Cr",  sector:"Auto"}
+    RELIANCE:   {name:"Reliance Ind.", price:2156.80, prev:2098.40, change: 58.40, pct: 2.78, high:2168.20, low:2089.60, vol:"28.6L",  mcap:"14.62L Cr", sector:"Energy"},
+    TCS:        {name:"TCS",           price:3842.50, prev:3780.20, change: 62.30, pct: 1.65, high:3856.80, low:3772.40, vol:"12.4L",  mcap:"13.93L Cr", sector:"IT"},
+    HDFCBANK:   {name:"HDFC Bank",     price:1648.20, prev:1640.60, change:  7.60, pct: 0.46, high:1656.40, low:1634.80, vol:"74.6L",  mcap:"12.52L Cr", sector:"Banking"},
+    INFY:       {name:"Infosys",       price:1286.20, prev:1318.60, change:-32.40, pct:-2.46, high:1315.00, low:1281.40, vol:"38.6L",  mcap:"5.35L Cr",  sector:"IT"},
+    WIPRO:      {name:"Wipro",         price: 214.60, prev: 221.30, change: -6.70, pct:-3.03, high: 220.80, low: 213.20, vol:"92.4L",  mcap:"2.23L Cr",  sector:"IT"},
+    ITC:        {name:"ITC Ltd",       price: 391.80, prev: 386.40, change:  5.40, pct: 1.40, high: 394.60, low: 384.20, vol:"168.4L", mcap:"4.94L Cr",  sector:"FMCG"},
+    BAJFINANCE: {name:"Bajaj Finance", price:5186.40, prev:5380.20, change:-193.80,pct:-3.60, high:5372.00, low:5168.60, vol:"18.8L",  mcap:"3.21L Cr",  sector:"Finance"},
+    ADANIENT:   {name:"Adani Ent.",    price:1908.40, prev:1966.20, change:-57.80, pct:-2.94, high:1968.40, low:1902.80, vol:"42.6L",  mcap:"2.19L Cr",  sector:"Conglomerate"},
+    TATAMOTORS: {name:"Tata Motors",   price: 386.40, prev: 376.80, change:  9.60, pct: 2.55, high: 389.20, low: 373.60, vol:"184.2L", mcap:"1.40L Cr",  sector:"Auto"}
   },
   holdings: [
-    {sym:"RELIANCE",   qty:54,  avg:2453, logo:"RL",     bg:"linear-gradient(135deg,#1e3a5f,#2563eb)"},
-    {sym:"TCS",        qty:22,  avg:5141, logo:"TCS",    bg:"linear-gradient(135deg,#1a3a2a,#16a34a)"},
-    {sym:"HDFCBANK",   qty:86,  avg:1595, logo:"HDFC",   bg:"linear-gradient(135deg,#3a1a1a,#dc2626)"},
-    {sym:"INFY",       qty:45,  avg:1881, logo:"INFY",   bg:"linear-gradient(135deg,#2a1a3a,#7c3aed)"},
-    {sym:"WIPRO",      qty:288, avg: 292, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
-    {sym:"ITC",        qty:205, avg: 458, logo:"ITC",    bg:"linear-gradient(135deg,#2a2a1a,#ca8a04)"},
-    {sym:"BAJFINANCE", qty:72,  avg:1633, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
-    {sym:"ADANIENT",   qty:37,  avg:3521, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
-    {sym:"TATAMOTORS", qty:200, avg: 534, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
+    {sym:"RELIANCE",   qty:26,  avg:1925, logo:"RL",     bg:"linear-gradient(135deg,#1e3a5f,#2563eb)"},
+    {sym:"TCS",        qty:14,  avg:3558, logo:"TCS",    bg:"linear-gradient(135deg,#1a3a2a,#16a34a)"},
+    {sym:"ITC",        qty:146, avg: 343, logo:"ITC",    bg:"linear-gradient(135deg,#2a2a1a,#ca8a04)"},
+    {sym:"INFY",       qty:30,  avg:1649, logo:"INFY",   bg:"linear-gradient(135deg,#2a1a3a,#7c3aed)"},
+    {sym:"WIPRO",      qty:587, avg: 307, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
+    {sym:"BAJFINANCE", qty:15,  avg:6824, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
+    {sym:"ADANIENT",   qty:94,  avg:3200, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
+    {sym:"TATAMOTORS", qty:365, avg: 604, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
   ]
 };
 
@@ -1033,7 +1026,7 @@ function compute() {
     tCurr += curr; tCost += cost; tDay += dayPnl;
     return {sym:h.sym, qty:h.qty, avg:h.avg, logo:h.logo, bg:h.bg, s:s, curr:curr, cost:cost, pnl:pnl, pnlPct:pnlPct, dayPnl:dayPnl};
   });
-  tCost = 1000000; // Normalize total invested to exactly ₹10,00,000
+  // tCost and tCurr derived from actual holdings above
 }
 
 // ── INIT ──────────────────────────────────────────
@@ -1097,13 +1090,19 @@ function renderHome() {
   wt.textContent = 'Portfolio ' + (tPnl < 0 ? 'Down' : 'Up') + ' ' + fi(Math.abs(tPct), 2) + '%';
   wt.style.color = CL(tPnl);
 
-  // Sparkline
-  var baseV = tCurr + Math.abs(tPnl) * 0.7;
-  var pts = [];
-  for (var i = 0; i < 16; i++) {
-    var t = i / 15;
-    pts.push(baseV - Math.abs(tPnl) * t + (Math.sin(i * 1.9) * 0.3 + Math.cos(i * 0.8) * 0.2) * Math.abs(tDay) * 4);
-  }
+  // Sparkline — portfolio value history Jul 2024 → Feb 2026
+  // Jul-Sep 2024: ₹5L invested, rises to ₹7L peak
+  // Oct 2024-Jan 2025: correction back to ₹5.2L
+  // Feb 2025: ₹5L more invested → jumps; peaks Mar 2025 at ₹11.3L
+  // Apr 2025-Feb 2026: gradual decline with ups/downs → ₹7.3L now
+  var pts = [
+    482000, 524000, 572000, 618000, 662000, 698000, 724000, 728000,
+    706000, 674000, 638000, 596000, 558000, 526000, 512000,
+    1042000, 1078000, 1112000, 1128000,
+    1084000, 1046000, 1008000, 966000,
+    948000, 912000, 874000, 886000, 848000,
+    814000, 782000, 758000, 746000, tCurr
+  ];
   var W = 300, H = 44, pad = 3;
   var mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts), rng = mx - mn || 1;
   var coords = pts.map(function(p, i) {
@@ -1181,10 +1180,10 @@ function renderHList(f) {
 
 // ── MARKETS ───────────────────────────────────────
 var IDX_SPARKS = {
-  nifty50:   [26120,25980,26050,25810,25740,25890,25820,25690,25571],
-  sensex:    [85800,85420,85700,85100,84960,85230,85010,84580,84357],
-  banknifty: [55900,55620,55810,55300,55180,55420,55250,54990,54832],
-  midcap:    [48500,48100,48300,47800,47600,47900,47700,47350,47210]
+  nifty50:   [23860,23680,23940,23580,23420,23650,23490,23180,22847],
+  sensex:    [78480,77920,78640,77680,77240,77820,77460,76480,75483],
+  banknifty: [50840,50420,50680,50060,49820,50120,49840,49260,48634],
+  midcap:    [43680,43120,43480,42860,42480,42920,42580,42040,41286]
 };
 
 function renderMarkets() {
