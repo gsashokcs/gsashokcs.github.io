@@ -51,41 +51,46 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .lt{font-size:12px;font-weight:500;color:var(--mt);transition:opacity .2s}
 
 /* LOGIN */
-#ls{position:fixed;inset:0;z-index:8000;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;padding:28px 26px 36px;max-width:420px;margin:0 auto}
+#ls{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.52);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}
 #ls.vis{display:flex;animation:fadeUp .3s ease}
 #ls.out{animation:unlock .36s ease forwards;pointer-events:none}
 #ls.gone{display:none!important}
-.lslo{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--ac),var(--a2));display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 8px 28px rgba(239,62,35,.4)}
-.lslo svg{width:36px;height:36px}
-.lsbr{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:3px}
-.lssb{font-size:12px;font-weight:500;color:var(--mt);margin-bottom:20px;text-align:center}
-.lsus{display:flex;align-items:center;gap:10px;background:var(--cd);border:1px solid var(--br);border-radius:14px;padding:11px 14px;width:100%;margin-bottom:20px}
-.lsav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--a2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
-.lsnm{font-size:13px;font-weight:700}
-.lsid{font-size:11px;font-weight:500;color:var(--mt);margin-top:1px}
-.lsmd{display:flex;background:var(--cd);border:1px solid var(--br);border-radius:11px;padding:3px;width:100%;margin-bottom:20px}
-.lsmb{flex:1;text-align:center;padding:8px 0;border-radius:8px;font-size:12px;font-weight:700;color:var(--mt);cursor:pointer;transition:var(--tr)}
+.ls-card{background:var(--bg);border:1px solid var(--br);border-radius:26px;padding:24px 20px 20px;width:100%;max-width:348px;box-shadow:0 24px 64px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center}
+.lslo{width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,var(--ac),var(--a2));display:flex;align-items:center;justify-content:center;margin-bottom:10px;box-shadow:0 6px 20px rgba(239,62,35,.38)}
+.lslo svg{width:30px;height:30px}
+.lsbr{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px}
+.lssb{font-size:11px;font-weight:500;color:var(--mt);margin-bottom:16px;text-align:center}
+.lsus{display:flex;align-items:center;gap:10px;background:var(--cd);border:1px solid var(--br);border-radius:12px;padding:9px 12px;width:100%;margin-bottom:14px}
+.lsav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.lsnm{font-size:12px;font-weight:700}
+.lsid{font-size:10px;font-weight:500;color:var(--mt);margin-top:1px}
+.lsmd{display:flex;background:var(--cd);border:1px solid var(--br);border-radius:10px;padding:3px;width:100%;margin-bottom:14px}
+.lsmb{flex:1;text-align:center;padding:7px 0;border-radius:7px;font-size:11px;font-weight:700;color:var(--mt);cursor:pointer;transition:var(--tr)}
 .lsmb.on{background:var(--ac);color:#fff}
-.lser{font-size:12px;font-weight:600;color:var(--rd);text-align:center;min-height:16px;margin-bottom:8px}
-.pdots{display:flex;gap:16px;justify-content:center;margin-bottom:26px}
-.pd{width:14px;height:14px;border-radius:50%;border:2px solid var(--dm);background:transparent;transition:all .15s}
+.lser{font-size:11px;font-weight:600;color:var(--rd);text-align:center;min-height:15px;margin-bottom:8px}
+.pinlbl{font-size:11px;font-weight:500;color:var(--mt);text-align:center;margin-bottom:12px}
+.pdots{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:20px}
+.pdg{display:flex;gap:10px}
+.pdsep{width:14px;height:2px;background:var(--dm);border-radius:1px}
+.pd{width:11px;height:11px;border-radius:50%;border:2px solid var(--dm);background:transparent;transition:all .15s}
 .pd.on{background:var(--ac);border-color:var(--ac);animation:dotPop .2s ease}
 .pd.er{background:var(--rd);border-color:var(--rd)}
-.np-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
-.np{background:var(--cd);border:1px solid var(--br);border-radius:14px;padding:17px 0;font-size:22px;font-weight:700;text-align:center;cursor:pointer;transition:var(--tr);user-select:none;color:var(--tx)}
+.np-grid{display:grid;grid-template-columns:repeat(3,66px);gap:10px;justify-content:center;width:100%}
+.np{width:66px;height:66px;border-radius:50%;background:var(--cd);border:1px solid var(--br);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr);user-select:none;color:var(--tx);font-size:19px;font-weight:700;line-height:1}
 .np:active{transform:scale(.91);background:var(--br)}
-.np.z{grid-column:2}.np.dl{font-size:16px;color:var(--mt)}.np.bl{background:transparent;border:transparent;pointer-events:none}
+.np-sub{font-size:7px;font-weight:600;color:var(--mt);letter-spacing:.7px;margin-top:2px}
+.np.z{grid-column:2}.np.dl{font-size:18px;color:var(--mt);background:transparent;border-color:transparent}.np.bl{background:transparent;border-color:transparent;pointer-events:none}
 #pwp{width:100%;display:none}
-.pww{position:relative;width:100%;margin-bottom:10px}
-.pwi{width:100%;background:var(--cd);border:1.5px solid var(--br);border-radius:14px;padding:15px 48px 15px 18px;font-size:15px;font-weight:600;font-family:var(--f);color:var(--tx);outline:none;letter-spacing:1.5px;transition:border-color .2s}
-.pwi::placeholder{letter-spacing:0;font-weight:500;color:var(--mt);font-size:13px}
+.pww{position:relative;width:100%;margin-bottom:8px}
+.pwi{width:100%;background:var(--cd);border:1.5px solid var(--br);border-radius:12px;padding:13px 44px 13px 16px;font-size:14px;font-weight:600;font-family:var(--f);color:var(--tx);outline:none;letter-spacing:1.5px;transition:border-color .2s}
+.pwi::placeholder{letter-spacing:0;font-weight:500;color:var(--mt);font-size:12px}
 .pwi:focus{border-color:var(--ac)}
 .pwi.sk{animation:shake .35s ease;border-color:var(--rd)}
-.eyb{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:17px;cursor:pointer;opacity:.55;user-select:none}
-.pwh{font-size:11px;font-weight:500;color:var(--mt);text-align:center;margin-bottom:20px;margin-top:6px}
-.lsbt{width:100%;background:linear-gradient(135deg,var(--ac),var(--a2));border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:800;font-family:var(--f);color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(239,62,35,.35)}
+.eyb{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:16px;cursor:pointer;opacity:.55;user-select:none}
+.pwh{font-size:11px;font-weight:500;color:var(--mt);text-align:center;margin-bottom:16px;margin-top:5px}
+.lsbt{width:100%;background:linear-gradient(135deg,var(--ac),var(--a2));border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:800;font-family:var(--f);color:#fff;cursor:pointer;box-shadow:0 4px 18px rgba(239,62,35,.32)}
 .lsbt:active{opacity:.82}
-.lsat{font-size:11px;font-weight:500;color:var(--mt);text-align:center;margin-top:12px}
+.lsat{font-size:10px;font-weight:500;color:var(--mt);text-align:center;margin-top:10px}
 .lsat b{color:var(--rd)}
 
 /* PAGES */
@@ -387,30 +392,44 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 
 <!-- LOGIN -->
 <div id="ls">
-  <div class="lslo"><svg viewBox="0 0 100 100" fill="none"><path d="M20 72L50 24L80 72" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg></div>
-  <div class="lsbr">Upstox</div>
-  <div class="lssb">Secure access to your portfolio</div>
-  <div class="lsus"><div class="lsav">AS</div><div><div class="lsnm">Ashokkumar Shanmugam</div><div class="lsid">UPX2024081847 · Chennai</div></div></div>
-  <div class="lsmd"><div class="lsmb on" id="mPin" onclick="setM('pin')">🔢 MPIN</div><div class="lsmb" id="mPwd" onclick="setM('pwd')">🔑 Password</div></div>
-  <div class="lser" id="lsEr"></div>
-  <div id="pip" style="width:100%">
-    <div class="pdots" id="pds">
-      <div class="pd" id="d0"></div><div class="pd" id="d1"></div><div class="pd" id="d2"></div><div class="pd" id="d3"></div>
-      <div class="pd" id="d4"></div><div class="pd" id="d5"></div><div class="pd" id="d6"></div><div class="pd" id="d7"></div>
+  <div class="ls-card">
+    <div class="lslo"><svg viewBox="0 0 100 100" fill="none"><path d="M20 72L50 24L80 72" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="80" r="7" fill="white"/></svg></div>
+    <div class="lsbr">Upstox</div>
+    <div class="lssb">Secure access to your portfolio</div>
+    <div class="lsus"><div class="lsav">AS</div><div><div class="lsnm">Ashokkumar Shanmugam</div><div class="lsid">UPX2024081847 · Chennai</div></div></div>
+    <div class="lsmd"><div class="lsmb on" id="mPin" onclick="setM('pin')">🔢 MPIN</div><div class="lsmb" id="mPwd" onclick="setM('pwd')">🔑 Password</div></div>
+    <div class="lser" id="lsEr"></div>
+    <div id="pip" style="width:100%">
+      <div class="pinlbl">Enter your 8-digit MPIN</div>
+      <div class="pdots" id="pds">
+        <div class="pdg">
+          <div class="pd" id="d0"></div><div class="pd" id="d1"></div><div class="pd" id="d2"></div><div class="pd" id="d3"></div>
+        </div>
+        <div class="pdsep"></div>
+        <div class="pdg">
+          <div class="pd" id="d4"></div><div class="pd" id="d5"></div><div class="pd" id="d6"></div><div class="pd" id="d7"></div>
+        </div>
+      </div>
+      <div class="np-grid">
+        <div class="np" onclick="np('1')">1<span class="np-sub">&nbsp;</span></div>
+        <div class="np" onclick="np('2')">2<span class="np-sub">ABC</span></div>
+        <div class="np" onclick="np('3')">3<span class="np-sub">DEF</span></div>
+        <div class="np" onclick="np('4')">4<span class="np-sub">GHI</span></div>
+        <div class="np" onclick="np('5')">5<span class="np-sub">JKL</span></div>
+        <div class="np" onclick="np('6')">6<span class="np-sub">MNO</span></div>
+        <div class="np" onclick="np('7')">7<span class="np-sub">PQRS</span></div>
+        <div class="np" onclick="np('8')">8<span class="np-sub">TUV</span></div>
+        <div class="np" onclick="np('9')">9<span class="np-sub">WXYZ</span></div>
+        <div class="np bl"></div><div class="np z" onclick="np('0')">0</div><div class="np dl" onclick="npd()">⌫</div>
+      </div>
+      <div class="lsat" id="piAt"></div>
     </div>
-    <div class="np-grid">
-      <div class="np" onclick="np('1')">1</div><div class="np" onclick="np('2')">2</div><div class="np" onclick="np('3')">3</div>
-      <div class="np" onclick="np('4')">4</div><div class="np" onclick="np('5')">5</div><div class="np" onclick="np('6')">6</div>
-      <div class="np" onclick="np('7')">7</div><div class="np" onclick="np('8')">8</div><div class="np" onclick="np('9')">9</div>
-      <div class="np bl"></div><div class="np z" onclick="np('0')">0</div><div class="np dl" onclick="npd()">⌫</div>
+    <div id="pwp">
+      <div class="pww"><input class="pwi" id="pwi" type="password" placeholder="Enter your password" autocomplete="off" oninput="pce()" onkeydown="if(event.key==='Enter')pwL()"><span class="eyb" id="eyb" onclick="tEye()">👁️</span></div>
+      <div class="pwh">Use your Upstox account password</div>
+      <button class="lsbt" onclick="pwL()">Login →</button>
+      <div class="lsat" id="pwAt"></div>
     </div>
-    <div class="lsat" id="piAt"></div>
-  </div>
-  <div id="pwp">
-    <div class="pww"><input class="pwi" id="pwi" type="password" placeholder="Enter your password" autocomplete="off" oninput="pce()" onkeydown="if(event.key==='Enter')pwL()"><span class="eyb" id="eyb" onclick="tEye()">👁️</span></div>
-    <div class="pwh">Use your Upstox account password</div>
-    <button class="lsbt" onclick="pwL()">Login →</button>
-    <div class="lsat" id="pwAt"></div>
   </div>
 </div>
 
@@ -481,7 +500,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <span style="width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block;animation:blink 1.6s infinite"></span>
       <span style="font-size:11px;font-weight:700;color:var(--gn)">NSE Closed</span>
     </div>
-    <span style="font-size:11px;font-weight:500;color:var(--mt)">24 Feb 2026 · 15:30 IST</span>
+    <span id="mdt" style="font-size:11px;font-weight:500;color:var(--mt)"></span>
     <span style="font-size:11px;font-weight:600;color:var(--mt)">EOD Data</span>
   </div>
 
@@ -770,8 +789,15 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 
 <script>
 // ── DATA ──────────────────────────────────────────
+var _months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var _d = new Date();
+var _dd = (_d.getDate() < 10 ? '0' : '') + _d.getDate();
+var _hh = (_d.getHours() < 10 ? '0' : '') + _d.getHours();
+var _mm = (_d.getMinutes() < 10 ? '0' : '') + _d.getMinutes();
+var _dateStr = _dd + ' ' + _months[_d.getMonth()] + ' ' + _d.getFullYear();
+var _timeStr = _hh + ':' + _mm + ' IST';
 var SD = {
-  updated: "24 Feb 2026, 15:30 IST",
+  updated: _dateStr + ", " + _timeStr,
   indices: {
     nifty50:   {name:"NIFTY 50",   value:25571.25, change:-312.80, pct:-1.21},
     sensex:    {name:"SENSEX",     value:84357.10, change:-982.40, pct:-1.15},
@@ -1032,6 +1058,7 @@ function renderHome() {
     strip.appendChild(c);
   });
   document.getElementById('sdt').textContent = SD.updated;
+  document.getElementById('mdt').textContent = _dateStr + ' \u00b7 ' + _timeStr;
 
   // Portfolio value count-up
   var pEl = document.getElementById('pv');
