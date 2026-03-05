@@ -175,6 +175,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .txrl{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.3px}
 .txnm{font-size:13px;font-weight:700;letter-spacing:-.2px;display:flex;align-items:center;gap:5px}
 .txbuy{display:inline-block;font-size:9px;font-weight:800;padding:1px 5px;border-radius:4px;background:rgba(16,200,122,.12);color:var(--gn);border:1px solid rgba(16,200,122,.2)}
+.txsell{display:inline-block;font-size:9px;font-weight:800;padding:1px 5px;border-radius:4px;background:rgba(240,78,104,.12);color:var(--rd);border:1px solid rgba(240,78,104,.2)}
 .txsb{font-size:11px;color:var(--mt);margin-top:2px}
 .txid{font-size:10px;color:var(--dm);margin-top:2px}
 .txamt{font-size:13px;font-weight:800;letter-spacing:-.3px;text-align:right}
@@ -853,19 +854,50 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
   <!-- Investment Transactions -->
   <div class="acs">Investment Transactions</div>
 
+  <!-- Mar 2026 Redemption -->
+  <div class="txgrp">
+    <div class="txmon"><span>MARCH 2026</span><span style="color:var(--gn)">₹7,29,892 redeemed</span></div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#0d2a1a,#0f5132);font-size:8px">RKSV</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txsell">SELL</span>Full Portfolio Exit</div>
+        <div class="txsb">All holdings · Redemption paid · 04 Mar 2026</div>
+        <div class="txid">RKSV Securities India Pvt Ltd · Ref #RKS2026030400019</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt" style="color:var(--gn)">₹7,29,892</div>
+        <div class="txst">✓ Credited</div>
+      </div>
+    </div>
+
+    <div class="txr">
+      <div class="txrl" style="background:linear-gradient(135deg,#0d2a1a,#0f5132);font-size:8px">RKSV</div>
+      <div style="flex:1;min-width:0">
+        <div class="txnm"><span class="txsell">REQ</span>Redemption Request Raised</div>
+        <div class="txsb">All 8 holdings · Submitted at 10:14 AM · 03 Mar 2026</div>
+        <div class="txid">RKSV Securities India Pvt Ltd · Ref #RKS2026030300018</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div class="txamt">₹7,29,892</div>
+        <div class="txst" style="color:var(--mt)">Processed</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Feb 2025 batch -->
   <div class="txgrp">
-    <div class="txmon"><span>FEBRUARY 2025</span><span style="color:var(--rd)">₹6,23,341 invested</span></div>
+    <div class="txmon"><span>FEBRUARY 2025</span><span style="color:var(--rd)">₹4,89,935 invested</span></div>
 
     <div class="txr">
       <div class="txrl" style="background:linear-gradient(135deg,#1a1a2a,#1d4ed8)">TATA</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>TATAMOTORS</div>
-        <div class="txsb">165 qty × ₹573.00 · 21 Feb 2025</div>
+        <div class="txsb">165 qty × ₹433.00 · 21 Feb 2025</div>
         <div class="txid">Order #UPX2025022100384</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹94,545</div>
+        <div class="txamt">₹71,445</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -874,11 +906,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#2a1a1a,#b91c1c)">ADANI</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>ADANIENT</div>
-        <div class="txsb">54 qty × ₹3,137.00 · 14 Feb 2025</div>
+        <div class="txsb">54 qty × ₹2,338.00 · 14 Feb 2025</div>
         <div class="txid">Order #UPX2025021400291</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹1,69,398</div>
+        <div class="txamt">₹1,26,252</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -900,11 +932,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1a1a2a,#1d4ed8)">TATA</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>TATAMOTORS</div>
-        <div class="txsb">200 qty × ₹628.00 · 07 Feb 2025</div>
+        <div class="txsb">200 qty × ₹463.00 · 07 Feb 2025</div>
         <div class="txid">Order #UPX2025020700206</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹1,25,600</div>
+        <div class="txamt">₹92,600</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -913,11 +945,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#2a1a1a,#b91c1c)">ADANI</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>ADANIENT</div>
-        <div class="txsb">40 qty × ₹3,286.00 · 05 Feb 2025</div>
+        <div class="txsb">40 qty × ₹2,432.00 · 05 Feb 2025</div>
         <div class="txid">Order #UPX2025020500174</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹1,31,440</div>
+        <div class="txamt">₹97,280</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -938,7 +970,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 
   <!-- Jul–Sep 2024 batch -->
   <div class="txgrp" style="margin-top:4px">
-    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹3,79,393 invested</span></div>
+    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹4,79,926 invested</span></div>
 
     <div class="txr">
       <div class="txrl" style="background:linear-gradient(135deg,#2a1a3a,#7c3aed)">INFY</div>
@@ -983,11 +1015,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
-        <div class="txsb">287 qty × ₹302.00 · 08 Aug 2024</div>
+        <div class="txsb">287 qty × ₹461.00 · 08 Aug 2024</div>
         <div class="txid">Order #UPX2024080800341</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹86,674</div>
+        <div class="txamt">₹1,32,307</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1061,11 +1093,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
-        <div class="txsb">300 qty × ₹311.00 · 15 Jul 2024</div>
+        <div class="txsb">300 qty × ₹494.00 · 15 Jul 2024</div>
         <div class="txid">Order #UPX2024071500142</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹93,300</div>
+        <div class="txamt">₹1,48,200</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1131,10 +1163,10 @@ var SD = {
     {sym:"TCS",        qty:14,  avg:3558, logo:"TCS",    bg:"linear-gradient(135deg,#1a3a2a,#16a34a)"},
     {sym:"ITC",        qty:146, avg: 343, logo:"ITC",    bg:"linear-gradient(135deg,#2a2a1a,#ca8a04)"},
     {sym:"INFY",       qty:30,  avg:1649, logo:"INFY",   bg:"linear-gradient(135deg,#2a1a3a,#7c3aed)"},
-    {sym:"WIPRO",      qty:587, avg: 307, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
+    {sym:"WIPRO",      qty:587, avg: 478, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
     {sym:"BAJFINANCE", qty:15,  avg:6824, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
-    {sym:"ADANIENT",   qty:94,  avg:3200, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
-    {sym:"TATAMOTORS", qty:365, avg: 604, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
+    {sym:"ADANIENT",   qty:94,  avg:2378, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
+    {sym:"TATAMOTORS", qty:365, avg: 449, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
   ]
 };
 
@@ -1414,17 +1446,17 @@ function renderHome() {
   if (wb) wb.textContent = (gainSyms.length ? gainSyms.join(', ') + ' in profit. ' : '') + (lossSyms.length ? lossSyms.join(', ') + ' in loss.' : '');
 
   // Sparkline — portfolio value history Jul 2024 → Feb 2026
-  // Jul-Sep 2024: ₹5L invested, rises to ₹7L peak
-  // Oct 2024-Jan 2025: correction back to ₹5.2L
-  // Feb 2025: ₹5L more invested → jumps; peaks Mar 2025 at ₹11.3L
-  // Apr 2025-Feb 2026: gradual decline with ups/downs → ₹7.3L now
+  // Jul-Sep 2024: ₹4.8L invested, portfolio grows steadily
+  // Nov 2024-Jan 2025: spike to ₹6.6L (₹1.8L profit on first batch)
+  // Feb 2025: ₹4.9L more invested → jumps to ₹11.2L
+  // Mar 2025-Feb 2026: gradual decline with ups/downs → ₹7.3L now
   var pts = [
-    482000, 524000, 572000, 618000, 662000, 698000, 724000, 728000,
-    706000, 674000, 638000, 596000, 558000, 526000, 512000,
-    1042000, 1078000, 1112000, 1128000,
-    1084000, 1046000, 1008000, 966000,
-    948000, 912000, 874000, 886000, 848000,
-    814000, 782000, 758000, 746000, tCurr
+    492000, 526000, 554000, 572000, 588000, 600000, 620000, 636000,
+    650000, 648000, 658000, 656000, 660000, 644000, 626000,
+    1116000, 1098000, 1086000, 1068000,
+    1044000, 1018000, 992000, 962000,
+    940000, 914000, 888000, 864000, 842000,
+    818000, 796000, 776000, 758000, tCurr
   ];
   var W = 300, H = 44, pad = 3;
   var mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts), rng = mx - mn || 1;
