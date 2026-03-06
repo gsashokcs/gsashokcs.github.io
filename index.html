@@ -847,7 +847,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
   <div class="ml" style="padding:0 18px">
     <div class="mi" onclick="showToast('Downloading P&amp;L Report…')"><div class="mio" style="background:rgba(16,200,122,.1);font-size:17px">📊</div><div class="mtx"><div class="mtt">P&amp;L Report</div><div class="msb">FY 2024–25 · Realised gains &amp; losses</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">PDF ↓</div></div>
     <div class="mi" onclick="showToast('Downloading Ledger…')"><div class="mio" style="background:rgba(99,102,241,.1);font-size:17px">📒</div><div class="mtx"><div class="mtt">Ledger Statement</div><div class="msb">All fund movements · 01 Apr 2024 – Today</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">PDF ↓</div></div>
-    <div class="mi" onclick="showToast('Downloading Contract Notes…')"><div class="mio" style="background:rgba(240,180,41,.1);font-size:17px">📋</div><div class="mtx"><div class="mtt">Contract Notes</div><div class="msb">Trade confirmations · 14 orders</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">ZIP ↓</div></div>
+    <div class="mi" onclick="showToast('Downloading Contract Notes…')"><div class="mio" style="background:rgba(240,180,41,.1);font-size:17px">📋</div><div class="mtx"><div class="mtt">Contract Notes</div><div class="msb">Trade confirmations · 16 orders</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">ZIP ↓</div></div>
     <div class="mi" onclick="showToast('Downloading Tax P&amp;L…')"><div class="mio" style="background:rgba(239,62,35,.1);font-size:17px">🏦</div><div class="mtx"><div class="mtt">Tax P&amp;L (ITR)</div><div class="msb">Capital gains summary for filing</div></div><div class="mar" style="font-size:11px;font-weight:700;color:var(--a2)">XLSX ↓</div></div>
   </div>
 
@@ -1446,19 +1446,22 @@ function renderHome() {
   if (wb) wb.textContent = (gainSyms.length ? gainSyms.join(', ') + ' in profit. ' : '') + (lossSyms.length ? lossSyms.join(', ') + ' in loss.' : '');
 
   // Sparkline — portfolio value history Jul 2024 → Mar 2026
-  // Jul-Sep 2024: ₹4.8L invested, grows steadily
-  // Nov 2024-Jan 2025: spike to ₹6.6L (₹1.8L profit on first batch)
-  // Feb 2025: ₹4.9L more invested → jumps to ₹11.2L
-  // Mar 2025-Jan 2026: gradual decline
-  // Feb 2026: trough ~₹7.78L then recovery
-  // Mar 3 2026: peaks at ₹7.82L (redeemed next day)
+  // Jul-Sep 2024: ₹4.32L invested (real NSE prices: RELIANCE@₹1,503, WIPRO@₹480 avg)
+  // Aug 2024: TCS approaches ATH ₹4,592; portfolio grows steadily
+  // Nov-Dec 2024: spike to ₹6.12L (₹1.8L profit on first batch)
+  // Feb 2025: ₹4.9L more invested (BAJFINANCE@₹6,800 pre-split, ADANIENT@₹2,378, TATAMOTORS@₹449)
+  // Jumps to ₹10.62L after investment
+  // Mar 2025-Jan 2026: gradual decline as IT sector corrects
+  // Jun 2025: BAJFINANCE 4:1 bonus + 1:2 split (×10 shares)
+  // Feb 2026: trough ~₹7.76L then recovery
+  // Mar 3 2026: peaks at ₹7.82L — redemption request raised (paid Mar 4)
   var pts = [
-    492000, 526000, 554000, 572000, 588000, 600000, 620000, 636000,
-    650000, 648000, 658000, 656000, 660000, 644000, 626000,
-    1116000, 1098000, 1082000, 1064000,
-    1038000, 1010000, 980000, 954000,
-    926000, 898000, 872000, 848000, 824000,
-    804000, 812000, 796000, 778000, 780000,
+    432000, 468000, 498000, 534000, 562000, 584000, 598000, 608000,
+    612000, 610000, 608000, 612000, 606000, 590000, 572000,
+    1062000, 1046000, 1022000, 1002000,
+    980000, 958000, 934000, 906000,
+    882000, 856000, 834000, 814000, 800000,
+    792000, 788000, 784000, 776000, 780000,
     782000, 782000
   ];
   var W = 300, H = 44, pad = 3;
@@ -1678,7 +1681,7 @@ function renderPortfolio() {
   var stats = [
     {l:'Invested', v:R(tCost), c:''},
     {l:'Day P&L', v:SN(tDay), c:tDay >= 0 ? 'var(--gn)' : 'var(--rd)'},
-    {l:'XIRR', v:'-14.2%', c:'var(--rd)'}
+    {l:'XIRR', v:'-12.0%', c:'var(--rd)'}
   ];
   stats.forEach(function(st) {
     var d = document.createElement('div');
