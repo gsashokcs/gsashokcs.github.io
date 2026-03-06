@@ -970,7 +970,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 
   <!-- Jul–Sep 2024 batch -->
   <div class="txgrp" style="margin-top:4px">
-    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹4,79,926 invested</span></div>
+    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹4,32,040 invested</span></div>
 
     <div class="txr">
       <div class="txrl" style="background:linear-gradient(135deg,#2a1a3a,#7c3aed)">INFY</div>
@@ -989,11 +989,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">RL</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>RELIANCE</div>
-        <div class="txsb">11 qty × ₹1,895.00 · 20 Aug 2024</div>
+        <div class="txsb">11 qty × ₹1,489.00 · 20 Aug 2024</div>
         <div class="txid">Order #UPX2024082000412</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹20,845</div>
+        <div class="txamt">₹16,379</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1015,11 +1015,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
-        <div class="txsb">287 qty × ₹461.00 · 08 Aug 2024</div>
+        <div class="txsb">207 qty × ₹461.00 · 08 Aug 2024</div>
         <div class="txid">Order #UPX2024080800341</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹1,32,307</div>
+        <div class="txamt">₹95,427</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1054,11 +1054,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">RL</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>RELIANCE</div>
-        <div class="txsb">15 qty × ₹1,948.00 · 22 Jul 2024</div>
+        <div class="txsb">15 qty × ₹1,512.00 · 22 Jul 2024</div>
         <div class="txid">Order #UPX2024072200234</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹29,220</div>
+        <div class="txamt">₹22,680</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1142,29 +1142,29 @@ var _timeStr = _hh + ':' + _mm + ' IST';
 var SD = {
   updated: _dateStr + ", " + _timeStr,
   indices: {
-    nifty50:   {name:"NIFTY 50",   value:22847.35, change:-248.60, pct:-1.08},
-    sensex:    {name:"SENSEX",     value:75482.80, change:-810.40, pct:-1.06},
-    banknifty: {name:"BANK NIFTY", value:48634.20, change:-524.80, pct:-1.07},
-    midcap:    {name:"MIDCAP 100", value:41286.40, change:-748.60, pct:-1.78}
+    nifty50:   {name:"NIFTY 50",   value:24765.90, change: 285.40, pct: 1.17},
+    sensex:    {name:"SENSEX",     value:80015.90, change: 899.71, pct: 1.14},
+    banknifty: {name:"BANK NIFTY", value:59824.40, change:1069.40, pct: 1.82},
+    midcap:    {name:"MIDCAP 100", value:57792.55, change: 624.80, pct: 1.09}
   },
   stocks: {
-    RELIANCE:   {name:"Reliance Ind.", price:2302.40, prev:2244.20, change: 58.20, pct: 2.59, high:2316.80, low:2238.60, vol:"28.6L",  mcap:"15.60L Cr", sector:"Energy"},
-    TCS:        {name:"TCS",           price:4102.30, prev:4040.20, change: 62.10, pct: 1.54, high:4118.60, low:4032.40, vol:"12.4L",  mcap:"14.88L Cr", sector:"IT"},
-    HDFCBANK:   {name:"HDFC Bank",     price:1758.80, prev:1750.60, change:  8.20, pct: 0.47, high:1766.40, low:1744.80, vol:"74.6L",  mcap:"13.36L Cr", sector:"Banking"},
-    INFY:       {name:"Infosys",       price:1373.80, prev:1406.20, change:-32.40, pct:-2.30, high:1402.00, low:1368.40, vol:"38.6L",  mcap:"5.71L Cr",  sector:"IT"},
-    WIPRO:      {name:"Wipro",         price: 229.20, prev: 236.40, change: -7.20, pct:-3.05, high: 235.60, low: 227.80, vol:"92.4L",  mcap:"2.38L Cr",  sector:"IT"},
-    ITC:        {name:"ITC Ltd",       price: 418.40, prev: 412.80, change:  5.60, pct: 1.36, high: 421.80, low: 410.60, vol:"168.4L", mcap:"5.28L Cr",  sector:"FMCG"},
-    BAJFINANCE: {name:"Bajaj Finance", price:5538.40, prev:5733.60, change:-195.20,pct:-3.40, high:5726.40, low:5520.80, vol:"18.8L",  mcap:"3.43L Cr",  sector:"Finance"},
-    ADANIENT:   {name:"Adani Ent.",    price:2038.20, prev:2096.20, change:-58.00, pct:-2.77, high:2098.40, low:2024.60, vol:"42.6L",  mcap:"2.34L Cr",  sector:"Conglomerate"},
-    TATAMOTORS: {name:"Tata Motors",   price: 412.60, prev: 402.80, change:  9.80, pct: 2.43, high: 414.40, low: 400.20, vol:"184.2L", mcap:"1.50L Cr",  sector:"Auto"}
+    RELIANCE:   {name:"Reliance Ind.", price:1389.40, prev:1418.80, change:-29.40, pct:-2.07, high:1421.40, low:1384.20, vol:"18.4L",  mcap:"18.82L Cr", sector:"Energy"},
+    TCS:        {name:"TCS",           price:2578.80, prev:2630.40, change:-51.60, pct:-1.96, high:2641.20, low:2568.40, vol:"8.6L",   mcap:"9.36L Cr",  sector:"IT"},
+    HDFCBANK:   {name:"HDFC Bank",     price: 877.75, prev: 912.40, change:-34.65, pct:-3.80, high: 918.20, low: 872.80, vol:"92.4L",  mcap:"6.68L Cr",  sector:"Banking"},
+    INFY:       {name:"Infosys",       price:1307.50, prev:1334.20, change:-26.70, pct:-2.00, high:1338.40, low:1302.60, vol:"32.8L",  mcap:"5.44L Cr",  sector:"IT"},
+    WIPRO:      {name:"Wipro",         price: 195.68, prev: 198.57, change: -2.89, pct:-1.46, high: 199.80, low: 194.20, vol:"68.2L",  mcap:"2.04L Cr",  sector:"IT"},
+    ITC:        {name:"ITC Ltd",       price: 311.50, prev: 318.40, change: -6.90, pct:-2.17, high: 319.80, low: 310.20, vol:"124.6L", mcap:"3.93L Cr",  sector:"FMCG"},
+    BAJFINANCE: {name:"Bajaj Finance", price: 989.30, prev:1024.60, change:-35.30, pct:-3.44, high:1028.40, low: 984.20, vol:"22.4L",  mcap:"6.12L Cr",  sector:"Finance"},
+    ADANIENT:   {name:"Adani Ent.",    price:2089.20, prev:2132.40, change:-43.20, pct:-2.03, high:2138.80, low:2082.40, vol:"36.8L",  mcap:"2.40L Cr",  sector:"Conglomerate"},
+    TATAMOTORS: {name:"Tata Motors",   price: 489.10, prev: 498.00, change: -8.90, pct:-1.79, high: 499.20, low: 486.40, vol:"142.6L", mcap:"1.78L Cr",  sector:"Auto"}
   },
   holdings: [
-    {sym:"RELIANCE",   qty:26,  avg:1925, logo:"RL",     bg:"linear-gradient(135deg,#1e3a5f,#2563eb)"},
+    {sym:"RELIANCE",   qty:26,  avg:1503, logo:"RL",     bg:"linear-gradient(135deg,#1e3a5f,#2563eb)"},
     {sym:"TCS",        qty:14,  avg:3558, logo:"TCS",    bg:"linear-gradient(135deg,#1a3a2a,#16a34a)"},
     {sym:"ITC",        qty:146, avg: 343, logo:"ITC",    bg:"linear-gradient(135deg,#2a2a1a,#ca8a04)"},
     {sym:"INFY",       qty:30,  avg:1649, logo:"INFY",   bg:"linear-gradient(135deg,#2a1a3a,#7c3aed)"},
-    {sym:"WIPRO",      qty:587, avg: 478, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
-    {sym:"BAJFINANCE", qty:15,  avg:6824, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
+    {sym:"WIPRO",      qty:507, avg: 480, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
+    {sym:"BAJFINANCE", qty:150, avg: 682, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
     {sym:"ADANIENT",   qty:94,  avg:2378, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
     {sym:"TATAMOTORS", qty:365, avg: 449, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
   ]

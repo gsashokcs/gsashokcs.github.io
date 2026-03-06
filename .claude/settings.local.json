@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "WebSearch",
+      "WebFetch(domain:stockpricearchive.com)",
+      "WebFetch(domain:www.spidersoftwareindia.com)"
     ]
   }
 }
