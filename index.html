@@ -826,14 +826,14 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
           <div class="rpt-v" id="rptInv">—</div>
         </div>
         <div class="rpt-kv" style="text-align:right">
-          <div class="rpt-k">Current Value</div>
+          <div class="rpt-k" id="rptCurrLbl">Current Value</div>
           <div class="rpt-v" id="rptCurr">—</div>
         </div>
       </div>
       <div class="rpt-div"></div>
       <div class="rpt-row">
         <div class="rpt-kv">
-          <div class="rpt-k">Unrealised P&amp;L</div>
+          <div class="rpt-k" id="rptPnlLbl">Unrealised P&amp;L</div>
           <div class="rpt-v" id="rptPnl">—</div>
         </div>
         <div class="rpt-kv" style="text-align:right">
@@ -1490,7 +1490,7 @@ function renderHome() {
     980000, 958000, 934000, 906000,
     882000, 856000, 834000, 814000, 800000,
     792000, 788000, 784000, 776000, 780000,
-    782000, 779000, 0
+    782000, 782000
   ];
   var W = 300, H = 44, pad = 3;
   var mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts), rng = mx - mn || 1;
@@ -1547,6 +1547,15 @@ function renderHome() {
 function renderHList(f) {
   var list = document.getElementById('hl');
   list.innerHTML = '';
+  if (SD.redeemed) {
+    list.innerHTML = '<div style="padding:28px 18px;text-align:center;color:var(--mt);font-size:13px">' +
+      '<div style="font-size:22px;margin-bottom:8px">\u2714</div>' +
+      '<div style="font-weight:700;color:var(--tx);font-size:15px;margin-bottom:4px">Portfolio Fully Exited</div>' +
+      '<div>' + SD.redeemed.dt + ' &nbsp;&middot;&nbsp; &#8377;7,79,000 credited</div>' +
+      '<div style="margin-top:6px;font-size:11px">Realised P&amp;L: <span style="color:var(--rd)">&#8722;&#8377;2,01,061</span></div>' +
+      '</div>';
+    return;
+  }
   var items = COMP.filter(function(h) {
     if (f === 'gainers') return h.pnl >= 0;
     if (f === 'losers') return h.pnl < 0;
@@ -1931,6 +1940,10 @@ function renderReports() {
   var tCur = SD.redeemed ? SD.redeemed.amt : (COMP.reduce(function(s, c) { return s + c.curr; }, 0));
   var pnl = tCur - tInv;
   var ret = pnl / tInv * 100;
+  if (SD.redeemed) {
+    document.getElementById('rptCurrLbl').textContent = 'Redemption Value';
+    document.getElementById('rptPnlLbl').textContent = 'Realised P\u0026L';
+  }
   document.getElementById('rptInv').textContent = '\u20b9' + fi(Math.round(tInv));
   document.getElementById('rptCurr').textContent = SD.redeemed ? '\u20b97,79,000 \u2714' : '\u20b9' + fi(Math.round(tCur));
   var pnlEl = document.getElementById('rptPnl');
@@ -1991,7 +2004,6 @@ function srchFilter(q) {
     row.innerHTML =
       '<div style="display:flex;align-items:center;gap:10px">' +
         '<div style="width:36px;height:36px;border-radius:9px;background:var(--cd);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--tx)">' + sym.substring(0,3) + '</div>' +
-        '<div><div style="font-size:13px;font-weight:700">' + s.name + '</div>' +
         '<div style="font-size:10px;font-weight:500;color:var(--mt);margin-top:1px">' + s.sector + (inHolding ? ' · <span style="color:var(--a2)">In Portfolio</span>' : '') + '</div></div>' +
       '</div>' +
       '<div style="text-align:right">' +
@@ -2065,24 +2077,31 @@ function _rksv_header(title, period) {
 }
 
 function _holdings_table() {
+  var totalCost = COMP.reduce(function(s, c) { return s + c.cost; }, 0);
   var rows = COMP.map(function(c) {
-    var pc = c.pnlPct >= 0 ? 'pos' : 'neg';
+    var cost = Math.round(c.cost);
+    var exitVal = SD.redeemed ? Math.round(c.cost / totalCost * SD.redeemed.amt) : Math.round(c.curr);
+    var gl = exitVal - cost;
+    var pc = gl >= 0 ? 'pos' : 'neg';
+    var glPct = cost > 0 ? gl / cost * 100 : 0;
+    var ltp = SD.redeemed ? '&#8212;' : '&#8377;' + fi(c.s.price, 2);
     return '<tr>' +
       '<td><b>' + c.sym + '</b></td>' +
       '<td style="text-align:right">' + c.qty + '</td>' +
       '<td style="text-align:right">&#8377;' + fi(c.avg, 2) + '</td>' +
-      '<td style="text-align:right">&#8377;' + fi(c.s.price, 2) + '</td>' +
-      '<td style="text-align:right">&#8377;' + fi(Math.round(c.cost)) + '</td>' +
-      '<td style="text-align:right">&#8377;' + fi(Math.round(c.curr)) + '</td>' +
-      '<td style="text-align:right" class="' + pc + '">' + (c.pnl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(Math.round(c.pnl))) + '</td>' +
-      '<td style="text-align:right" class="' + pc + '">' + (c.pnlPct >= 0 ? '+' : '') + fi(c.pnlPct, 2) + '%</td>' +
+      '<td style="text-align:right">' + ltp + '</td>' +
+      '<td style="text-align:right">&#8377;' + fi(cost) + '</td>' +
+      '<td style="text-align:right">&#8377;' + fi(exitVal) + '</td>' +
+      '<td style="text-align:right" class="' + pc + '">' + (gl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(gl)) + '</td>' +
+      '<td style="text-align:right" class="' + pc + '">' + (glPct >= 0 ? '+' : '') + fi(glPct, 2) + '%</td>' +
       '</tr>';
   }).join('');
-  var tInv = 0, tCur = 0;
-  COMP.forEach(function(c) { tInv += c.cost; tCur += c.curr; });
+  var tInv = totalCost;
+  var tCur = SD.redeemed ? SD.redeemed.amt : COMP.reduce(function(s, c) { return s + c.curr; }, 0);
   var tp = tCur - tInv, tpc = tp / tInv * 100;
   var tpc2 = tpc >= 0 ? 'pos' : 'neg';
-  return '<table><thead><tr><th>Symbol</th><th style="text-align:right">Qty</th><th style="text-align:right">Avg Cost</th><th style="text-align:right">LTP</th><th style="text-align:right">Invested</th><th style="text-align:right">Curr. Value</th><th style="text-align:right">P&amp;L</th><th style="text-align:right">Return%</th></tr></thead>' +
+  var currHdr = SD.redeemed ? 'Exit Value' : 'Curr. Value';
+  return '<table><thead><tr><th>Symbol</th><th style="text-align:right">Qty</th><th style="text-align:right">Avg Cost</th><th style="text-align:right">LTP</th><th style="text-align:right">Invested</th><th style="text-align:right">' + currHdr + '</th><th style="text-align:right">P&amp;L</th><th style="text-align:right">Return%</th></tr></thead>' +
     '<tbody>' + rows + '</tbody>' +
     '<tfoot><tr><td colspan="4"><b>TOTAL</b></td>' +
     '<td style="text-align:right"><b>&#8377;' + fi(Math.round(tInv)) + '</b></td>' +
@@ -2144,17 +2163,19 @@ function _pdf_footer() {
 
 function exportFullReport() {
   if (!COMP || !COMP.length) { showToast('Portfolio data not loaded'); return; }
-  var tInv = 0, tCur = 0;
-  COMP.forEach(function(c) { tInv += c.cost; tCur += c.curr; });
+  var tInv = SD.redeemed ? SD.redeemed.inv : COMP.reduce(function(s, c) { return s + c.cost; }, 0);
+  var tCur = SD.redeemed ? SD.redeemed.amt : COMP.reduce(function(s, c) { return s + c.curr; }, 0);
   var pnl = tCur - tInv, ret = pnl / tInv * 100;
   var pc = pnl >= 0 ? 'pos' : 'neg';
+  var currLbl = SD.redeemed ? 'Redemption Value' : 'Current Value';
+  var pnlLbl  = SD.redeemed ? 'Realised P&amp;L'  : 'Unrealised P&amp;L';
   var body =
     _rksv_header('Portfolio &amp; Transaction Report', '15 Jul 2024 &ndash; 04 Mar 2026') +
     '<div class="sec">Portfolio Summary</div>' +
     '<div class="sg">' +
     '<div class="sc"><div class="sk">Total Invested</div><div class="sv">&#8377;' + fi(Math.round(tInv)) + '</div></div>' +
-    '<div class="sc"><div class="sk">Current Value</div><div class="sv">&#8377;' + fi(Math.round(tCur)) + '</div></div>' +
-    '<div class="sc"><div class="sk">Unrealised P&amp;L</div><div class="sv ' + pc + '">' + (pnl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(Math.round(pnl))) + '</div></div>' +
+    '<div class="sc"><div class="sk">' + currLbl + '</div><div class="sv">&#8377;' + fi(Math.round(tCur)) + '</div></div>' +
+    '<div class="sc"><div class="sk">' + pnlLbl + '</div><div class="sv ' + pc + '">' + (pnl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(Math.round(pnl))) + '</div></div>' +
     '<div class="sc"><div class="sk">XIRR</div><div class="sv neg">&#8722;12.0%</div></div>' +
     '</div>' +
     '<div class="sec">Holdings</div>' +
@@ -2167,8 +2188,8 @@ function exportFullReport() {
 
 function exportPnL() {
   if (!COMP || !COMP.length) { showToast('Portfolio data not loaded'); return; }
-  var tInv = 0, tCur = 0;
-  COMP.forEach(function(c) { tInv += c.cost; tCur += c.curr; });
+  var tInv = SD.redeemed ? SD.redeemed.inv : COMP.reduce(function(s, c) { return s + c.cost; }, 0);
+  var tCur = SD.redeemed ? SD.redeemed.amt : COMP.reduce(function(s, c) { return s + c.curr; }, 0);
   var pnl = tCur - tInv, ret = pnl / tInv * 100;
   var pc = pnl >= 0 ? 'pos' : 'neg';
   var body =
@@ -2257,20 +2278,24 @@ function exportTaxPnL() {
     '</div>' +
     '<div class="sec">Asset-wise Capital Gains (Equity)</div>' +
     '<table><thead><tr><th>Symbol</th><th style="text-align:right">Qty</th><th style="text-align:right">Buy Price (&#8377;)</th><th style="text-align:right">Buy Value (&#8377;)</th><th style="text-align:right">Sale Price (&#8377;)</th><th style="text-align:right">Sale Value (&#8377;)</th><th style="text-align:right">Gain / Loss</th><th>Type</th></tr></thead><tbody>' +
-    COMP.map(function(c) {
-      var sale = Math.round(c.curr);
-      var cost = Math.round(c.cost);
-      var gl = sale - cost;
-      var glCls = gl >= 0 ? 'pos' : 'neg';
-      return '<tr><td><b>' + c.sym + '</b></td>' +
-        '<td style="text-align:right">' + c.qty + '</td>' +
-        '<td style="text-align:right">&#8377;' + fi(c.avg, 2) + '</td>' +
-        '<td style="text-align:right">&#8377;' + fi(cost) + '</td>' +
-        '<td style="text-align:right">&#8377;' + fi(c.s.price, 2) + '</td>' +
-        '<td style="text-align:right">&#8377;' + fi(sale) + '</td>' +
-        '<td style="text-align:right" class="' + glCls + '">' + (gl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(gl)) + '</td>' +
-        '<td>STCG</td></tr>';
-    }).join('') +
+    (function() {
+      var totalCost = COMP.reduce(function(s, c) { return s + c.cost; }, 0);
+      return COMP.map(function(c) {
+        var cost = Math.round(c.cost);
+        var sale = SD.redeemed ? Math.round(c.cost / totalCost * SD.redeemed.amt) : Math.round(c.curr);
+        var salePrice = SD.redeemed ? fi(sale / c.qty, 2) : fi(c.s.price, 2);
+        var gl = sale - cost;
+        var glCls = gl >= 0 ? 'pos' : 'neg';
+        return '<tr><td><b>' + c.sym + '</b></td>' +
+          '<td style="text-align:right">' + c.qty + '</td>' +
+          '<td style="text-align:right">&#8377;' + fi(c.avg, 2) + '</td>' +
+          '<td style="text-align:right">&#8377;' + fi(cost) + '</td>' +
+          '<td style="text-align:right">&#8377;' + salePrice + '</td>' +
+          '<td style="text-align:right">&#8377;' + fi(sale) + '</td>' +
+          '<td style="text-align:right" class="' + glCls + '">' + (gl >= 0 ? '+' : '&#8722;') + '&#8377;' + fi(Math.abs(gl)) + '</td>' +
+          '<td>STCG</td></tr>';
+      }).join('');
+    })() +
     '</tbody></table>' +
     '<p style="font-size:10px;color:#666;margin-top:8px">* Short-term capital gain (held &lt; 24 months). Applicable STCG tax rate: 20% (post Budget 2024). Consult your CA for ITR filing.</p>' +
     _pdf_footer();
