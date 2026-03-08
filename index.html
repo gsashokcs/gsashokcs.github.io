@@ -401,9 +401,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 .iosk{font-size:13px;font-weight:600;line-height:1.4}
 .iosk b{color:var(--a2)}
 .iosx{width:100%;margin-top:16px;background:var(--cd);border:1px solid var(--br);border-radius:13px;padding:14px;font-size:14px;font-weight:700;font-family:var(--f);color:var(--mt);cursor:pointer}
+@media print{body>*:not(#pdf-ov){display:none!important}#pdf-ov{display:block!important;position:static!important}}
 </style>
 </head>
 <body>
+<div id="pdf-ov" style="display:none;position:fixed;inset:0;z-index:99999;background:#fff;overflow-y:auto;padding:32px;font-family:Arial,sans-serif;font-size:12px;color:#111"></div>
 
 <div id="veil"></div>
 
@@ -970,7 +972,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
 
   <!-- Jul–Sep 2024 batch -->
   <div class="txgrp" style="margin-top:4px">
-    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹4,90,000 invested</span></div>
+    <div class="txmon"><span>JUL – SEP 2024</span><span style="color:var(--ac)">₹4,90,126 invested</span></div>
 
     <div class="txr">
       <div class="txrl" style="background:linear-gradient(135deg,#2a1a3a,#7c3aed)">INFY</div>
@@ -1015,11 +1017,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;
       <div class="txrl" style="background:linear-gradient(135deg,#1a2a3a,#0ea5e9)">WIPRO</div>
       <div style="flex:1;min-width:0">
         <div class="txnm"><span class="txbuy">BUY</span>WIPRO</div>
-        <div class="txsb">207 qty × ₹461.00 · 08 Aug 2024</div>
+        <div class="txsb">333 qty × ₹461.00 · 08 Aug 2024</div>
         <div class="txid">Order #UPX2024080800341</div>
       </div>
       <div style="flex-shrink:0;text-align:right">
-        <div class="txamt">₹95,427</div>
+        <div class="txamt">₹1,53,513</div>
         <div class="txst">✓ Executed</div>
       </div>
     </div>
@@ -1163,7 +1165,7 @@ var SD = {
     {sym:"TCS",        qty:14,  avg:3558, logo:"TCS",    bg:"linear-gradient(135deg,#1a3a2a,#16a34a)"},
     {sym:"ITC",        qty:146, avg: 343, logo:"ITC",    bg:"linear-gradient(135deg,#2a2a1a,#ca8a04)"},
     {sym:"INFY",       qty:30,  avg:1649, logo:"INFY",   bg:"linear-gradient(135deg,#2a1a3a,#7c3aed)"},
-    {sym:"WIPRO",      qty:507, avg: 480, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
+    {sym:"WIPRO",      qty:633, avg: 477, logo:"WIPRO",  bg:"linear-gradient(135deg,#1a2a3a,#0ea5e9)"},
     {sym:"BAJFINANCE", qty:150, avg: 682, logo:"BAJFIN", bg:"linear-gradient(135deg,#1a1a3a,#4f46e5)"},
     {sym:"ADANIENT",   qty:94,  avg:2378, logo:"ADANI",  bg:"linear-gradient(135deg,#2a1a1a,#b91c1c)"},
     {sym:"TATAMOTORS", qty:365, avg: 449, logo:"TATA",   bg:"linear-gradient(135deg,#1a1a2a,#1d4ed8)"}
@@ -1989,12 +1991,18 @@ var _pdfCSS = [
 ].join('\n');
 
 function _openPdfWin(title, body) {
-  var w = window.open('', '_blank', 'width=960,height=720');
-  if (!w) { showToast('Allow pop-ups to export PDF'); return null; }
-  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><style>' + _pdfCSS + '</style></head><body>' + body + '</body></html>');
-  w.document.close();
-  w.onload = function() { w.focus(); w.print(); };
-  return w;
+  var ov = document.getElementById('pdf-ov');
+  ov.innerHTML = '<style>' + _pdfCSS + '</style>' + body;
+  ov.style.display = 'block';
+  document.title = title;
+  setTimeout(function() {
+    window.print();
+    setTimeout(function() {
+      ov.style.display = 'none';
+      ov.innerHTML = '';
+      document.title = 'Upstox – Portfolio';
+    }, 800);
+  }, 120);
 }
 
 function _rksv_header(title, period) {
@@ -2048,11 +2056,11 @@ var _TX_DATA = [
     {type:'bb', tag:'BUY', nm:'ADANIENT',   sub:'40 qty &times; &#8377;2,432.00 &middot; 05 Feb 2025', ref:'Order #UPX2025020500174', amt:'&#8377;97,280', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'BAJFINANCE', sub:'8 qty &times; &#8377;6,892.00 &middot; 03 Feb 2025', ref:'Order #UPX2025020300142', amt:'&#8377;55,136', amtCls:'', st:'&#10003; Executed'}
   ]},
-  {grp:'JUL \u2013 SEP 2024', label:'&#8377;4,90,000 Invested', labelCls:'neg', rows:[
+  {grp:'JUL \u2013 SEP 2024', label:'&#8377;4,90,126 Invested', labelCls:'neg', rows:[
     {type:'bb', tag:'BUY', nm:'INFY',        sub:'12 qty &times; &#8377;1,629.00 &middot; 05 Sep 2024', ref:'Order #UPX2024090500487', amt:'&#8377;19,548', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'RELIANCE',    sub:'11 qty &times; &#8377;1,489.00 &middot; 20 Aug 2024', ref:'Order #UPX2024082000412', amt:'&#8377;16,379', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'ITC',         sub:'66 qty &times; &#8377;337.00 &middot; 12 Aug 2024', ref:'Order #UPX2024081200368', amt:'&#8377;22,242', amtCls:'', st:'&#10003; Executed'},
-    {type:'bb', tag:'BUY', nm:'WIPRO',       sub:'207 qty &times; &#8377;461.00 &middot; 08 Aug 2024', ref:'Order #UPX2024080800341', amt:'&#8377;95,427', amtCls:'', st:'&#10003; Executed'},
+    {type:'bb', tag:'BUY', nm:'WIPRO',       sub:'333 qty &times; &#8377;461.00 &middot; 08 Aug 2024', ref:'Order #UPX2024080800341', amt:'&#8377;1,53,513', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'INFY',        sub:'18 qty &times; &#8377;1,662.00 &middot; 05 Aug 2024', ref:'Order #UPX2024080500298', amt:'&#8377;29,916', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'TCS',         sub:'6 qty &times; &#8377;3,528.00 &middot; 28 Jul 2024', ref:'Order #UPX2024072800261', amt:'&#8377;21,168', amtCls:'', st:'&#10003; Executed'},
     {type:'bb', tag:'BUY', nm:'RELIANCE',    sub:'15 qty &times; &#8377;1,512.00 &middot; 22 Jul 2024', ref:'Order #UPX2024072200234', amt:'&#8377;22,680', amtCls:'', st:'&#10003; Executed'},
@@ -2120,7 +2128,7 @@ function exportPnL() {
     '<div class="sg">' +
     '<div class="sc"><div class="sk">Total Invested</div><div class="sv">&#8377;' + fi(Math.round(tInv)) + '</div></div>' +
     '<div class="sc"><div class="sk">Redemption Value</div><div class="sv">&#8377;7,79,000</div></div>' +
-    '<div class="sc"><div class="sk">Realised P&amp;L</div><div class="sv neg">&#8722;&#8377;1,01,935</div></div>' +
+    '<div class="sc"><div class="sk">Realised P&amp;L</div><div class="sv neg">&#8722;&#8377;2,01,061</div></div>' +
     '<div class="sc"><div class="sk">XIRR</div><div class="sv neg">&#8722;12.0%</div></div>' +
     '</div>' +
     '<div class="sec">Stock-wise Holdings</div>' +
@@ -2134,14 +2142,14 @@ function exportLedger() {
     _rksv_header('Ledger Statement', '01 Apr 2024 &ndash; ' + _dateStr) +
     '<div class="sec">Fund Movements</div>' +
     '<table><thead><tr><th>Date</th><th>Description</th><th>Ref No.</th><th style="text-align:right">Debit (&#8377;)</th><th style="text-align:right">Credit (&#8377;)</th><th style="text-align:right">Balance (&#8377;)</th></tr></thead><tbody>' +
-    '<tr><td>15 Jul 2024</td><td>Funds Transferred In</td><td>NEFT/RKSV20240715</td><td style="text-align:right">&mdash;</td><td style="text-align:right" class="pos">4,32,040</td><td style="text-align:right">4,32,040</td></tr>' +
-    '<tr><td>15 Jul 2024</td><td>Equity Purchase &mdash; WIPRO (300)</td><td>UPX2024071500142</td><td style="text-align:right">1,48,200</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,83,840</td></tr>' +
-    '<tr><td>16 Jul 2024</td><td>Equity Purchase &mdash; TCS (8)</td><td>UPX2024071600162</td><td style="text-align:right">28,640</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,55,200</td></tr>' +
-    '<tr><td>18 Jul 2024</td><td>Equity Purchase &mdash; ITC (80)</td><td>UPX2024071800198</td><td style="text-align:right">27,840</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,27,360</td></tr>' +
-    '<tr><td>22 Jul 2024</td><td>Equity Purchase &mdash; RELIANCE (15)</td><td>UPX2024072200234</td><td style="text-align:right">22,680</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,04,680</td></tr>' +
-    '<tr><td>28 Jul 2024</td><td>Equity Purchase &mdash; TCS (6)</td><td>UPX2024072800261</td><td style="text-align:right">21,168</td><td style="text-align:right">&mdash;</td><td style="text-align:right">1,83,512</td></tr>' +
-    '<tr><td>05 Aug 2024</td><td>Equity Purchase &mdash; INFY (18)</td><td>UPX2024080500298</td><td style="text-align:right">29,916</td><td style="text-align:right">&mdash;</td><td style="text-align:right">1,53,596</td></tr>' +
-    '<tr><td>08 Aug 2024</td><td>Equity Purchase &mdash; WIPRO (207)</td><td>UPX2024080800341</td><td style="text-align:right">95,427</td><td style="text-align:right">&mdash;</td><td style="text-align:right">58,169</td></tr>' +
+    '<tr><td>15 Jul 2024</td><td>Funds Transferred In</td><td>NEFT/RKSV20240715</td><td style="text-align:right">&mdash;</td><td style="text-align:right" class="pos">4,90,126</td><td style="text-align:right">4,90,126</td></tr>' +
+    '<tr><td>15 Jul 2024</td><td>Equity Purchase &mdash; WIPRO (300)</td><td>UPX2024071500142</td><td style="text-align:right">1,48,200</td><td style="text-align:right">&mdash;</td><td style="text-align:right">3,41,926</td></tr>' +
+    '<tr><td>16 Jul 2024</td><td>Equity Purchase &mdash; TCS (8)</td><td>UPX2024071600162</td><td style="text-align:right">28,640</td><td style="text-align:right">&mdash;</td><td style="text-align:right">3,13,286</td></tr>' +
+    '<tr><td>18 Jul 2024</td><td>Equity Purchase &mdash; ITC (80)</td><td>UPX2024071800198</td><td style="text-align:right">27,840</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,85,446</td></tr>' +
+    '<tr><td>22 Jul 2024</td><td>Equity Purchase &mdash; RELIANCE (15)</td><td>UPX2024072200234</td><td style="text-align:right">22,680</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,62,766</td></tr>' +
+    '<tr><td>28 Jul 2024</td><td>Equity Purchase &mdash; TCS (6)</td><td>UPX2024072800261</td><td style="text-align:right">21,168</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,41,598</td></tr>' +
+    '<tr><td>05 Aug 2024</td><td>Equity Purchase &mdash; INFY (18)</td><td>UPX2024080500298</td><td style="text-align:right">29,916</td><td style="text-align:right">&mdash;</td><td style="text-align:right">2,11,682</td></tr>' +
+    '<tr><td>08 Aug 2024</td><td>Equity Purchase &mdash; WIPRO (333)</td><td>UPX2024080800341</td><td style="text-align:right">1,53,513</td><td style="text-align:right">&mdash;</td><td style="text-align:right">58,169</td></tr>' +
     '<tr><td>12 Aug 2024</td><td>Equity Purchase &mdash; ITC (66)</td><td>UPX2024081200368</td><td style="text-align:right">22,242</td><td style="text-align:right">&mdash;</td><td style="text-align:right">35,927</td></tr>' +
     '<tr><td>20 Aug 2024</td><td>Equity Purchase &mdash; RELIANCE (11)</td><td>UPX2024082000412</td><td style="text-align:right">16,379</td><td style="text-align:right">&mdash;</td><td style="text-align:right">19,548</td></tr>' +
     '<tr><td>05 Sep 2024</td><td>Equity Purchase &mdash; INFY (12)</td><td>UPX2024090500487</td><td style="text-align:right">19,548</td><td style="text-align:right">&mdash;</td><td style="text-align:right">0</td></tr>' +
@@ -2169,7 +2177,7 @@ function exportContractNotes() {
     '<tr><td>UPX2024072200234</td><td>22 Jul 2024</td><td>RELIANCE</td><td><span class="bb">BUY</span></td><td style="text-align:right">15</td><td style="text-align:right">1,512.00</td><td style="text-align:right">22,680</td><td>Executed</td></tr>' +
     '<tr><td>UPX2024072800261</td><td>28 Jul 2024</td><td>TCS</td><td><span class="bb">BUY</span></td><td style="text-align:right">6</td><td style="text-align:right">3,528.00</td><td style="text-align:right">21,168</td><td>Executed</td></tr>' +
     '<tr><td>UPX2024080500298</td><td>05 Aug 2024</td><td>INFY</td><td><span class="bb">BUY</span></td><td style="text-align:right">18</td><td style="text-align:right">1,662.00</td><td style="text-align:right">29,916</td><td>Executed</td></tr>' +
-    '<tr><td>UPX2024080800341</td><td>08 Aug 2024</td><td>WIPRO</td><td><span class="bb">BUY</span></td><td style="text-align:right">207</td><td style="text-align:right">461.00</td><td style="text-align:right">95,427</td><td>Executed</td></tr>' +
+    '<tr><td>UPX2024080800341</td><td>08 Aug 2024</td><td>WIPRO</td><td><span class="bb">BUY</span></td><td style="text-align:right">333</td><td style="text-align:right">461.00</td><td style="text-align:right">1,53,513</td><td>Executed</td></tr>' +
     '<tr><td>UPX2024081200368</td><td>12 Aug 2024</td><td>ITC</td><td><span class="bb">BUY</span></td><td style="text-align:right">66</td><td style="text-align:right">337.00</td><td style="text-align:right">22,242</td><td>Executed</td></tr>' +
     '<tr><td>UPX2024082000412</td><td>20 Aug 2024</td><td>RELIANCE</td><td><span class="bb">BUY</span></td><td style="text-align:right">11</td><td style="text-align:right">1,489.00</td><td style="text-align:right">16,379</td><td>Executed</td></tr>' +
     '<tr><td>UPX2024090500487</td><td>05 Sep 2024</td><td>INFY</td><td><span class="bb">BUY</span></td><td style="text-align:right">12</td><td style="text-align:right">1,629.00</td><td style="text-align:right">19,548</td><td>Executed</td></tr>' +
@@ -2179,7 +2187,7 @@ function exportContractNotes() {
     '<tr><td>UPX2025021400291</td><td>14 Feb 2025</td><td>ADANIENT</td><td><span class="bb">BUY</span></td><td style="text-align:right">54</td><td style="text-align:right">2,338.00</td><td style="text-align:right">1,26,252</td><td>Executed</td></tr>' +
     '<tr><td>UPX2025021700318</td><td>17 Feb 2025</td><td>BAJFINANCE</td><td><span class="bb">BUY</span></td><td style="text-align:right">7</td><td style="text-align:right">6,746.00</td><td style="text-align:right">47,222</td><td>Executed</td></tr>' +
     '<tr><td>UPX2025022100384</td><td>21 Feb 2025</td><td>TATAMOTORS</td><td><span class="bb">BUY</span></td><td style="text-align:right">165</td><td style="text-align:right">433.00</td><td style="text-align:right">71,445</td><td>Executed</td></tr>' +
-    '</tbody><tfoot><tr><td colspan="6"><b>TOTAL INVESTED</b></td><td style="text-align:right"><b>9,22,935</b></td><td></td></tr></tfoot></table>' +
+    '</tbody><tfoot><tr><td colspan="6"><b>TOTAL INVESTED</b></td><td style="text-align:right"><b>9,80,061</b></td><td></td></tr></tfoot></table>' +
     '<div class="sec">Exit / Redemption</div>' +
     '<table><thead><tr><th>Ref No.</th><th>Date</th><th>Description</th><th>Type</th><th style="text-align:right">Amount (&#8377;)</th><th>Status</th></tr></thead><tbody>' +
     '<tr><td>RKS2026030400019</td><td>04 Mar 2026</td><td>Full Portfolio Exit</td><td><span class="bs">SELL</span></td><td style="text-align:right" class="pos">7,79,000</td><td>Credited</td></tr>' +
@@ -2193,9 +2201,9 @@ function exportTaxPnL() {
     _rksv_header('Tax P&amp;L Statement (ITR)', 'FY 2025&ndash;26 (AY 2026&ndash;27)') +
     '<div class="sec">Capital Gains Summary</div>' +
     '<div class="sg">' +
-    '<div class="sc"><div class="sk">Total Invested</div><div class="sv">&#8377;9,22,935</div></div>' +
+    '<div class="sc"><div class="sk">Total Invested</div><div class="sv">&#8377;9,80,061</div></div>' +
     '<div class="sc"><div class="sk">Sale Proceeds</div><div class="sv">&#8377;7,79,000</div></div>' +
-    '<div class="sc"><div class="sk">Net P&amp;L</div><div class="sv neg">&#8722;&#8377;1,43,935</div></div>' +
+    '<div class="sc"><div class="sk">Net P&amp;L</div><div class="sv neg">&#8722;&#8377;2,01,061</div></div>' +
     '<div class="sc"><div class="sk">Tax Category</div><div class="sv" style="font-size:13px">LTCG / STCG</div></div>' +
     '</div>' +
     '<div class="sec">Asset-wise Capital Gains (Equity)</div>' +
