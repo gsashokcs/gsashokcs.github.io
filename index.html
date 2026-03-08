@@ -1143,6 +1143,7 @@ var _dateStr = _dd + ' ' + _months[_d.getMonth()] + ' ' + _d.getFullYear();
 var _timeStr = _hh + ':' + _mm + ' IST';
 var SD = {
   updated: _dateStr + ", " + _timeStr,
+  redeemed: {dt:'04 Mar 2026', amt:779000, inv:980061},
   indices: {
     nifty50:   {name:"NIFTY 50",   value:24765.90, change: 285.40, pct: 1.17},
     sensex:    {name:"SENSEX",     value:80015.90, change: 899.71, pct: 1.14},
@@ -1371,11 +1372,11 @@ function compute() {
   tCurr = 0; tCost = 0; tDay = 0;
   COMP = SD.holdings.map(function(h) {
     var s = SD.stocks[h.sym];
-    var curr = s.price * h.qty;
+    var curr = SD.redeemed ? 0 : s.price * h.qty;
     var cost = h.avg * h.qty;
     var pnl = curr - cost;
     var pnlPct = pnl / cost * 100;
-    var dayPnl = s.change * h.qty;
+    var dayPnl = SD.redeemed ? 0 : s.change * h.qty;
     tCurr += curr; tCost += cost; tDay += dayPnl;
     return {sym:h.sym, qty:h.qty, avg:h.avg, logo:h.logo, bg:h.bg, s:s, curr:curr, cost:cost, pnl:pnl, pnlPct:pnlPct, dayPnl:dayPnl};
   });
@@ -1406,46 +1407,71 @@ function renderHome() {
   document.getElementById('sdt').textContent = SD.updated;
   document.getElementById('mdt').textContent = _dateStr + ' \u00b7 ' + _timeStr;
 
-  // Portfolio value count-up
+  // Portfolio value
   var pEl = document.getElementById('pv');
-  var v = tCurr * 0.96;
-  function tick() {
-    v += (tCurr - v) * 0.12;
-    pEl.innerHTML = '<span class="sy">\u20b9</span>' + fi(Math.round(v));
-    if (Math.abs(v - tCurr) > 10) requestAnimationFrame(tick);
-    else pEl.innerHTML = '<span class="sy">\u20b9</span>' + fi(tCurr, 2);
-  }
-  requestAnimationFrame(tick);
+  var _dispInv = SD.redeemed ? SD.redeemed.inv : tCost;
+  var _dispCurr = SD.redeemed ? 0 : tCurr;
+  var _dispPnl  = SD.redeemed ? (SD.redeemed.amt - SD.redeemed.inv) : (tCurr - tCost);
+  var _dispPct  = _dispPnl / _dispInv * 100;
 
-  var tPnl = tCurr - tCost;
-  var tPct = tPnl / tCost * 100;
-  var dPct = tDay / (tCurr - tDay) * 100;
-  var cls = tDay >= 0 ? 'bdg up' : 'bdg dn';
+  if (SD.redeemed) {
+    pEl.innerHTML = '<span class="sy">\u20b9</span>0.00';
+  } else {
+    var v = tCurr * 0.96;
+    function tick() {
+      v += (tCurr - v) * 0.12;
+      pEl.innerHTML = '<span class="sy">\u20b9</span>' + fi(Math.round(v));
+      if (Math.abs(v - tCurr) > 10) requestAnimationFrame(tick);
+      else pEl.innerHTML = '<span class="sy">\u20b9</span>' + fi(tCurr, 2);
+    }
+    requestAnimationFrame(tick);
+  }
+
   var dcb = document.getElementById('dcb'), dpb = document.getElementById('dpb');
-  dcb.className = cls; dcb.textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay), 0);
-  dpb.className = cls; dpb.textContent = PC(dPct);
+  if (SD.redeemed) {
+    dcb.className = 'bdg dn'; dcb.textContent = 'Exited';
+    dpb.className = 'bdg dn'; dpb.textContent = SD.redeemed.dt;
+  } else {
+    var dPct = tDay / (tCurr - tDay) * 100;
+    var cls = tDay >= 0 ? 'bdg up' : 'bdg dn';
+    dcb.className = cls; dcb.textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay), 0);
+    dpb.className = cls; dpb.textContent = PC(dPct);
+  }
 
   var ovv = document.getElementById('ovv'), ovp = document.getElementById('ovp');
-  ovv.style.color = CL(tPnl); ovp.style.color = CL(tPnl);
-  ovv.textContent = (tPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(tPnl), 0);
-  ovp.textContent = PC(tPct);
+  ovv.style.color = CL(_dispPnl); ovp.style.color = CL(_dispPnl);
+  ovv.textContent = (_dispPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(_dispPnl), 0);
+  ovp.textContent = PC(_dispPct);
 
-  document.getElementById('sinv').textContent = R(tCost);
-  document.getElementById('scur').textContent = R(tCurr);
+  document.getElementById('sinv').textContent = R(_dispInv);
+  document.getElementById('scur').textContent = R(_dispCurr);
   var sp = document.getElementById('spnl');
-  sp.textContent = (tPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(tPnl), 0);
-  sp.style.color = CL(tPnl);
+  sp.textContent = (_dispPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(_dispPnl), 0);
+  sp.style.color = CL(_dispPnl);
 
-  document.getElementById('srl').textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay * 0.28), 0);
-  document.getElementById('surl').textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay * 0.72), 0);
+  if (SD.redeemed) {
+    document.getElementById('srl').textContent  = '+ \u20b97,79,000';
+    document.getElementById('surl').textContent = '\u2212 \u20b92,01,061';
+    document.getElementById('srl').style.color  = 'var(--gn)';
+    document.getElementById('surl').style.color = 'var(--rd)';
+  } else {
+    document.getElementById('srl').textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay * 0.28), 0);
+    document.getElementById('surl').textContent = AR(tDay) + ' \u20b9' + fi(Math.abs(tDay * 0.72), 0);
+  }
 
   var wt = document.getElementById('wtt');
-  wt.textContent = 'Portfolio ' + (tPnl < 0 ? 'Down' : 'Up') + ' ' + fi(Math.abs(tPct), 2) + '%';
-  wt.style.color = CL(tPnl);
-  var gainSyms = COMP.filter(function(h){ return h.pnl >= 0; }).map(function(h){ return h.sym; });
-  var lossSyms = COMP.filter(function(h){ return h.pnl < 0; }).map(function(h){ return h.sym; });
   var wb = document.getElementById('warnBody');
-  if (wb) wb.textContent = (gainSyms.length ? gainSyms.join(', ') + ' in profit. ' : '') + (lossSyms.length ? lossSyms.join(', ') + ' in loss.' : '');
+  if (SD.redeemed) {
+    wt.textContent = 'Portfolio Fully Exited \u2014 ' + SD.redeemed.dt;
+    wt.style.color = 'var(--mt)';
+    if (wb) wb.textContent = 'All 8 holdings sold. Redemption of \u20b97,79,000 credited on ' + SD.redeemed.dt + '. Realised P\u0026L: \u2212\u20b92,01,061.';
+  } else {
+    wt.textContent = 'Portfolio ' + (_dispPnl < 0 ? 'Down' : 'Up') + ' ' + fi(Math.abs(_dispPct), 2) + '%';
+    wt.style.color = CL(_dispPnl);
+    var gainSyms = COMP.filter(function(h){ return h.pnl >= 0; }).map(function(h){ return h.sym; });
+    var lossSyms = COMP.filter(function(h){ return h.pnl < 0; }).map(function(h){ return h.sym; });
+    if (wb) wb.textContent = (gainSyms.length ? gainSyms.join(', ') + ' in profit. ' : '') + (lossSyms.length ? lossSyms.join(', ') + ' in loss.' : '');
+  }
 
   // Sparkline — portfolio value history Jul 2024 → Mar 2026
   // Jul-Sep 2024: ₹4.32L invested (real NSE prices: RELIANCE@₹1,503, WIPRO@₹480 avg)
@@ -1464,7 +1490,7 @@ function renderHome() {
     980000, 958000, 934000, 906000,
     882000, 856000, 834000, 814000, 800000,
     792000, 788000, 784000, 776000, 780000,
-    782000, 782000
+    782000, 779000, 0
   ];
   var W = 300, H = 44, pad = 3;
   var mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts), rng = mx - mn || 1;
@@ -1657,34 +1683,37 @@ function renderMktStocks(sector) {
 
 // ── PORTFOLIO ─────────────────────────────────────
 function renderPortfolio() {
-  var tPnl = tCurr - tCost;
-  var tPct = tPnl / tCost * 100;
+  var _rPnl = SD.redeemed ? (SD.redeemed.amt - SD.redeemed.inv) : (tCurr - tCost);
+  var _rPct = _rPnl / (SD.redeemed ? SD.redeemed.inv : tCost) * 100;
+  var _rCurr = SD.redeemed ? 0 : tCurr;
 
-  // Hero count-up
+  // Hero value
   var hv = document.getElementById('phv');
-  var cv = tCurr * 0.97;
-  function tick2() {
-    cv += (tCurr - cv) * 0.13;
-    hv.textContent = '\u20b9' + fi(Math.round(cv));
-    if (Math.abs(cv - tCurr) > 10) requestAnimationFrame(tick2);
-    else hv.textContent = '\u20b9' + fi(tCurr, 2);
+  if (SD.redeemed) {
+    hv.textContent = '\u20b90.00';
+  } else {
+    var cv = tCurr * 0.97;
+    function tick2() {
+      cv += (tCurr - cv) * 0.13;
+      hv.textContent = '\u20b9' + fi(Math.round(cv));
+      if (Math.abs(cv - tCurr) > 10) requestAnimationFrame(tick2);
+      else hv.textContent = '\u20b9' + fi(tCurr, 2);
+    }
+    requestAnimationFrame(tick2);
   }
-  requestAnimationFrame(tick2);
 
   var phpv = document.getElementById('phpv'), phpp = document.getElementById('phpp');
-  phpv.textContent = (tPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(tPnl), 0);
-  phpv.style.color = CL(tPnl);
-  phpp.textContent = PC(tPct);
-  phpp.style.color = CL(tPnl);
+  phpv.textContent = (_rPnl >= 0 ? '+' : '-') + '\u20b9' + fi(Math.abs(_rPnl), 0);
+  phpv.style.color = CL(_rPnl);
+  phpp.textContent = PC(_rPct);
+  phpp.style.color = CL(_rPnl);
 
   // Stat cards
   var pss = document.getElementById('pss');
   pss.innerHTML = '';
-  var stats = [
-    {l:'Invested', v:R(tCost), c:''},
-    {l:'Day P&L', v:SN(tDay), c:tDay >= 0 ? 'var(--gn)' : 'var(--rd)'},
-    {l:'XIRR', v:'-12.0%', c:'var(--rd)'}
-  ];
+  var stats = SD.redeemed
+    ? [{l:'Invested', v:'\u20b99,80,061', c:''}, {l:'Received', v:'\u20b97,79,000', c:'var(--gn)'}, {l:'XIRR', v:'-12.0%', c:'var(--rd)'}]
+    : [{l:'Invested', v:R(tCost), c:''}, {l:'Day P&L', v:SN(tDay), c:tDay >= 0 ? 'var(--gn)' : 'var(--rd)'}, {l:'XIRR', v:'-12.0%', c:'var(--rd)'}];
   stats.forEach(function(st) {
     var d = document.createElement('div');
     d.className = 'psc';
@@ -1693,25 +1722,32 @@ function renderPortfolio() {
   });
 
   // Allocation bar
-  var gainers = COMP.filter(function(h) { return h.pnl >= 0; });
-  var losers  = COMP.filter(function(h) { return h.pnl < 0; });
-  var gSum = gainers.reduce(function(a, h) { return a + h.pnl; }, 0);
-  var lSum = losers.reduce(function(a, h)  { return a + h.pnl; }, 0);
-  var gCurr = gainers.reduce(function(a, h) { return a + h.curr; }, 0);
-  var gPct = gCurr / tCurr * 100;
-  var lPct = 100 - gPct;
-
   var alb = document.getElementById('alb');
-  alb.innerHTML = '<div class="als" style="width:' + gPct + '%;background:var(--gn)"></div>' +
-    '<div class="als" style="width:' + lPct + '%;background:var(--rd)"></div>';
-
-  // Gain/loss summary
-  document.getElementById('ggv').textContent = '+\u20b9' + fi(gSum, 0);
-  document.getElementById('ggv').style.color = 'var(--gn)';
-  document.getElementById('ggc').textContent = gainers.length + ' stocks';
-  document.getElementById('glv2').textContent = '-\u20b9' + fi(Math.abs(lSum), 0);
-  document.getElementById('glv2').style.color = 'var(--rd)';
-  document.getElementById('glc2').textContent = losers.length + ' stocks';
+  if (SD.redeemed) {
+    alb.innerHTML = '<div class="als" style="width:100%;background:var(--mt)"></div>';
+    document.getElementById('ggv').textContent = '\u20b90';
+    document.getElementById('ggv').style.color = 'var(--mt)';
+    document.getElementById('ggc').textContent = '0 stocks';
+    document.getElementById('glv2').textContent = '\u2212\u20b92,01,061';
+    document.getElementById('glv2').style.color = 'var(--rd)';
+    document.getElementById('glc2').textContent = 'Realised';
+  } else {
+    var gainers = COMP.filter(function(h) { return h.pnl >= 0; });
+    var losers  = COMP.filter(function(h) { return h.pnl < 0; });
+    var gSum = gainers.reduce(function(a, h) { return a + h.pnl; }, 0);
+    var lSum = losers.reduce(function(a, h)  { return a + h.pnl; }, 0);
+    var gCurr = gainers.reduce(function(a, h) { return a + h.curr; }, 0);
+    var gPct = tCurr ? gCurr / tCurr * 100 : 0;
+    var lPct = 100 - gPct;
+    alb.innerHTML = '<div class="als" style="width:' + gPct + '%;background:var(--gn)"></div>' +
+      '<div class="als" style="width:' + lPct + '%;background:var(--rd)"></div>';
+    document.getElementById('ggv').textContent = '+\u20b9' + fi(gSum, 0);
+    document.getElementById('ggv').style.color = 'var(--gn)';
+    document.getElementById('ggc').textContent = gainers.length + ' stocks';
+    document.getElementById('glv2').textContent = '-\u20b9' + fi(Math.abs(lSum), 0);
+    document.getElementById('glv2').style.color = 'var(--rd)';
+    document.getElementById('glc2').textContent = losers.length + ' stocks';
+  }
 
   // Update "All (N)" tab label
   var ptabAll = document.getElementById('ptabAll');
@@ -1733,6 +1769,19 @@ function renderPortfolio() {
 function renderPList(f) {
   var list = document.getElementById('phl');
   list.innerHTML = '';
+  if (SD.redeemed) {
+    list.innerHTML = '<div style="padding:32px 18px;text-align:center">' +
+      '<div style="font-size:28px;margin-bottom:12px">✅</div>' +
+      '<div style="font-size:15px;font-weight:800;color:var(--tx);margin-bottom:6px">Portfolio Fully Exited</div>' +
+      '<div style="font-size:12px;color:var(--mt);margin-bottom:14px">All 8 holdings sold &middot; ' + SD.redeemed.dt + '</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;background:var(--cd);border:1px solid var(--br);border-radius:13px;padding:14px">' +
+      '<div><div style="font-size:10px;color:var(--mt);font-weight:600">TOTAL INVESTED</div><div style="font-size:14px;font-weight:800;margin-top:3px">\u20b99,80,061</div></div>' +
+      '<div style="text-align:right"><div style="font-size:10px;color:var(--mt);font-weight:600">REDEMPTION VALUE</div><div style="font-size:14px;font-weight:800;color:var(--gn);margin-top:3px">\u20b97,79,000</div></div>' +
+      '<div><div style="font-size:10px;color:var(--mt);font-weight:600">REALISED P&amp;L</div><div style="font-size:14px;font-weight:800;color:var(--rd);margin-top:3px">\u2212\u20b92,01,061</div></div>' +
+      '<div style="text-align:right"><div style="font-size:10px;color:var(--mt);font-weight:600">XIRR</div><div style="font-size:14px;font-weight:800;color:var(--rd);margin-top:3px">\u221212.0%</div></div>' +
+      '</div></div>';
+    return;
+  }
   var sorted = COMP.slice().sort(function(a, b) { return b.curr - a.curr; });
   var items = sorted.filter(function(h) {
     if (f === 'gainers') return h.pnl >= 0;
@@ -1740,7 +1789,7 @@ function renderPList(f) {
     return true;
   });
   items.forEach(function(h, i) {
-    var pct = h.curr / tCurr * 100;
+    var pct = tCurr ? h.curr / tCurr * 100 : 0;
     var d = document.createElement('div');
     d.className = 'phr2';
     d.style.animationDelay = (i * 45) + 'ms';
@@ -1878,13 +1927,12 @@ function initChart() {
 
 // ── REPORTS ───────────────────────────────────────
 function renderReports() {
-  if (!COMP || !COMP.length) return;
-  var tInv = 0, tCur = 0;
-  COMP.forEach(function(c) { tInv += c.cost; tCur += c.curr; });
+  var tInv = SD.redeemed ? SD.redeemed.inv : (COMP.reduce(function(s, c) { return s + c.cost; }, 0));
+  var tCur = SD.redeemed ? SD.redeemed.amt : (COMP.reduce(function(s, c) { return s + c.curr; }, 0));
   var pnl = tCur - tInv;
-  var ret = (pnl / tInv) * 100;
+  var ret = pnl / tInv * 100;
   document.getElementById('rptInv').textContent = '\u20b9' + fi(Math.round(tInv));
-  document.getElementById('rptCurr').textContent = '\u20b9' + fi(Math.round(tCur));
+  document.getElementById('rptCurr').textContent = SD.redeemed ? '\u20b97,79,000 \u2714' : '\u20b9' + fi(Math.round(tCur));
   var pnlEl = document.getElementById('rptPnl');
   pnlEl.style.color = CL(pnl);
   pnlEl.textContent = (pnl >= 0 ? '+' : '\u2212') + '\u20b9' + fi(Math.abs(Math.round(pnl)));
@@ -1892,6 +1940,7 @@ function renderReports() {
   retEl.style.color = CL(ret);
   retEl.textContent = (ret >= 0 ? '+' : '') + fi(ret, 2) + '%';
 }
+
 
 // ── TOAST ─────────────────────────────────────────
 var _toastT;
